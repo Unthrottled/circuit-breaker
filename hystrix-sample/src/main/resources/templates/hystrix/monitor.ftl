@@ -87,8 +87,8 @@
 
 		 // commands
 		var hystrixMonitor = new HystrixCommandMonitor('dependencies', {includeDetailIcon:false});
-
-		var stream = "http://localhost:3344/hystrix.stream";
+        var hostname = document.location.hostname;
+		var stream = "http://" + hostname + ":3344/hystrix.stream";
 
 		var commandStream = stream;
 		var poolStream = stream;
