@@ -1,0 +1,10 @@
+server:
+  port: 3344
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 100

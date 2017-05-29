@@ -124,11 +124,6 @@
 					// add the listener that will process incoming events
 					source.addEventListener('message', hystrixMonitor.eventSourceMessageListener, false);
 
-					//	source.addEventListener('open', function(e) {
-					//		console.console.log(">>> opened connection, phase: " + e.eventPhase);
-					//	    // Connection was opened.
-					//	}, false);
-
 					source.addEventListener('error', function(e) {
 						$("#dependencies .loading").html("Unable to connect to Command Metric Stream.");
 						$("#dependencies .loading").addClass("failed");
@@ -160,11 +155,6 @@
 					
 					// add the listener that will process incoming events
 					source.addEventListener('message', dependencyThreadPoolMonitor.eventSourceMessageListener, false);
-	
-					//	source.addEventListener('open', function(e) {
-					//		console.console.log(">>> opened connection, phase: " + e.eventPhase);
-					//	    // Connection was opened.
-					//	}, false);
 	
 					source.addEventListener('error', function(e) {
                         $("#dependencies .loading").html("Unable to connect to Command Metric Stream.");
