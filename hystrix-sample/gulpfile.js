@@ -18,7 +18,7 @@ gulp.task('js', function () {
 });
 
 gulp.task('css', function() {
-    gulp.src([contentDirectory+ 'css/*.css'])
+    gulp.src([contentDirectory+ 'css/**/*.css'])
         .pipe(concat('main.css'))
         .pipe(gulp.dest(destinationDirectory + 'css'));
 

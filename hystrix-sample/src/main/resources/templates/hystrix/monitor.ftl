@@ -7,27 +7,19 @@
 	<title>Hystrix Monitor</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<!-- Setup base for everything -->
-	<link rel="stylesheet" type="text/css" href="hystrix/css/global.css" />
 
-	<!-- Our custom CSS -->
-	<link rel="stylesheet" type="text/css" href="css/monitor.css" />
 
 	<!-- d3 -->
     <script type="text/javascript" src="<@spring.url '/webjars/d3js/3.4.11/d3.min.js'/>" ></script>
 
 	<!-- Javascript to monitor and display -->
     <script type="text/javascript" src="<@spring.url '/webjars/jquery/2.1.1/jquery.min.js'/>" ></script>
-	<script type="text/javascript" src="js/jquery.tinysort.min.js"></script>
-	<script type="text/javascript" src="js/tmpl.js"></script>
 
-	<!-- HystrixCommand -->
-	<script type="text/javascript" src="components/hystrixCommand/hystrixCommand.js"></script>
-	<link rel="stylesheet" type="text/css" href="components/hystrixCommand/hystrixCommand.css" />
-
-	<!-- HystrixThreadPool -->
-	<script type="text/javascript" src="components/hystrixThreadPool/hystrixThreadPool.js"></script>
-	<link rel="stylesheet" type="text/css" href="components/hystrixThreadPool/hystrixThreadPool.css" />
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="js/angular-app.js"></script>
+	<!-- Our custom CSS -->
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
 
 </head>
 <body>
@@ -159,9 +151,5 @@
         }
 
 	</script>
-
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-
 </body>
 </html>
