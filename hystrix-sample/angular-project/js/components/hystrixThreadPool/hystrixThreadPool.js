@@ -2,10 +2,11 @@
 (function(window) {
 
 	// cache the templates we use on this page as global variables (asynchronously)
-	jQuery.get(getRelativePath("components/hystrixThreadPool/templates/hystrixThreadPool.html"), function(data) {
+    var templateDirectory = '../templates/hystrix/hystrixThreadPool/';
+	jQuery.get(getRelativePath(templateDirectory + "hystrixThreadPool.html"), function(data) {
 		htmlTemplate = data;
 	});
-	jQuery.get(getRelativePath("components/hystrixThreadPool/templates/hystrixThreadPoolContainer.html"), function(data) {
+	jQuery.get(getRelativePath(templateDirectory + "hystrixThreadPoolContainer.html"), function(data) {
 		htmlTemplateContainer = data;
 	});
 
