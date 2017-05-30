@@ -2,7 +2,7 @@
 (function(window) {
 
 	// cache the templates we use on this page as global variables (asynchronously)
-    var templateDirectory = '../templates/hystrix/hystrixCommand/';
+    var templateDirectory = '../templates/hystrixCommand/';
     jQuery.get(getRelativePath(templateDirectory + "Circuit.html"), function(data) {
 		hystrixTemplateCircuit = data;
 	});

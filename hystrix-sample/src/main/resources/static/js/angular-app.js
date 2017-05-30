@@ -80,10 +80,11 @@ angular.module('myApp.view1', [])
 (function(window) {
 
 	// cache the templates we use on this page as global variables (asynchronously)
-	jQuery.get(getRelativePath("components/hystrixCommand/templates/hystrixCircuit.html"), function(data) {
+    var templateDirectory = '../templates/hystrixCommand/';
+    jQuery.get(getRelativePath(templateDirectory + "Circuit.html"), function(data) {
 		hystrixTemplateCircuit = data;
 	});
-	jQuery.get(getRelativePath("components/hystrixCommand/templates/hystrixCircuitContainer.html"), function(data) {
+	jQuery.get(getRelativePath(templateDirectory + "hystrixCircuitContainer.html"), function(data) {
 		hystrixTemplateCircuitContainer = data;
 	});
 
@@ -623,10 +624,11 @@ angular.module('myApp.view1', [])
 (function(window) {
 
 	// cache the templates we use on this page as global variables (asynchronously)
-	jQuery.get(getRelativePath("components/hystrixThreadPool/templates/hystrixThreadPool.html"), function(data) {
+    var templateDirectory = '../templates/hystrixThreadPool/';
+	jQuery.get(getRelativePath(templateDirectory + "hystrixThreadPool.html"), function(data) {
 		htmlTemplate = data;
 	});
-	jQuery.get(getRelativePath("components/hystrixThreadPool/templates/hystrixThreadPoolContainer.html"), function(data) {
+	jQuery.get(getRelativePath(templateDirectory + "hystrixThreadPoolContainer.html"), function(data) {
 		htmlTemplateContainer = data;
 	});
 

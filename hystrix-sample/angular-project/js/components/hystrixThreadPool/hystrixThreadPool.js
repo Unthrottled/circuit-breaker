@@ -2,7 +2,7 @@
 (function(window) {
 
 	// cache the templates we use on this page as global variables (asynchronously)
-    var templateDirectory = '../templates/hystrix/hystrixThreadPool/';
+    var templateDirectory = '../templates/hystrixThreadPool/';
 	jQuery.get(getRelativePath(templateDirectory + "hystrixThreadPool.html"), function(data) {
 		htmlTemplate = data;
 	});
