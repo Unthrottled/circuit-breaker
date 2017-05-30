@@ -160,6 +160,8 @@
 
 	</script>
 
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
 
 </body>
 </html>
