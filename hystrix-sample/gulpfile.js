@@ -4,25 +4,21 @@ var filter = require('gulp-filter');
 var sass = require('gulp-sass');
 var bower = require('gulp-bower');
 
-
+var contentDirectory = 'angular-project/';
 var destinationDirectory = 'src/main/resources/static/';
 
 gulp.task('bower', function() {
-    return bower("install --allow-root");
+    return bower();
 });
 
 gulp.task('js', function () {
-    gulp.src([destinationDirectory +'js/**/*.js'])
-        .pipe(concat('app.js'))
+    gulp.src([contentDirectory +'js/**/*.js'])
+        .pipe(concat('angular-app.js'))
         .pipe(gulp.dest(destinationDirectory + 'js'))
 });
 
 gulp.task('css', function() {
-
-    var cssFiles = [destinationDirectory+ 'css/*.css'];
-
-    gulp.src(cssFiles)
-        .pipe(filter("main.css"))
+    gulp.src([contentDirectory+ 'css/*.css'])
         .pipe(concat('main.css'))
         .pipe(gulp.dest(destinationDirectory + 'css'));
 
