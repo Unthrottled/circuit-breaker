@@ -24,5 +24,15 @@ gulp.task('css', function() {
 
 });
 
+gulp.task('html', function(){
+   gulp.src([contentDirectory + 'templates/**/*.html'])
+       .pipe(gulp.dest(destinationDirectory + 'templates'));
+});
+
+gulp.task('images', function(){
+   gulp.src([contentDirectory + 'images/**/*'])
+       .pipe(gulp.dest(destinationDirectory + 'images'));
+});
+
 // Default Task
-gulp.task('default', ['bower','css', 'js']);
+gulp.task('default', ['bower','css', 'js','html', 'images']);
