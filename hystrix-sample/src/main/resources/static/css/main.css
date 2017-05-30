@@ -1,0 +1,1732 @@
+@IMPORT url("resets.css");
+
+body {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+img, object, embed {
+	max-width: 100%;
+}
+
+img {
+	height: auto;
+}
+
+
+#header {
+	background: #FFFFFF url(../images/hystrix-logo-tagline-tiny.png) no-repeat scroll 99% 0%;
+	height: 65px;
+	margin-bottom: 5px;
+}
+
+#header h2 {
+	float:left;
+	color: black;
+	position:relative;
+	padding-left: 20px;
+	top: 26px;
+	font-size: 20px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+#header .header_nav {
+	position:absolute;
+	top:48px;
+	right:15px;
+}
+
+#header .header_links {
+	float:left;
+	color: lightgray;
+	font-size: 18px;
+	top: 3px;
+	padding-left: 10px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+#header .header_links a {
+	color: white;
+}
+
+#header .header_clusters {
+	float:left;
+	position:relative;
+	padding-left: 10px;
+	top: -1px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+
+@media screen and (min-width: 1500px) {
+	
+	#header .header_nav {
+		top:13px;
+		right:130px;
+	}
+	
+	#header {
+		background: #FFFFFF url(../images/hystrix-logo-tagline-tiny.png) no-repeat scroll 99% 50%;
+		height: 65px;
+	}
+}
+
+.container {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.row {
+	width: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.spacer {
+	width: 100%;
+	margin: 0 auto;
+	padding-top:4px;
+	clear:both;
+}
+
+
+.last {
+	margin-right: 0px;
+}
+
+.menubar {
+	overflow: hidden;
+	border-bottom: 1px solid black;
+}
+
+.menubar div {
+	padding-bottom:5px;
+
+	margin: 0 auto;
+	overflow: hidden;
+	
+	font-size: 80%;
+	font-family:'Bookman Old Style',Bookman,'URW Bookman L','Palatino Linotype',serif;
+	
+	float:left;
+}
+
+.menubar .title {
+	float: left;
+	padding-right: 20px;
+	
+	font-size: 110%;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: bold;
+	
+	vertical-align: bottom;
+}
+
+.menubar .menu_actions {
+	float: left;
+	position:relative;
+	top: 4px;
+}
+
+.menubar .menu_legend {
+	float: right;
+	position:relative;
+	top: 4px;
+	
+}
+
+h3.sectionHeader {
+	color: black;
+	font-size: 110%;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	background: lightgrey;
+}
+
+.success {
+	color: green;	
+}
+.shortCircuited {
+	color: blue;	
+}
+.timeout {
+	color: #FF9900;	 /* shade of orange */
+}
+.failure {
+	color: red;	
+}
+
+.rejected {
+	color: purple;
+}
+	
+.exceptionsThrown {
+	color: brown;
+}
+
+.badRequest {
+	color: #00CC99;
+}
+
+@media screen and (max-width: 1100px) {
+	.container {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+}
+
+/* 
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+/* Include this file in your html if you are using the CSP mode. */
+
+@charset "UTF-8";
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+.ng-cloak, .x-ng-cloak,
+.ng-hide:not(.ng-hide-animate) {
+  display: none !important;
+}
+
+ng\:form {
+  display: block;
+}
+
+.ng-animate-shim {
+  visibility:hidden;
+}
+
+.ng-anchor {
+  position:absolute;
+}
+
+.dependencies .spacer {
+	width: 100%;
+	margin: 0 auto;
+	padding-top:4px;
+	clear:both;
+}
+
+
+.dependencies .last {
+	margin-right: 0px;
+}
+
+.dependencies span.loading {
+	display: block;
+	padding-top: 6%;
+	padding-bottom: 6%;
+	color: gray;
+	text-align: center;
+}
+
+.dependencies span.loading.failed {
+	color: red;
+}
+
+
+.dependencies div.monitor {
+	float: left;
+	margin-right:5px;
+	margin-top:5px;
+}
+
+.dependencies div.monitor p.name {
+	font-weight:bold;
+	font-size: 10pt;
+	text-align: right;	
+	padding-bottom: 5px;
+}
+
+.dependencies div.monitor_data {
+	margin: 0 auto;	
+}
+
+/* override the HREF when we have specified it as a tooltip to not act like a link */
+.dependencies div.monitor_data a.tooltip {
+	text-decoration: none;
+	cursor: default;	
+}
+
+.dependencies div.monitor_data div.counters {
+	text-align: right;	
+	padding-bottom: 10px;
+	font-size: 10pt;
+	clear: both;
+	
+}
+
+.dependencies div.monitor_data div.counters div.cell {
+	display: inline;
+	float: right;
+}
+
+.dependencies .borderRight {
+	border-right: 1px solid grey;
+	padding-right: 6px;
+	padding-left: 8px;
+}
+
+.dependencies div.cell .line {
+	display: block;
+}
+
+.dependencies div.monitor_data a,
+.dependencies span.rate_value {
+	font-weight:bold;	
+}
+
+
+.dependencies span.smaller {
+	font-size: 8pt;
+	color: grey;	
+}
+
+
+
+.dependencies div.tableRow {
+	width:100%;
+	white-space: nowrap;
+	font-size: 8pt;	
+	margin: 0 auto;
+	clear:both;
+	padding-left:26%;
+}
+
+.dependencies div.tableRow .cell {
+	float:left;
+}
+
+.dependencies div.tableRow .header {
+	width:18%;
+	text-align:right;
+	padding-right:2%;
+}
+
+.dependencies div.tableRow .data {
+	width:17%;
+	font-weight: bold;
+	text-align:right;
+}
+
+
+.dependencies div.monitor {
+	width: 245px; /* we want a fixed width instead of percentage as I want the boxes to be a set size and then fill in as many as can fit in each row ... this allows 3 columns on an iPad */
+	height: 155px;
+}
+
+.dependencies .success {
+	color: green;	
+}
+.dependencies .shortCircuited {
+	color: blue;	
+}
+.dependencies .timeout {
+	color: #FF9900;	 /* shade of orange */
+}
+.dependencies .failure {
+	color: red;	
+}
+
+.badRequest {
+	color: #00CC99;
+}
+
+.dependencies .rejected {
+	color: purple;
+}
+	
+.dependencies .exceptionsThrown {
+	color: brown;
+}
+
+.dependencies div.monitor_data a.rate {
+	color: black;	
+	font-size: 11pt;
+}
+
+.dependencies div.rate {
+	padding-top: 1px;
+	clear:both;
+	text-align:right;
+}
+
+.dependencies .errorPercentage {
+	color: grey;	
+}
+
+.dependencies div.cell .errorPercentage {
+	padding-left:5px;
+	font-size: 12pt !important;
+}
+
+
+.dependencies div.monitor div.chart {
+}
+
+.dependencies div.monitor div.chart svg {
+}
+
+.dependencies div.monitor div.chart svg text {
+	fill: white;
+}
+
+
+.dependencies div.circuitStatus {
+	width:100%;
+	white-space: nowrap;
+	font-size: 9pt;	
+	margin: 0 auto;
+	clear:both;
+	text-align:right;
+	padding-top: 4px;
+}
+
+.dependencies #hidden {
+    width:1px;
+    height:1px;
+    background: lightgrey;
+    display: none;
+}
+
+
+
+/* sparkline */
+.dependencies path {
+	stroke: steelblue;
+	stroke-width: 1;
+	fill: none;
+}
+
+
+}
+
+.dependencyThreadPools .spacer {
+	width: 100%;
+	margin: 0 auto;
+	padding-top:4px;
+	clear:both;
+}
+
+
+.dependencyThreadPools .last {
+	margin-right: 0px;
+}
+
+.dependencyThreadPools span.loading {
+	display: block;
+	padding-top: 6%;
+	padding-bottom: 6%;
+	color: gray;
+	text-align: center;
+}
+
+.dependencyThreadPools span.loading.failed {
+	color: red;
+}
+
+
+.dependencyThreadPools div.monitor {
+	float: left;
+	margin-right:5px; /* these are tweaked to look good on desktop and iPad portrait, and fit things densely */
+	margin-top:5px;
+}
+
+.dependencyThreadPools div.monitor p.name {
+	font-weight:bold;
+	font-size: 10pt;
+	text-align: right;	
+	padding-bottom: 5px;
+}
+
+.dependencyThreadPools div.monitor_data {
+	margin: 0 auto;	
+}
+
+.dependencyThreadPools span.smaller {
+	font-size: 8pt;
+	color: grey;	
+}
+
+
+.dependencyThreadPools div.tableRow {
+	width:100%;
+	white-space: nowrap;
+	font-size: 8pt;	
+	margin: 0 auto;
+	clear:both;
+}
+
+.dependencyThreadPools div.tableRow .cell {
+	float:left;
+}
+
+.dependencyThreadPools div.tableRow .header {
+	text-align:right;
+	padding-right:5px;
+}
+
+.dependencyThreadPools div.tableRow .header.left {
+	width:85px;
+}
+
+.dependencyThreadPools div.tableRow .header.right {
+	width:75px;
+}
+
+.dependencyThreadPools div.tableRow .data {
+	font-weight: bold;
+	text-align:right;
+}
+
+.dependencyThreadPools div.tableRow .data.left {
+	width:30px;
+}
+
+.dependencyThreadPools div.tableRow .data.right {
+	width:45px;
+}
+
+.dependencyThreadPools div.monitor {
+	width: 245px; /* we want a fixed width instead of percentage as I want the boxes to be a set size and then fill in as many as can fit in each row ... this allows 3 columns on an iPad */
+	height: 110px;
+}
+
+
+
+
+
+/* override the HREF when we have specified it as a tooltip to not act like a link */
+.dependencyThreadPools div.monitor_data a.tooltip {
+	text-decoration: none;
+	cursor: default;	
+}
+
+.dependencyThreadPools div.monitor_data a.rate {
+	font-weight:bold;
+	color: black;	
+	font-size: 11pt;
+}
+
+.dependencyThreadPools div.rate {
+	padding-top: 1px;
+	clear:both;
+	text-align:right;
+}
+
+.dependencyThreadPools span.rate_value {
+	font-weight:bold;	
+}
+
+
+
+
+
+
+
+.dependencyThreadPools div.monitor div.chart {
+}
+
+.dependencyThreadPools div.monitor div.chart svg {
+}
+
+.dependencyThreadPools div.monitor div.chart svg text {
+	fill: white;
+}
+
+.dependencyThreadPools #hidden {
+    width:1px;
+    height:1px;
+    background: lightgrey;
+    display: none;
+}
+
+
+
+/*	SimpleGrid - a fork of CSSGrid by Crowd Favorite (https://github.com/crowdfavorite/css-grid)
+ *	http://simplegrid.info
+ *	by Conor Muirhead (http://conor.cc) of Early LLC (http://earlymade.com)	
+ *  License: http://creativecommons.org/licenses/MIT/	*/
+
+/* Containers */
+body { font-size: 1.125em; }
+.grid{ width:1206px; }
+
+/* 6-Col Grid Sizes */
+.slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5{ width:176px; } /* Sixths */
+.slot-0-1,.slot-1-2,.slot-2-3,.slot-3-4,.slot-4-5{ width:382px; } /* Thirds */
+.slot-0-1-2-3,.slot-1-2-3-4,.slot-2-3-4-5{ width:794px; } /* Two-Thirds */
+.slot-0-1-2-3-4,.slot-1-2-3-4-5{ width:1000px; } /* Five-Sixths */
+
+/* 4-Col Grid Sizes */
+.slot-6,.slot-7,.slot-8,.slot-9{ width:279px; } /* Quarters */
+.slot-6-7-8,.slot-7-8-9{ width:897px; } /* Three-Quarters */
+
+/* 6-Col/4-Col Shared Grid Sizes */
+.slot-0-1-2,.slot-1-2-3,.slot-2-3-4,.slot-3-4-5, .slot-6-7,.slot-7-8,.slot-8-9{ width:588px; } /* Halves */
+/*	SimpleGrid - a fork of CSSGrid by Crowd Favorite (https://github.com/crowdfavorite/css-grid)
+ *	http://simplegrid.info
+ *	by Conor Muirhead (http://conor.cc) of Early LLC (http://earlymade.com)	
+ *  License: http://creativecommons.org/licenses/MIT/	*/
+
+/* Containers */
+body { font-size: 0.875em; padding: 0; }
+.grid{ margin:0 auto; padding: 0 10px; width:700px; }
+.row{ clear:left; }
+
+/* Slots Setup */
+.slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5,.slot-0-1,.slot-0-1-2,.slot-0-1-2-3,.slot-0-1-2-3-4,.slot-0-1-2-3-4-5,.slot-1-2,.slot-1-2-3,.slot-1-2-3-4,.slot-1-2-3-4-5,.slot-2-3,.slot-2-3-4,.slot-2-3-4-5,.slot-3-4,.slot-3-4-5,.slot-4-5,.slot-6,.slot-7,.slot-8,.slot-9,.slot-6-7,.slot-6-7-8,.slot-6-7-8-9,.slot-7-8,.slot-7-8-9,.slot-8-9{ display:inline; float:left; margin-left:20px; }
+
+/* 6-Col Grid Sizes */
+.slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5{ width:100px; } /* Sixths */
+.slot-0-1,.slot-1-2,.slot-2-3,.slot-3-4,.slot-4-5{ width:220px; } /* Thirds */
+.slot-0-1-2-3,.slot-1-2-3-4,.slot-2-3-4-5{ width:460px; } /* Two-Thirds */
+.slot-0-1-2-3-4,.slot-1-2-3-4-5{ width:580px; } /* Five-Sixths */
+
+/* 4-Col Grid Sizes */
+.slot-6,.slot-7,.slot-8,.slot-9{ width:160px; } /* Quarters */
+.slot-6-7-8,.slot-7-8-9{ width:520px; } /* Three-Quarters */
+
+/* 6-Col/4-Col Shared Grid Sizes */
+.slot-0-1-2,.slot-1-2-3,.slot-2-3-4,.slot-3-4-5, .slot-6-7,.slot-7-8,.slot-8-9{ width:340px; } /* Halves */
+.slot-0-1-2-3-4-5, .slot-6-7-8-9{ width: 100%; } /* Full-Width */
+
+/* Zeroing Out Leftmost Slot Margins */
+.slot-0,.slot-0-1,.slot-0-1-2,.slot-0-1-2-3,.slot-0-1-2-3-4,.slot-0-1-2-3-4-5,.slot-6,.slot-6-7,.slot-6-7-8,.slot-6-7-8-9,.slot-1 .slot-1,.slot-1-2 .slot-1,.slot-1-2 .slot-1-2,.slot-1-2-3 .slot-1,.slot-1-2-3 .slot-1-2,.slot-1-2-3 .slot-1-2-3,.slot-1-2-3-4 .slot-1,.slot-1-2-3-4 .slot-1-2,.slot-1-2-3-4 .slot-1-2-3,.slot-1-2-3-4 .slot-1-2-3-4,.slot-1-2-3-4-5 .slot-1,.slot-1-2-3-4-5 .slot-1-2,.slot-1-2-3-4-5 .slot-1-2-3,.slot-1-2-3-4-5 .slot-1-2-3-4,.slot-1-2-3-4-5 .slot-1-2-3-4-5,.slot-2 .slot-2,.slot-2-3 .slot-2,.slot-2-3 .slot-2-3,.slot-2-3-4 .slot-2,.slot-2-3-4 .slot-2-3,.slot-2-3-4 .slot-2-3-4,.slot-2-3-4-5 .slot-2,.slot-2-3-4-5 .slot-2-3,.slot-2-3-4-5 .slot-2-3-4,.slot-2-3-4-5 .slot-2-3-4-5,.slot-3 .slot-3,.slot-3-4 .slot-3,.slot-3-4 .slot-3-4,.slot-3-4-5 .slot-3,.slot-3-4-5 .slot-3-4,.slot-3-4-5 .slot-3-4-5,.slot-4 .slot-4,.slot-4-5 .slot-4,.slot-4-5 .slot-4-5,.slot-5 .slot-5,.slot-7 .slot-7,.slot-7-8 .slot-7,.slot-7-8 .slot-7-8,.slot-7-8-9 .slot-7,.slot-7-8-9 .slot-7-8,.slot-7-8-9 .slot-7-8-9,.slot-8 .slot-8,.slot-8-9 .slot-8,.slot-8-9 .slot-8-9{ margin-left:0 !important; } /* Important is to avoid repeating this in larger screen css files */
+
+/* Row Clearfix */
+.row:after{ visibility:hidden; display:block; font-size:0; content:" "; clear:both; height:0; }
+.row{ zoom:1; }
+/*	SimpleGrid - a fork of CSSGrid by Crowd Favorite (https://github.com/crowdfavorite/css-grid)
+ *	http://simplegrid.info
+ *	by Conor Muirhead (http://conor.cc) of Early LLC (http://earlymade.com)	
+ *  License: http://creativecommons.org/licenses/MIT/	*/
+
+/* Containers */
+body { font-size: 100%; }
+.grid{ width:966px; }
+
+/* Slots Setup */
+.slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5,.slot-0-1,.slot-0-1-2,.slot-0-1-2-3,.slot-0-1-2-3-4,.slot-0-1-2-3-4-5,.slot-1-2,.slot-1-2-3,.slot-1-2-3-4,.slot-1-2-3-4-5,.slot-2-3,.slot-2-3-4,.slot-2-3-4-5,.slot-3-4,.slot-3-4-5,.slot-4-5,.slot-6,.slot-7,.slot-8,.slot-9,.slot-6-7,.slot-6-7-8,.slot-6-7-8-9,.slot-7-8,.slot-7-8-9,.slot-8-9{ display:inline; float:left; margin-left:30px; }
+
+/* 6-Col Grid Sizes */
+.slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5{ width:136px; } /* Sixths */
+.slot-0-1,.slot-1-2,.slot-2-3,.slot-3-4,.slot-4-5{ width:302px; } /* Thirds */
+.slot-0-1-2-3,.slot-1-2-3-4,.slot-2-3-4-5{ width:634px; } /* Two-Thirds */
+.slot-0-1-2-3-4,.slot-1-2-3-4-5{ width:800px; } /* Five-Sixths */
+
+/* 4-Col Grid Sizes */
+.slot-6,.slot-7,.slot-8,.slot-9{ width:219px; } /* Quarters */
+.slot-6-7-8,.slot-7-8-9{ width:717px; } /* Three-Quarters */
+
+/* 6-Col/4-Col Shared Grid Sizes */
+.slot-0-1-2,.slot-1-2-3,.slot-2-3-4,.slot-3-4-5, .slot-6-7,.slot-7-8,.slot-8-9{ width:468px; } /* Halves */
+/* Extension of SimpleGrid by benjchristensen to allow percentage based sizing on very large displays	
+ *
+ * SimpleGrid - a fork of CSSGrid by Crowd Favorite (https://github.com/crowdfavorite/css-grid)
+ *	http://simplegrid.info
+ *	by Conor Muirhead (http://conor.cc) of Early LLC (http://earlymade.com)	
+ *  License: http://creativecommons.org/licenses/MIT/	*/
+
+/* Containers */
+body { font-size: 1.125em; }
+.grid{ width:100%; }
+
+/* Slots Setup */
+.slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5,.slot-0-1,.slot-0-1-2,.slot-0-1-2-3,.slot-0-1-2-3-4,.slot-0-1-2-3-4-5,.slot-1-2,.slot-1-2-3,.slot-1-2-3-4,.slot-1-2-3-4-5,.slot-2-3,.slot-2-3-4,.slot-2-3-4-5,.slot-3-4,.slot-3-4-5,.slot-4-5,.slot-6,.slot-7,.slot-8,.slot-9,.slot-6-7,.slot-6-7-8,.slot-6-7-8-9,.slot-7-8,.slot-7-8-9,.slot-8-9{ display:inline; float:left; margin-left:0px; }
+
+
+/* 6-Col Grid Sizes */
+.slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5{ width:16.6%; } /* Sixths */
+.slot-0-1,.slot-1-2,.slot-2-3,.slot-3-4,.slot-4-5{ width:33.3%; } /* Thirds */
+.slot-0-1-2-3,.slot-1-2-3-4,.slot-2-3-4-5{ width:66.6%; } /* Two-Thirds */
+.slot-0-1-2-3-4,.slot-1-2-3-4-5{ width:83.3%; } /* Five-Sixths */
+
+/* 4-Col Grid Sizes */
+.slot-6,.slot-7,.slot-8,.slot-9{ width:25%; } /* Quarters */
+.slot-6-7-8,.slot-7-8-9{ width:75%; } /* Three-Quarters */
+
+/* 6-Col/4-Col Shared Grid Sizes */
+.slot-0-1-2,.slot-1-2-3,.slot-2-3-4,.slot-3-4-5, .slot-6-7,.slot-7-8,.slot-8-9{ width:50%; } /* Halves */
+/*! HTML5 Boilerplate v5.3.0 | MIT License | https://html5boilerplate.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden {
+    display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 1.25dppx),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after,
+    *:first-letter,
+    *:first-line {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
+ */
+
+html {
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit; /* 1 */
+  font: inherit; /* 2 */
+  margin: 0; /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+  cursor: pointer; /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
+ */
+
+input[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  box-sizing: content-box; /* 2 */
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+
+legend {
+  border: 0; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden {
+    display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (min-resolution: 1.25dppx),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after,
+    *:first-letter,
+    *:first-line {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
