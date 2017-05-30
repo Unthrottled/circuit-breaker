@@ -1,9 +1,9 @@
 
 (function(window) {
-
+	var hystrixTemplateCircuit, hystrixTemplateCircuitContainer, sparkline;
 	// cache the templates we use on this page as global variables (asynchronously)
     var templateDirectory = '../templates/hystrixCommand/';
-    jQuery.get(getRelativePath(templateDirectory + "Circuit.html"), function(data) {
+    jQuery.get(getRelativePath(templateDirectory + "hystrixCircuit.html"), function(data) {
 		hystrixTemplateCircuit = data;
 	});
 	jQuery.get(getRelativePath(templateDirectory + "hystrixCircuitContainer.html"), function(data) {
@@ -518,7 +518,7 @@
 	};
 
 	// default sort type and direction
-	this.sortedBy = 'alph_asc';
+	HystrixCommandMonitor.prototype.sortedBy = 'alph_asc';
 
 
 	// a temporary home for the logger until we become more sophisticated

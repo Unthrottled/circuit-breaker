@@ -1,6 +1,6 @@
 
 (function(window) {
-
+    var htmlTemplate, htmlTemplateContainer;
 	// cache the templates we use on this page as global variables (asynchronously)
     var templateDirectory = '../templates/hystrixThreadPool/';
 	jQuery.get(getRelativePath(templateDirectory + "hystrixThreadPool.html"), function(data) {
@@ -75,7 +75,7 @@
 					}
 				}
 			}
-		}
+		};
 		
 		/**
 		 * Pre process the data before displying in the UI. 
@@ -249,7 +249,7 @@
 			$('#THREAD_POOL_' + poolName).remove();
 		}
 		
-	}
+	};
 
 	// public methods for sorting
 	HystrixThreadPoolMonitor.prototype.sortByVolume = function() {
@@ -258,12 +258,12 @@
 			direction = 'asc';
 		}
 		this.sortByVolumeInDirection(direction);
-	}
+	};
 
 	HystrixThreadPoolMonitor.prototype.sortByVolumeInDirection = function(direction) {
 		this.sortedBy = 'rate_' + direction;
 		$('#' + this.containerId + ' div.monitor').tsort({order: direction, attr: 'rate_value'});
-	}
+	};
 
 	HystrixThreadPoolMonitor.prototype.sortAlphabetically = function() {
 		var direction = "asc";
@@ -271,16 +271,16 @@
 			direction = 'desc';
 		}
 		this.sortAlphabeticalInDirection(direction);
-	}
+	};
 
 	HystrixThreadPoolMonitor.prototype.sortAlphabeticalInDirection = function(direction) {
 		this.sortedBy = 'alph_' + direction;
 		$('#' + this.containerId + ' div.monitor').tsort("p.name", {order: direction});
-	}
+	};
 
 	HystrixThreadPoolMonitor.prototype.sortByMetricInDirection = function(direction, metric) {
 		$('#' + this.containerId + ' div.monitor').tsort(metric, {order: direction});
-	}
+	};
 
 	// this method is for when new divs are added to cause the elements to be sorted to whatever the user last chose
 	HystrixThreadPoolMonitor.prototype.sortSameAsLast = function() {
@@ -317,16 +317,16 @@
 		} else if(this.sortedBy == 'latMedian_desc') {
 			this.sortByMetricInDirection('desc', 'pMedian');
 		}  
-	}
+	};
 
 	// default sort type and direction
-	this.sortedBy = 'alph_asc';
+	HystrixThreadPoolMonitor.prototype.sortedBy = 'alph_asc';
 
 
 	// a temporary home for the logger until we become more sophisticated
 	function log(message) {
 		console.log(message);
-	};
+	}
 
 	function addCommas(nStr){
 	  nStr += '';
@@ -342,6 +342,6 @@
 	  }
 	  return x1 + x2;
 	}
-})(window)
+})(window);
 
 
