@@ -2,7 +2,6 @@ var del = require('del');
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var filter = require('gulp-filter');
-var minify = require('gulp-minify');
 var sass = require('gulp-sass');
 var bower = require('gulp-bower');
 var uglify = require('gulp-uglify');
@@ -15,15 +14,15 @@ gulp.task('bower', function() {
 });
 
 gulp.task('clean', function(){
-    del([destinationDirectory+'/**'], {dryRun: false}).then(function(paths) {
-        console.log('Files and folders that would be deleted:\n', paths.join('\n'));
-});
+    del([destinationDirectory+'/*/*', '!'+destinationDirectory+'bower_components/**'],{dryRun: true}).then(function(paths){
+        console.log('Deleted files and folders:\n', paths.join('\n'));
+    });
 });
 
 gulp.task('js', function () {
     gulp.src([contentDirectory +'js/**/*.js'])
         .pipe(concat('angular-app.js'))
-        .pipe(minify())
+        .pipe(uglify({mangle:false}))
         .pipe(gulp.dest(destinationDirectory + 'js'));
 });
 
