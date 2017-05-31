@@ -14,6 +14,8 @@
     <script type="text/javascript" src="<@spring.url '/webjars/jquery/2.1.1/jquery.min.js'/>" ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="bower_components/ng-knob/dist/ng-knob.min.js"></script>
+    <script src="bower_components/angularjs-slider/dist/rzslider.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="bower_components/angularjs-slider/dist/rzslider.min.css"/>
 
     <script src="js/angular-app.js"></script>
 	<!-- Our custom CSS -->
@@ -73,6 +75,9 @@
 </div>
 <div ng-controller="knobCtrl">
     <ui-knob value="value" options="options"></ui-knob>
+</div>
+<div ng-controller="sliderCtrl">
+    <rzslider rz-slider-model="value"></rzslider>
 </div>
 <script>
 		/**
