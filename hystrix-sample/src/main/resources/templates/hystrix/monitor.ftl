@@ -8,66 +8,72 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<!-- d3 -->
-    <script type="text/javascript" src="<@spring.url '/webjars/d3js/3.4.11/d3.min.js'/>" ></script>
+    <script type="text/javascript" src="bower_components/d3/d3.min.js" ></script>
 
 	<!-- Javascript to monitor and display -->
     <script type="text/javascript" src="<@spring.url '/webjars/jquery/2.1.1/jquery.min.js'/>" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="bower_components/ng-knob/dist/ng-knob.min.js"></script>
 
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="js/angular-app.js"></script>
 	<!-- Our custom CSS -->
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
 
 </head>
-<body>
-	<div id="header">
-		<h2><span id="title_name"></span></h2>
-	</div>
+<body ng-app="myApp">
+<div class="hystrix-dashbord">
+    <div id="header">
+        <h2><span id="title_name"></span></h2>
+    </div>
 
-	<div class="container">
-		<div class="row">
-			<div class="menubar">
-				<div class="title">
-				Circuit
-				</div>
-				<div class="menu_actions">
-					Sort:
-					<a href="javascript://" onclick="hystrixMonitor.sortByErrorThenVolume();">Error then Volume</a> |
-					<a href="javascript://" onclick="hystrixMonitor.sortAlphabetically();">Alphabetical</a> |
-					<a href="javascript://" onclick="hystrixMonitor.sortByVolume();">Volume</a> |
-					<a href="javascript://" onclick="hystrixMonitor.sortByError();">Error</a> |
-					<a href="javascript://" onclick="hystrixMonitor.sortByLatencyMean();">Mean</a> |
-					<a href="javascript://" onclick="hystrixMonitor.sortByLatencyMedian();">Median</a> |
-					<a href="javascript://" onclick="hystrixMonitor.sortByLatency90();">90</a> |
-					<a href="javascript://" onclick="hystrixMonitor.sortByLatency99();">99</a> |
-					<a href="javascript://" onclick="hystrixMonitor.sortByLatency995();">99.5</a>
-				</div>
-				<div class="menu_legend">
-					<span class="success">Success</span> | <span class="shortCircuited">Short-Circuited</span> | <span class="badRequest"> Bad Request</span> | <span class="timeout">Timeout</span> | <span class="rejected">Rejected</span> | <span class="failure">Failure</span> | <span class="errorPercentage">Error %</span>
-				</div>
-			</div>
-		</div>
-		<div id="dependencies" class="row dependencies"><span class="loading">Loading ...</span></div>
+    <div class="container">
+        <div class="row">
+            <div class="menubar">
+                <div class="title">
+                    Circuit
+                </div>
+                <div class="menu_actions">
+                    Sort:
+                    <a href="javascript://" onclick="hystrixMonitor.sortByErrorThenVolume();">Error then Volume</a> |
+                    <a href="javascript://" onclick="hystrixMonitor.sortAlphabetically();">Alphabetical</a> |
+                    <a href="javascript://" onclick="hystrixMonitor.sortByVolume();">Volume</a> |
+                    <a href="javascript://" onclick="hystrixMonitor.sortByError();">Error</a> |
+                    <a href="javascript://" onclick="hystrixMonitor.sortByLatencyMean();">Mean</a> |
+                    <a href="javascript://" onclick="hystrixMonitor.sortByLatencyMedian();">Median</a> |
+                    <a href="javascript://" onclick="hystrixMonitor.sortByLatency90();">90</a> |
+                    <a href="javascript://" onclick="hystrixMonitor.sortByLatency99();">99</a> |
+                    <a href="javascript://" onclick="hystrixMonitor.sortByLatency995();">99.5</a>
+                </div>
+                <div class="menu_legend">
+                    <span class="success">Success</span> | <span class="shortCircuited">Short-Circuited</span> | <span
+                        class="badRequest"> Bad Request</span> | <span class="timeout">Timeout</span> | <span
+                        class="rejected">Rejected</span> | <span class="failure">Failure</span> | <span
+                        class="errorPercentage">Error %</span>
+                </div>
+            </div>
+        </div>
+        <div id="dependencies" class="row dependencies"><span class="loading">Loading ...</span></div>
 
-		<div class="spacer"></div>
+        <div class="spacer"></div>
 
-		<div class="row">
-			<div class="menubar">
-				<div class="title">
-				Thread Pools
-				</div>
-				<div class="menu_actions">
-					Sort: <a href="javascript://" onclick="dependencyThreadPoolMonitor.sortAlphabetically();">Alphabetical</a> |
-					<a href="javascript://" onclick="dependencyThreadPoolMonitor.sortByVolume();">Volume</a> |
-				</div>
-			</div>
-		</div>
-		<div id="dependencyThreadPools" class="row dependencyThreadPools"><span class="loading">Loading ...</span></div>
-	</div>
-
-
-
+        <div class="row">
+            <div class="menubar">
+                <div class="title">
+                    Thread Pools
+                </div>
+                <div class="menu_actions">
+                    Sort: <a href="javascript://" onclick="dependencyThreadPoolMonitor.sortAlphabetically();">Alphabetical</a>
+                    |
+                    <a href="javascript://" onclick="dependencyThreadPoolMonitor.sortByVolume();">Volume</a> |
+                </div>
+            </div>
+        </div>
+        <div id="dependencyThreadPools" class="row dependencyThreadPools"><span class="loading">Loading ...</span></div>
+    </div>
+</div>
+<div ng-controller="knobCtrl">
+    <ui-knob value="value" options="options"></ui-knob>
+</div>
 <script>
 		/**
 		 * Queue up the monitor to start once the page has finished loading.

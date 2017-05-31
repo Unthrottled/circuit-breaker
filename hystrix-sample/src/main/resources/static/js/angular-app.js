@@ -2,12 +2,8 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
-  'myApp.view1'
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-
-
-}]);
+    'Poop'
+]);
 
 /*
 * jQuery TinySort - A plugin to sort child nodes by (sub) contents or attributes.
@@ -67,15 +63,13 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 
 'use strict';
 
-angular.module('myApp.view1', [])
-
-.config([function() {
-
-}])
-
-.controller('View1Ctrl', [function() {
-
-}]);
+var app = angular.module('Poop', ['ui.knob']);
+app.controller('knobCtrl', function ($scope) {
+    $scope.value = 65;
+    $scope.options = {
+        size: 300
+    };
+});
 
 (function(window) {
 	var hystrixTemplateCircuit, hystrixTemplateCircuitContainer, sparkline;
