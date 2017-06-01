@@ -13,11 +13,6 @@ public class Beano {
     private static final Logger logger = LoggerFactory.getLogger(Beano.class);
     private final Random ranbo = new Random(9001);
 
-    @PostConstruct
-    public void setUp() {
-        logger.warn("NEATO BEANO BURRITO!");
-    }
-
     @HystrixCommand(fallbackMethod = "fallback")
     public String getMessage() {
         try {

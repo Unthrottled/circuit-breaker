@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('Poop', ['ui.knob']);
+var app = angular.module('knob', ['ui.knob']);
 app.controller('knobCtrl', function ($scope) {
     $scope.value = 65;
     $scope.options = {

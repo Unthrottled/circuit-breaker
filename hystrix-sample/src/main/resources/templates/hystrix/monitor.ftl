@@ -3,15 +3,15 @@
 <html lang="en">
 <head>
     <base href="${basePath}">
-	<meta charset="utf-8" />
-	<title>Hystrix Monitor</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <title>Hystrix Monitor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-	<!-- d3 -->
-    <script type="text/javascript" src="bower_components/d3/d3.min.js" ></script>
+    <!-- d3 -->
+    <script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
 
-	<!-- Javascript to monitor and display -->
-    <script type="text/javascript" src="<@spring.url '/webjars/jquery/2.1.1/jquery.min.js'/>" ></script>
+    <!-- Javascript to monitor and display -->
+    <script type="text/javascript" src="<@spring.url '/webjars/jquery/2.1.1/jquery.min.js'/>"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/ng-knob/dist/ng-knob.min.js"></script>
     <script src="bower_components/angularjs-slider/dist/rzslider.min.js"></script>
@@ -25,8 +25,8 @@
 
 
     <script src="js/angular-app.js"></script>
-	<!-- Our custom CSS -->
-	<link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!-- Our custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
 
 </head>
 <body ng-app="myApp">
@@ -87,12 +87,15 @@
     <rzslider rz-slider-model="value"></rzslider>
 </div>
 <div ng-controller="switchCtrl">
-    <switch ng-model="enabled" class="green"></switch> {{enabled}}
+    <switch ng-model="enabled" class="green"></switch>
+    {{enabled}}
 </div>
 
-<md-button class="md-fab" aria-label="FAB">
-    <md-icon md-svg-src="images/power-symbol.svg"></md-icon>
-</md-button>
+<div ng-controller="powerCtrl">
+    <md-button class="md-fab" aria-label="FAB" ng-click="doSomething()">
+        <md-icon md-svg-src="images/power-symbol.svg"></md-icon>
+    </md-button>
+</div>
 
 <script>
     /**
