@@ -16,6 +16,8 @@
     <script src="bower_components/ng-knob/dist/ng-knob.min.js"></script>
     <script src="bower_components/angularjs-slider/dist/rzslider.min.js"></script>
     <link rel="stylesheet" type="text/css" href="bower_components/angularjs-slider/dist/rzslider.min.css"/>
+    <script src="bower_components/angular-ui-switch/angular-ui-switch.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-ui-switch/angular-ui-switch.min.css"/>
 
     <script src="js/angular-app.js"></script>
 	<!-- Our custom CSS -->
@@ -78,6 +80,9 @@
 </div>
 <div ng-controller="sliderCtrl">
     <rzslider rz-slider-model="value"></rzslider>
+</div>
+<div ng-controller="switchCtrl">
+    <switch ng-model="enabled" class="green"></switch> {{enabled}}
 </div>
 <script>
 		/**
