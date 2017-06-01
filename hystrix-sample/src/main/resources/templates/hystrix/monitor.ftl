@@ -12,12 +12,17 @@
 
 	<!-- Javascript to monitor and display -->
     <script type="text/javascript" src="<@spring.url '/webjars/jquery/2.1.1/jquery.min.js'/>" ></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/ng-knob/dist/ng-knob.min.js"></script>
     <script src="bower_components/angularjs-slider/dist/rzslider.min.js"></script>
     <link rel="stylesheet" type="text/css" href="bower_components/angularjs-slider/dist/rzslider.min.css"/>
     <script src="bower_components/angular-ui-switch/angular-ui-switch.min.js"></script>
     <link rel="stylesheet" type="text/css" href="bower_components/angular-ui-switch/angular-ui-switch.min.css"/>
+    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+
 
     <script src="js/angular-app.js"></script>
 	<!-- Our custom CSS -->
@@ -84,6 +89,11 @@
 <div ng-controller="switchCtrl">
     <switch ng-model="enabled" class="green"></switch> {{enabled}}
 </div>
+
+<md-button class="md-fab" aria-label="FAB">
+    <md-icon md-svg-src="images/power-symbol.svg"></md-icon>
+</md-button>
+
 <script>
     /**
      * Queue up the monitor to start once the page has finished loading.

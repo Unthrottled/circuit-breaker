@@ -4,5 +4,6 @@
 angular.module('myApp', [
     'Poop',
     'slider',
-    'switch'
+    'switch',
+    'ngMaterial'
 ]);
