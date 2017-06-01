@@ -80,21 +80,24 @@
         <div id="dependencyThreadPools" class="row dependencyThreadPools"><span class="loading">Loading ...</span></div>
     </div>
 </div>
-<div ng-controller="knobCtrl">
-    <ui-knob value="value" options="options"></ui-knob>
-</div>
-<div ng-controller="sliderCtrl">
-    <rzslider rz-slider-model="value"></rzslider>
-</div>
-<div ng-controller="switchCtrl">
-    <switch ng-model="enabled" class="green"></switch>
-    {{enabled}}
-</div>
+
 
 <div ng-controller="powerCtrl">
-    <md-button class="md-fab" aria-label="FAB" ng-click="doSomething()">
+    <md-button class="md-icon-button" aria-label="FAB" ng-click="powerToggle()">
         <md-icon md-svg-src="images/power-symbol.svg"></md-icon>
     </md-button>
+    
+    <div ng-show="power">
+        <div ng-controller="knobCtrl">
+            <ui-knob value="value" options="options"></ui-knob>
+        </div>
+        <div ng-controller="sliderCtrl">
+            <rzslider rz-slider-model="value"></rzslider>
+        </div>
+        <div ng-controller="switchCtrl">
+            <switch ng-model="enabled" class="green"></switch>
+        </div>
+    </div>
 </div>
 
 <script>
