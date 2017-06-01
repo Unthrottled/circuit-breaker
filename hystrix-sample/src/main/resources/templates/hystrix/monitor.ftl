@@ -85,85 +85,84 @@
     <switch ng-model="enabled" class="green"></switch> {{enabled}}
 </div>
 <script>
-		/**
-		 * Queue up the monitor to start once the page has finished loading.
-		 *
-		 * This is an inline script and expects to execute once on page load.
-		 */
+    /**
+     * Queue up the monitor to start once the page has finished loading.
+     *
+     * This is an inline script and expects to execute once on page load.
+     */
 
-		 // commands
-		var hystrixMonitor = new HystrixCommandMonitor('dependencies', {includeDetailIcon:false});
-        var hostname = document.location.hostname;
-		var stream = "http://" + hostname + ":3344/hystrix.stream";
+            // commands
+    var hystrixMonitor = new HystrixCommandMonitor('dependencies', {includeDetailIcon: false});
+    var hostname = document.location.hostname;
+    var stream = "http://" + hostname + ":3344/hystrix.stream";
 
-		var commandStream = stream;
-		var poolStream = stream;
-		$('#title_name').text("Hystrix Stream: " + decodeURIComponent(stream));
+    var commandStream = stream;
+    var poolStream = stream;
+    $('#title_name').text("Hystrix Stream: " + decodeURIComponent(stream));
 
-		$(window).load(function () { // within load with a setTimeout to prevent the infinite spinner
-            setTimeout(function () {
-                // sort by error+volume by default
-                hystrixMonitor.sortByErrorThenVolume();
+    $(window).load(function () { // within load with a setTimeout to prevent the infinite spinner
+        setTimeout(function () {
+            // sort by error+volume by default
+            hystrixMonitor.sortByErrorThenVolume();
 
-                // start the EventSource which will open a streaming connection to the server
-                var source = new EventSource(commandStream);
+            // start the EventSource which will open a streaming connection to the server
+            var source = new EventSource(commandStream);
 
-                // add the listener that will process incoming events
-                source.addEventListener('message', hystrixMonitor.eventSourceMessageListener, false);
+            // add the listener that will process incoming events
+            source.addEventListener('message', hystrixMonitor.eventSourceMessageListener, false);
 
-                source.addEventListener('error', function (e) {
-                    $("#dependencies .loading").html("Unable to connect to Command Metric Stream.");
-                    $("#dependencies .loading").addClass("failed");
-                    if (e.eventPhase == EventSource.CLOSED) {
-                        // Connection was closed.
-                        console.log("Connection was closed on error: " + JSON.stringify(e));
-                    } else {
-                        console.log("Error occurred while streaming: " + JSON.stringify(e));
-                    }
-                }, false);
-            }, 0);
-		});
+            source.addEventListener('error', function (e) {
+                $("#dependencies .loading").html("Unable to connect to Command Metric Stream.");
+                $("#dependencies .loading").addClass("failed");
+                if (e.eventPhase == EventSource.CLOSED) {
+                    // Connection was closed.
+                    console.log("Connection was closed on error: " + JSON.stringify(e));
+                } else {
+                    console.log("Error occurred while streaming: " + JSON.stringify(e));
+                }
+            }, false);
+        }, 0);
+    });
 
-		// thread pool
-		var dependencyThreadPoolMonitor = new HystrixThreadPoolMonitor('dependencyThreadPools');
+    // thread pool
+    var dependencyThreadPoolMonitor = new HystrixThreadPoolMonitor('dependencyThreadPools');
 
-		$(window).load(function() { // within load with a setTimeout to prevent the infinite spinner
-			setTimeout(function() {
+    $(window).load(function () { // within load with a setTimeout to prevent the infinite spinner
+        setTimeout(function () {
 
-                dependencyThreadPoolMonitor.sortByVolume();
+            dependencyThreadPoolMonitor.sortByVolume();
 
-                // start the EventSource which will open a streaming connection to the server
-                var source = new EventSource(poolStream);
+            // start the EventSource which will open a streaming connection to the server
+            var source = new EventSource(poolStream);
 
-                // add the listener that will process incoming events
-                source.addEventListener('message', dependencyThreadPoolMonitor.eventSourceMessageListener, false);
+            // add the listener that will process incoming events
+            source.addEventListener('message', dependencyThreadPoolMonitor.eventSourceMessageListener, false);
 
-                source.addEventListener('error', function (e) {
-                    $("#dependencies .loading").html("Unable to connect to Command Metric Stream.");
-                    $("#dependencies .loading").addClass("failed");
-                    if (e.eventPhase == EventSource.CLOSED) {
-                        // Connection was closed.
-                        console.log("Connection was closed on error: " + e);
-                    } else {
-                        console.log("Error occurred while streaming: " + e);
-                    }
-                }, false);
-			},0);
-		});
+            source.addEventListener('error', function (e) {
+                $("#dependencies .loading").html("Unable to connect to Command Metric Stream.");
+                $("#dependencies .loading").addClass("failed");
+                if (e.eventPhase == EventSource.CLOSED) {
+                    // Connection was closed.
+                    console.log("Connection was closed on error: " + e);
+                } else {
+                    console.log("Error occurred while streaming: " + e);
+                }
+            }, false);
+        }, 0);
+    });
 
-		//Read a page's GET URL variables and return them as an associative array.
-		// from: http://jquery-howto.blogspot.com/2009/09/get-url-parameters-values-with-jquery.html
-		function getUrlVars() {
-            var vars = [], hash;
-            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-            for (var i = 0; i < hashes.length; i++) {
-                hash = hashes[i].split('=');
-                vars.push(hash[0]);
-                vars[hash[0]] = hash[1];
-            }
-            return vars;
+    //Read a page's GET URL variables and return them as an associative array.
+    // from: http://jquery-howto.blogspot.com/2009/09/get-url-parameters-values-with-jquery.html
+    function getUrlVars() {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for (var i = 0; i < hashes.length; i++) {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
         }
-
-	</script>
+        return vars;
+    }
+</script>
 </body>
 </html>
