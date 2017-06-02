@@ -14,7 +14,7 @@ public class RestControl {
     }
 
     @RequestMapping("/sillyBilly")
-    public String sillyBilly(){
+    public String sillyBilly() {
         return beano.getMessage();
     }
 }

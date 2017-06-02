@@ -86,7 +86,7 @@
     <md-button class="md-icon-button" aria-label="FAB" ng-click="powerToggle()">
         <md-icon md-svg-src="images/power-symbol.svg"></md-icon>
     </md-button>
-    
+
     <div ng-show="power">
         <div ng-controller="knobCtrl">
             <ui-knob value="value" options="options"></ui-knob>
