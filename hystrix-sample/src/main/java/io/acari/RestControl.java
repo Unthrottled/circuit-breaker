@@ -13,17 +13,6 @@ import java.util.concurrent.TimeUnit;
 
 @RestController
 public class RestControl {
-    private Beano beano;
-
-    @Autowired
-    public RestControl(Beano beano) {
-        this.beano = beano;
-    }
-
-    @RequestMapping("/sillyBilly")
-    public String sillyBilly() {
-        return beano.getMessage();
-    }
 
     @RequestMapping("/test.stream")
     public SseEmitter testo() {
