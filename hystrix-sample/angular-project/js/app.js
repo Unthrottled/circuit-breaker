@@ -5,5 +5,6 @@ angular.module('myApp', [
     'knob',
     'slider',
     'switch',
-    'power'
+    'power',
+    'messages'
 ]);
