@@ -23,8 +23,7 @@ public class RestControl {
     @RequestMapping("/test.stream")
     public SseEmitter testo() {
         SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
-        Observable.interval(100, TimeUnit.MILLISECONDS)
-                .take(60)
+        Observable.interval(500, TimeUnit.MILLISECONDS)
                 .map(beano::getMessage)
                 .subscribe(new Subscriber<Long>() {
                     @Override
