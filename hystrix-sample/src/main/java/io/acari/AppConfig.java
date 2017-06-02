@@ -16,11 +16,6 @@ public class AppConfig {
     private static final String DEFAULT_CHARSET = "UTF-8";
 
     @Bean
-    public MessageStreamEndpoint messageStreamEndpoint(){
-        return new MessageStreamEndpoint();
-    }
-
-    @Bean
     public HasFeatures hystrixDashboardFeature() {
         return HasFeatures.namedFeature("Hystrix Dashboard", HystrixDashboardConfiguration.class);
     }
