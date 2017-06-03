@@ -1,19 +1,20 @@
 package io.acari;
 
+import io.acari.pojo.ThrottleParameters;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import rx.Observable;
 import rx.Subscriber;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 @RestController
 public class RestControl {
+    public static final int INTERVAL = 10;
     private Beano beano;
     private Throttle throttle;
     private SessionRepository sessionRepository;
@@ -32,7 +33,21 @@ public class RestControl {
         return idRepository.getRanbo();
     }
 
-    @RequestMapping("/test.stream/{sessionId}")
+    @RequestMapping("/get/{sessionId}/throttle")
+    public ThrottleParameters getThrottleParameters(@PathVariable Long id){
+        return new ThrottleParameters(sessionRepository.getSession(id));
+
+    }
+
+    @RequestMapping("/post/{sessionId}/throttle")
+    public ThrottleParameters getThrottleParameters(@PathVariable Long id, @RequestBody ThrottleParameters throttleParameters){
+        Session session = sessionRepository.getSession(id);
+        session.getThrottle().setSleepyTime(throttleParameters);
+        return new ThrottleParameters(session);
+
+    }
+
+    @RequestMapping("/{sessionId}/test.stream")
     public SseEmitter testo(@PathVariable Long id) {
         Session session = new Session(id, beano, throttle);
         sessionRepository.addSession(session);
@@ -68,7 +83,7 @@ public class RestControl {
                 }
             }
         };
-        Observable.interval(10, TimeUnit.MILLISECONDS)
+        Observable.interval(INTERVAL, TimeUnit.MILLISECONDS)
                 .map(throttle::whoaDoggy)
                 .map(beano::getMessage)
                 .subscribe(subscriber);

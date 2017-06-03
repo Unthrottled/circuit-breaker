@@ -1,24 +1,42 @@
 package io.acari;
 
+import io.acari.pojo.ThrottleParameters;
+
+import static io.acari.RestControl.INTERVAL;
+
 public class Throttle {
     private static final int DEFAULT_SLEEP = 200;
+    public static final int MILLIS_IN_SECOND = 1000;
 
     private int sleepyTime = DEFAULT_SLEEP;
 
 
     public <R> R whoaDoggy(R r) {
-        try {
-            Thread.sleep(sleepyTime);
-        } catch (InterruptedException e) {
+        if (sleepyTime > 0) {
+            sleepyTime();
         }
         return r;
+    }
+
+    private void sleepyTime() {
+        try {
+            Thread.sleep(sleepyTime);
+        } catch (InterruptedException ignored) {}
     }
 
     public int getSleepyTime() {
         return sleepyTime;
     }
 
-    public void setSleepyTime(int sleepyTime) {
-        this.sleepyTime = sleepyTime;
+    public void setSleepyTime(ThrottleParameters sleepyTime) {
+        this.sleepyTime = convertToMilliseconds(sleepyTime.getRequestsPerSecond());
+    }
+
+    private int convertToMilliseconds(int requestsPerSecond) {
+        return requestsPerSecond >= 100 ? 0 :  getDividen(requestsPerSecond) - INTERVAL;
+    }
+
+    private int getDividen(int requestsPerSecond) {
+        return requestsPerSecond == 0 ? MILLIS_IN_SECOND : MILLIS_IN_SECOND / requestsPerSecond;
     }
 }
