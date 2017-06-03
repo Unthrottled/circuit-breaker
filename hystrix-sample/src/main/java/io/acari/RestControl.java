@@ -1,6 +1,7 @@
 package io.acari;
 
 import io.acari.pojo.LatencyParameters;
+import io.acari.pojo.LivenessParameters;
 import io.acari.pojo.ThrottleParameters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,14 +36,14 @@ public class RestControl {
     }
 
     @RequestMapping("/get/{sessionId}/throttle")
-    public ThrottleParameters getThrottleParameters(@PathVariable Long id){
-        return new ThrottleParameters(sessionRepository.getSession(id));
+    public ThrottleParameters getThrottleParameters(@PathVariable Long sessionId){
+        return new ThrottleParameters(sessionRepository.getSession(sessionId));
 
     }
 
     @RequestMapping(value = "/post/{sessionId}/throttle", method = RequestMethod.POST)
-    public ThrottleParameters getThrottleParameters(@PathVariable Long id, @RequestBody ThrottleParameters throttleParameters){
-        Session session = sessionRepository.getSession(id);
+    public ThrottleParameters getThrottleParameters(@PathVariable Long sessionId, @RequestBody ThrottleParameters throttleParameters){
+        Session session = sessionRepository.getSession(sessionId);
         session.getThrottle().setSleepyTime(throttleParameters);
         return new ThrottleParameters(session);
 
@@ -60,9 +61,21 @@ public class RestControl {
         return new LatencyParameters(session);
     }
 
+    @RequestMapping("/get/{sessionId}/liveness")
+    public LivenessParameters getLiveness(@PathVariable Long sessionId){
+        return new LivenessParameters(sessionRepository.getSession(sessionId));
+    }
+
+    @RequestMapping("/post/{sessionId}/liveness")
+    public LivenessParameters getLiveness(@PathVariable Long sessionId, @RequestBody LivenessParameters livenessParameters){
+        Session session = sessionRepository.getSession(sessionId);
+        session.getBeano().setLiveness(livenessParameters);
+        return new LivenessParameters(session);
+    }
+
     @RequestMapping("/{sessionId}/test.stream")
-    public SseEmitter testo(@PathVariable Long id) {
-        Session session = new Session(id, beano, throttle);
+    public SseEmitter testo(@PathVariable Long sessionId) {
+        Session session = new Session(sessionId, beano, throttle);
         sessionRepository.addSession(session);
         SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
         Subscriber<Long> subscriber = new Subscriber<Long>() {
