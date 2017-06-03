@@ -11,7 +11,6 @@ import rx.Subscriber;
 
 import java.io.IOException;
 import java.time.Instant;
-import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 @RestController

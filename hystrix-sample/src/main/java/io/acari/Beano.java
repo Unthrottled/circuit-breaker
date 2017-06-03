@@ -1,7 +1,6 @@
 package io.acari;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import io.acari.pojo.LatencyParameters;
 import io.acari.pojo.LivenessParameters;
 import org.springframework.context.annotation.Scope;
