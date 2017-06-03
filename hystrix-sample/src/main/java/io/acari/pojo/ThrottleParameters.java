@@ -1,16 +1,7 @@
 package io.acari.pojo;
 
-public class ThrottleParameters {
-    private Long sessionId;
+public class ThrottleParameters extends SessionParameters {
     private int requestsPerSecond;
-
-    public Long getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(Long sessionId) {
-        this.sessionId = sessionId;
-    }
 
     public int getRequestsPerSecond() {
         return requestsPerSecond;
