@@ -1,15 +1,20 @@
 package io.acari;
 
 import io.acari.pojo.ThrottleParameters;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 
 import static io.acari.RestControl.INTERVAL;
 
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Throttle {
     private static final int DEFAULT_SLEEP = 200;
     public static final int MILLIS_IN_SECOND = 1000;
 
     private int sleepyTime = DEFAULT_SLEEP;
 
+    public Throttle() {
+    }
 
     public <R> R whoaDoggy(R r) {
         if (sleepyTime > 0) {

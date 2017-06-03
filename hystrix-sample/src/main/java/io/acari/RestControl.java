@@ -1,5 +1,6 @@
 package io.acari;
 
+import io.acari.pojo.LatencyParameters;
 import io.acari.pojo.ThrottleParameters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -39,12 +40,24 @@ public class RestControl {
 
     }
 
-    @RequestMapping("/post/{sessionId}/throttle")
+    @RequestMapping(value = "/post/{sessionId}/throttle", method = RequestMethod.POST)
     public ThrottleParameters getThrottleParameters(@PathVariable Long id, @RequestBody ThrottleParameters throttleParameters){
         Session session = sessionRepository.getSession(id);
         session.getThrottle().setSleepyTime(throttleParameters);
         return new ThrottleParameters(session);
 
+    }
+
+    @RequestMapping("/get/{sessionId}/latency")
+    public LatencyParameters getLatencyParameters(@PathVariable Long id){
+        return new LatencyParameters(sessionRepository.getSession(id));
+    }
+
+    @RequestMapping(value = "/post/{sessionId}/latency", method = RequestMethod.POST)
+    public LatencyParameters getLatencyParameters(@PathVariable Long id, @RequestBody LatencyParameters latencyParameters){
+        Session session = sessionRepository.getSession(id);
+        session.getBeano().setDelay(latencyParameters);
+        return new LatencyParameters(session);
     }
 
     @RequestMapping("/{sessionId}/test.stream")

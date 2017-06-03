@@ -5,8 +5,11 @@ import io.acari.Session;
 public class ThrottleParameters extends SessionParameters {
     private int requestsPerSecond;
 
+    public ThrottleParameters(){
+    }
+
     public ThrottleParameters(Session session) {
-        setSessionId(session.getId());
+        super(session);
         setRequestsPerSecond(session.getThrottle().getSleepyTime());
     }
 

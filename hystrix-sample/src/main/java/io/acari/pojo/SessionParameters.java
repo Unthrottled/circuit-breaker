@@ -1,7 +1,16 @@
 package io.acari.pojo;
 
+import io.acari.Session;
+
 public class SessionParameters {
     private Long sessionId;
+
+    public SessionParameters() {
+    }
+
+    public SessionParameters(Session session) {
+        setSessionId(session.getId());
+    }
 
 
     public Long getSessionId() {

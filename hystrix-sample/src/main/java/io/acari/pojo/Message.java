@@ -7,6 +7,9 @@ public class Message {
     private String message;
     private ZonedDateTime timeStamp;
 
+    public Message() {
+    }
+
     public Message(String message, ZonedDateTime timeStamp) {
         this.message = message;
         this.timeStamp = timeStamp;

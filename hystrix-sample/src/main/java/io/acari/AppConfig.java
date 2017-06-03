@@ -28,6 +28,11 @@ public class AppConfig {
     }
 
     @Bean
+    public Throttle throttle(){
+        return new Throttle();
+    }
+
+    @Bean
     public HasFeatures hystrixDashboardFeature() {
         return HasFeatures.namedFeature("Hystrix Dashboard", HystrixDashboardConfiguration.class);
     }
