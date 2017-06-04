@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('myapp');
+var app = angular.module('myApp');
 
 app.service('sessionService', ["$http", "hostService", 'rx', function ($http, hostService, rx) {
     var self = this;
@@ -9,9 +9,9 @@ app.service('sessionService', ["$http", "hostService", 'rx', function ($http, ho
     return {
         getSessionId: function () {
             if (self.sessionId === self.NO_SESSION_ID) {
-                return rx.Observable.fromPromise($http.get(hostService + 'get/stream-id'))
+                return rx.Observable.fromPromise($http.get(hostService.getUrl() + 'get/stream-id'))
                     .map(function (response) {
-                        self.sessionId = response;
+                        self.sessionId = response.data;
                         return self.sessionId;
                     });
             } else {

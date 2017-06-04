@@ -12,6 +12,7 @@
 
     <!-- Javascript to monitor and display -->
     <script type="text/javascript" src="<@spring.url '/webjars/jquery/2.1.1/jquery.min.js'/>"></script>
+    <script src="bower_components/rxjs/dist/rx.all.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/ng-knob/dist/ng-knob.min.js"></script>
     <script src="bower_components/angularjs-slider/dist/rzslider.min.js"></script>
@@ -23,7 +24,6 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/angular-rx/dist/rx.angular.min.js"></script>
-    <script src="bower_components/rxjs/dist/rx.all.min.js"></script>
 
 
     <script src="js/angular-app.js"></script>
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
 
 </head>
-<body ng-app="myApp" ng-controller="sessionCtrl" ng-init="initSession()">
+<body ng-app="myApp" ng-controller="mainCtrl" ng-init="initSession()">
 <div class="hystrix-dashbord">
     <div id="header">
         <h2><span id="title_name"></span></h2>
@@ -94,7 +94,7 @@
     <switch ng-model="enabled" class="green"></switch>
 </div>
 <div ng-controller="messageCtrl">
-    <ul ng-repeat="eventData in events">
+    <ul ng-repeat="eventData in messages">
         <li>{{eventData}}</li>
     </ul>
 </div>

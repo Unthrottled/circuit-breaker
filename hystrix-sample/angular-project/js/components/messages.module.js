@@ -12,20 +12,22 @@ app.controller('messageCtrl', ["$scope", 'messageService', function ($scope, mes
     });
 }]);
 
-app.service('messageService', ['sessionService', 'hostService', function (sessionService, hostService) {
+app.service('messageService', ['sessionService', 'hostService', 'rx', function (sessionService, hostService, rx) {
     var self = this;
     self.messageObserver = sessionService.getSessionId()
-        .map(function (sessionId) {
-            var eventSource = new EventSource(hostService.getUrl() + sessionId + '/test.stream');
-            eventSource.onmessage = function (x) {
-                observer.next(console.log(JSON.parse(x.data)));
-            };
-            eventSource.onerror = function (x) {
-                observer.error(console.log('EventSource failed ' + e));
-            };
-            return function () {
-                eventSource.close();
-            };
+        .flatMap(function (sessionId) {
+            return rx.Observable.create(function (observer) {
+                var eventSource = new EventSource(hostService.getUrl() + sessionId + '/test.stream');
+                eventSource.onmessage = function (x) {
+                    observer.next(x.data);
+                };
+                eventSource.onerror = function (x) {
+                    observer.error(console.log('EventSource failed ' + x));
+                };
+                return function () {
+                    eventSource.close();
+                };
+            });
         });
     return {
         messageStream: self.messageObserver
