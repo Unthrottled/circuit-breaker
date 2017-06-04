@@ -22,7 +22,7 @@ gulp.task('clean', function(){
 gulp.task('js', function () {
     gulp.src([contentDirectory +'js/**/*.js'])
         .pipe(concat('angular-app.js'))
-        // .pipe(uglify({mangle:false}))
+        .pipe(uglify({mangle:false}))
         .pipe(gulp.dest(destinationDirectory + 'js'));
 });
 

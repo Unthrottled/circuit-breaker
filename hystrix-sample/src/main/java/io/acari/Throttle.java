@@ -8,7 +8,7 @@ import static io.acari.RestControl.INTERVAL;
 
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Throttle {
-    private static final int DEFAULT_SLEEP = 200;
+    private static final int DEFAULT_SLEEP = 500;
     public static final int MILLIS_IN_SECOND = 1000;
 
     private int sleepyTime = DEFAULT_SLEEP;

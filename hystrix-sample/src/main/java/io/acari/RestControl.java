@@ -109,6 +109,7 @@ public class RestControl {
             }
         };
         Observable.interval(INTERVAL, TimeUnit.MILLISECONDS)
+                .onBackpressureDrop()
                 .map(throttle::whoaDoggy)
                 .map(beano::getMessage)
                 .subscribe(subscriber);
