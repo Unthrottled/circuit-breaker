@@ -15,20 +15,21 @@ app.controller('messageCtrl', ["$scope", function ($scope) {
     }
 }]);
 
-app.service('messageService', [function () {
+app.service('messageService', ['sessionService', 'hostService', function (sessionService, hostService) {
     var self = this;
-    self.messageObserver = Observable.create(function (observer) {
-        const eventSource = new EventSource('/interval-sse-observable');
-        eventSource.onmessage = function (x) {
-            observer.next(console.log(JSON.parse(x.data)));
-        };
-        eventSource.onerror = function (x) {
-            observer.error(console.log('EventSource failed ' + e));
-        };
-        return function () {
-            eventSource.close();
-        };
-    });
+    self.messageObserver = sessionService.getSessionId()
+        .map(function (sessionId) {
+            const eventSource = new EventSource(hostService.getUrl() + sessionId + '/test.stream');
+            eventSource.onmessage = function (x) {
+                observer.next(console.log(JSON.parse(x.data)));
+            };
+            eventSource.onerror = function (x) {
+                observer.error(console.log('EventSource failed ' + e));
+            };
+            return function () {
+                eventSource.close();
+            };
+        });
     return {
         messageStream: self.messageObserver
     }
