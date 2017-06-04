@@ -30,7 +30,7 @@ public class Throttle {
     }
 
     public int getSleepyTime() {
-        return sleepyTime;
+        return MILLIS_IN_SECOND / sleepyTime;
     }
 
     public void setSleepyTime(ThrottleParameters sleepyTime) {

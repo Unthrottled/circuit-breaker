@@ -9,6 +9,6 @@ public class IdRepository {
     private final SecureRandom secureRandom = new SecureRandom();
 
     public Long getRanbo(){
-        return secureRandom.nextLong();
+        return (long) secureRandom.nextInt();
     }
 }

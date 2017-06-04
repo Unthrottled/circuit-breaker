@@ -31,7 +31,45 @@ public class RestControl {
 
     @RequestMapping("/get/stream-id")
     public Long streamId(){
-        return idRepository.getRanbo();
+        SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
+        Subscriber<Long> subscriber = new Subscriber<Long>() {
+            @Override
+            public void onCompleted() {
+                try {
+                    emitter.send("All dun");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    emitter.complete();
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                try {
+                    emitter.send("Shit Broke " + e.getMessage());
+                    emitter.complete();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onNext(Long aLong) {
+                try {
+                    emitter.send(aLong + " @ " + Instant.now());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        StreamSource.stream.map(throttle::whoaDoggy)
+                .map(beano::getMessage)
+                .subscribe(subscriber);
+
+        Long ranbo = idRepository.getRanbo();
+        sessionRepository.addSession(new Session(ranbo, beano, throttle, emitter));
+        return ranbo;
     }
 
     @RequestMapping("/get/{sessionId}/throttle")
@@ -74,45 +112,6 @@ public class RestControl {
 
     @RequestMapping("/{sessionId}/test.stream")
     public SseEmitter testo(@PathVariable Long sessionId) {
-        Session session = new Session(sessionId, beano, throttle);
-        sessionRepository.addSession(session);
-        SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
-        Subscriber<Long> subscriber = new Subscriber<Long>() {
-            @Override
-            public void onCompleted() {
-                try {
-                    emitter.send("All dun");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
-                    emitter.complete();
-                }
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                try {
-                    emitter.send("Shit Broke " + e.getMessage());
-                    emitter.complete();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onNext(Long aLong) {
-                try {
-                    emitter.send(aLong + " @ " + Instant.now());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        Observable.interval(INTERVAL, TimeUnit.MILLISECONDS)
-                .onBackpressureDrop()
-                .map(throttle::whoaDoggy)
-                .map(beano::getMessage)
-                .subscribe(subscriber);
-        return emitter;
+        return sessionRepository.getSession(sessionId).getSseEmitter();
     }
 }

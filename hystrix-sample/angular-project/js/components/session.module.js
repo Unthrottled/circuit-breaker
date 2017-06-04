@@ -5,18 +5,15 @@ var app = angular.module('myApp');
 app.service('sessionService', ["$http", "hostService", 'rx', function ($http, hostService, rx) {
     var self = this;
     self.NO_SESSION_ID = "LOL NOPE";
-    self.sessionId = self.NO_SESSION_ID;
+    self.sessionId = rx.Observable.fromPromise($http.get(hostService.getUrl() + 'get/stream-id'))
+        .share()//HOT OBSERVABLE
+        .map(function (response) {
+            self.sessionId = response.data;
+            return self.sessionId;
+        });
     return {
         getSessionId: function () {
-            if (self.sessionId === self.NO_SESSION_ID) {
-                return rx.Observable.fromPromise($http.get(hostService.getUrl() + 'get/stream-id'))
-                    .map(function (response) {
-                        self.sessionId = response.data;
-                        return self.sessionId;
-                    });
-            } else {
-                return rx.Observable.of(self.sessionId);
-            }
+            return self.sessionId;
         }
     }
 }]);

@@ -1,8 +1,15 @@
 'use strict';
 
-var app = angular.module('knob', ['ui.knob']);
-app.controller('knobCtrl', function ($scope) {
-    $scope.value = 65;
+var app = angular.module('myApp');
+app.controller('knobCtrl',['$scope', '$http', 'hostService', 'sessionService', function ($scope, $http, hostService, sessionService) {
+    $scope.value = 0;
+    sessionService.getSessionId()
+        .subscribe(function(sessionId){
+            $http.get(hostService.getUrl() + 'get/' + sessionId + '/throttle')
+                .then(function(response){
+                    $scope.value = response.data.requestsPerSecond;
+                });
+        });
     $scope.options = {
         startAngle: 30,
         endAngle: 330,
@@ -21,4 +28,4 @@ app.controller('knobCtrl', function ($scope) {
             width: 3
         }
     };
-});
+}]);
