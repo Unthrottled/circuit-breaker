@@ -22,6 +22,8 @@
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/angular-rx/dist/rx.angular.min.js"></script>
+    <script src="bower_components/rxjs/dist/rx.all.min.js"></script>
 
 
     <script src="js/angular-app.js"></script>
