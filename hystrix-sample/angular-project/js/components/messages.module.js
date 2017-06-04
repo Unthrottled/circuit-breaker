@@ -16,7 +16,7 @@ app.service('messageService', ['sessionService', 'hostService', function (sessio
     var self = this;
     self.messageObserver = sessionService.getSessionId()
         .map(function (sessionId) {
-            const eventSource = new EventSource(hostService.getUrl() + sessionId + '/test.stream');
+            var eventSource = new EventSource(hostService.getUrl() + sessionId + '/test.stream');
             eventSource.onmessage = function (x) {
                 observer.next(console.log(JSON.parse(x.data)));
             };
