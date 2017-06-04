@@ -1,18 +1,15 @@
 'use strict';
 
 var app = angular.module('myApp');
-app.controller('messageCtrl', ["$scope", function ($scope) {
-    $scope.events = [];
-    $scope.init = function () {
-
-        // eventSource.onmessage = function(event){
-        //     if($scope.events.length > 10){
-        //         $scope.events.splice(0,1);
-        //     }
-        //     $scope.events.push(event.data);
-        //     $scope.$apply();
-        // }
-    }
+app.controller('messageCtrl', ["$scope", 'messageService', function ($scope, messageService) {
+    $scope.messages = [];
+    messageService.messageStream.subscribe(function (message) {
+        if ($scope.messages.length > 10) {
+            $scope.messages.splice(0, 1);
+        }
+        $scope.messages.push(message);
+        $scope.$apply();
+    });
 }]);
 
 app.service('messageService', ['sessionService', 'hostService', function (sessionService, hostService) {
