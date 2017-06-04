@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
 
 </head>
-<body ng-app="myApp">
+<body ng-app="myApp" ng-controller="sessionCtrl" ng-init="initSession()">
 <div class="hystrix-dashbord">
     <div id="header">
         <h2><span id="title_name"></span></h2>
@@ -91,7 +91,7 @@
 <div ng-controller="switchCtrl">
     <switch ng-model="enabled" class="green"></switch>
 </div>
-<div ng-controller="messageCtrl" ng-init="init()">
+<div ng-controller="messageCtrl">
     <ul ng-repeat="eventData in events">
         <li>{{eventData}}</li>
     </ul>
