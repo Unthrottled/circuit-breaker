@@ -42,6 +42,8 @@
     "@angular/tsc-wrapped": "~4.0.0",
     "@angular/upgrade": "~4.0.0",
     "angular-in-memory-web-api": "~0.3.1",
+    "jquery": "^3.2.1",
+    "d3": "^4.9.1",
     "core-js": "^2.4.1",
     "path": "^0.12.7",
     "rxjs": "5.0.1",
