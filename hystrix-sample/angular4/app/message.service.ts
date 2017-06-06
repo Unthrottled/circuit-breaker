@@ -12,7 +12,7 @@ export class MessageService {
     constructor(private sessionService: SessionService, private hostService: HostService) {
     }
 
-    getMessages(): Observable<String> {
+    fetchMessages(): Observable<String> {
         return this.sessionService.fetchSessionId()
             .flatMap(sessionId => {
                 return Observable.create(observer => {
