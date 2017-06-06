@@ -9,7 +9,7 @@
     <!-- Our custom CSS -->
 
 </head>
-<body ng-app="myApp" ng-controller="mainCtrl" ng-init="initSession()">
+<body>
 <div class="hystrix-dashbord">
     <div id="header">
         <h2><span id="title_name"></span></h2>
@@ -122,7 +122,7 @@
             source.addEventListener('error', function (e) {
                 $("#dependencies .loading").html("Unable to connect to Command Metric Stream.");
                 $("#dependencies .loading").addClass("failed");
-                if (e.eventPhase == EventSource.CLOSED) {
+                if (e.eventPhase === EventSource.CLOSED) {
                     // Connection was closed.
                     console.log("Connection was closed on error: " + e);
                 } else {

@@ -1,13 +1,14 @@
 {
-  "name": "angular-io-example",
+  "name": "circuit-breaker-dashboard",
   "version": "1.0.0",
   "private": true,
-  "description": "Example project from an angular.io guide.",
+  "description": "Project used to demonstrate the Spring Boot Hystrix Dashboard",
   "scripts": {
     "test:once": "karma start karma.conf.js --single-run",
-    "build": "webpack",
+    "compile": "tsc --init -p angular4/",
+    "build": "webpack --display-error-details",
     "serve": "lite-server -c=bs-config.json",
-    "prestart": "npm run build",
+    "prestart": "npm run compile && npm run build",
     "start": "concurrently \"npm run build:watch\" \"npm run serve\"",
     "pretest": "npm run build",
     "test": "concurrently \"npm run build:watch\" \"karma start karma.conf.js\"",

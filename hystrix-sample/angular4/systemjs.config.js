@@ -11,7 +11,7 @@
         // map tells the System loader where to look for things
         map: {
             // our app is within the app folder
-            'app': 'app',
+            'app': 'sandwich',
 
             // angular bundles
             '@angular/animations': 'npm:@angular/animations/bundles/animations.umd.js',

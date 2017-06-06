@@ -3,11 +3,10 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
-import {HeroDetailComponent} from './hero-detail.component';
-import {HeroService} from './hero.service';
 import {HttpModule} from '@angular/http';
 import {HostService} from './host.service';
 import {SessionService} from './session.service';
+import {MessageComponent} from './message.component';
 
 @NgModule({
     imports: [
@@ -17,10 +16,10 @@ import {SessionService} from './session.service';
     ],
     declarations: [
         AppComponent,
-        HeroDetailComponent
+        MessageComponent
     ],
     bootstrap: [AppComponent],
-    providers: [HeroService, HostService, SessionService]
+    providers: [HostService, SessionService]
 })
 export class AppModule {
 }
