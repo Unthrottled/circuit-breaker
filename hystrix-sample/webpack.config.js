@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 
 module.exports = {
@@ -70,6 +71,12 @@ module.exports = {
 
         new HtmlWebpackPlugin({
             template: 'angular4/index.html'
+        }),
+        new CleanWebpackPlugin(['dist', 'build'], {
+            root: path.resolve(__dirname),
+            verbose: true,
+            dry: false,
+            exclude: ['shared.js']
         })
     ]
 };
