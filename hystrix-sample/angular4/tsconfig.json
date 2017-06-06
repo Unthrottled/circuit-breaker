@@ -10,12 +10,15 @@
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
     "typeRoots": [
-      "../node_modules/@types/"
+    "../node_modules/@types/"
     ]
   },
+  "sourceMap": true,
   "compileOnSave": true,
   "exclude": [
-    "node_modules/*",
+    "../node_modules/*",
+    "../build/*",
+    "../src/*",
     "**/*-aot.ts"
   ]
 }
