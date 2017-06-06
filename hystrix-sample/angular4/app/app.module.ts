@@ -6,6 +6,8 @@ import {AppComponent} from './app.component';
 import {HeroDetailComponent} from './hero-detail.component';
 import {HeroService} from './hero.service';
 import {HttpModule} from '@angular/http';
+import {HostService} from './host.service';
+import {SessionService} from './session.service';
 
 @NgModule({
     imports: [
@@ -18,7 +20,7 @@ import {HttpModule} from '@angular/http';
         HeroDetailComponent
     ],
     bootstrap: [AppComponent],
-    providers: [HeroService]
+    providers: [HeroService, HostService, SessionService]
 })
 export class AppModule {
 }

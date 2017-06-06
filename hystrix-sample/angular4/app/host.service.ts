@@ -8,7 +8,7 @@ export class HostService {
     constructor(private window: Window) {
     }
 
-    getUrl(): String {
+    fetchUrl(): String {
         return 'http://' + this.window.location.hostname + ':' + this.window.location.port + '/';
     }
 }
