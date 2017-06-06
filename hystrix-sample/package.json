@@ -58,7 +58,8 @@
     "zone.js": "^0.8.4",
     "ng2-knob": "^1.0.4",
     "angular2-ui-switch": "^1.2.0",
-    "bootstrap-slider": "^9.8.0"
+    "bootstrap-slider": "^9.8.0",
+    "eventsource": "^1.0.2"
   },
   "devDependencies": {
     "@types/angular": "^1.5.16",
