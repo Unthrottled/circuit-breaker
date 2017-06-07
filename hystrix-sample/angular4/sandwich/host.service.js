@@ -10,21 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var window_1 = require("./window");
 /**
  * Created by alex on 6/6/17.
  */
 var HostService = (function () {
-    function HostService(window) {
-        this.window = window;
+    function HostService(windowRef) {
+        this.windowRef = windowRef;
     }
     HostService.prototype.fetchUrl = function () {
-        return 'http://' + this.window.location.hostname + ':' + this.window.location.port + '/';
+        return 'http://' + this.windowRef.nativeWindow.location.hostname + ':' + this.windowRef.nativeWindow.location.port + '/';
     };
     return HostService;
 }());
 HostService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [Window])
+    __metadata("design:paramtypes", [window_1.WindowRef])
 ], HostService);
 exports.HostService = HostService;
 //# sourceMappingURL=host.service.js.map

@@ -14,6 +14,8 @@ var http_1 = require("@angular/http");
 var host_service_1 = require("./host.service");
 var session_service_1 = require("./session.service");
 var message_component_1 = require("./message.component");
+var message_service_1 = require("./message.service");
+var window_1 = require("./window");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -24,14 +26,14 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
-            http_1.HttpModule,
+            http_1.HttpModule
         ],
         declarations: [
             app_component_1.AppComponent,
             message_component_1.MessageComponent
         ],
         bootstrap: [app_component_1.AppComponent],
-        providers: [host_service_1.HostService, session_service_1.SessionService]
+        providers: [host_service_1.HostService, session_service_1.SessionService, message_service_1.MessageService, window_1.WindowRef]
     })
 ], AppModule);
 exports.AppModule = AppModule;

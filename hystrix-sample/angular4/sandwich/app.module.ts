@@ -7,19 +7,21 @@ import {HttpModule} from '@angular/http';
 import {HostService} from './host.service';
 import {SessionService} from './session.service';
 import {MessageComponent} from './message.component';
+import {MessageService} from './message.service';
+import {WindowRef} from './window';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
-        HttpModule,
+        HttpModule
     ],
     declarations: [
         AppComponent,
         MessageComponent
     ],
     bootstrap: [AppComponent],
-    providers: [HostService, SessionService]
+    providers: [HostService, SessionService, MessageService, WindowRef]
 })
 export class AppModule {
 }
