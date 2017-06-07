@@ -3,10 +3,10 @@
 var htmlTemplate, htmlTemplateContainer;
 // cache the templates we use on this page as global variables (asynchronously)
 var templateDirectory = '../templates/hystrixThreadPool/';
-jQuery.get(getRelativePath(templateDirectory + "hystrixThreadPool.html"), function (data) {
+$.get(getRelativePath(templateDirectory + "hystrixThreadPool.html"), function (data) {
     htmlTemplate = data;
 });
-jQuery.get(getRelativePath(templateDirectory + "hystrixThreadPoolContainer.html"), function (data) {
+$.get(getRelativePath(templateDirectory + "hystrixThreadPoolContainer.html"), function (data) {
     htmlTemplateContainer = data;
 });
 

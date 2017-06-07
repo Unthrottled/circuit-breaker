@@ -3,10 +3,10 @@
 var hystrixTemplateCircuit, hystrixTemplateCircuitContainer, sparkline;
 // cache the templates we use on this page as global variables (asynchronously)
 var templateDirectory = '../templates/hystrixCommand/';
-jQuery.get(getRelativePath(templateDirectory + "hystrixCircuit.html"), function (data) {
+$.get(getRelativePath(templateDirectory + "hystrixCircuit.html"), function (data) {
     hystrixTemplateCircuit = data;
 });
-jQuery.get(getRelativePath(templateDirectory + "hystrixCircuitContainer.html"), function (data) {
+$.get(getRelativePath(templateDirectory + "hystrixCircuitContainer.html"), function (data) {
     hystrixTemplateCircuitContainer = data;
 });
 

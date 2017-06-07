@@ -14,6 +14,7 @@ module.exports = {
     },
     module: {
         rules: [
+            { test: require.resolve('jquery'), loader: 'expose-loader?jQuery!expose-loader?$' },
             {
                 test: /\.ts$/,
                 loaders: [
@@ -90,6 +91,5 @@ module.exports = {
             port: 3000,
             server: { baseDir: ['dist'] }
         })
-
     ]
 };
