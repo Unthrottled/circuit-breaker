@@ -9,7 +9,7 @@
     "build": "npm run compile && webpack --display-error-details",
     "serve": "lite-server -c=bs-config.json",
     "prestart": "npm run compile && npm run build",
-    "start": "concurrently \"npm run build:watch\" \"npm run serve\"",
+    "start": "npm run compile && webpack --display-error-details --watch",
     "pretest": "npm run build",
     "test": "concurrently \"npm run build:watch\" \"karma start karma.conf.js\"",
     "pretest:once": "npm run build",
@@ -99,7 +99,8 @@
     "typescript": "~2.2.0",
     "style-loader": "^0.18.2",
     "css-loader": "^0.28.4",
-    "clean-webpack-plugin": "^0.1.16"
+    "clean-webpack-plugin": "^0.1.16",
+    "browser-sync-webpack-plugin": "^1.1.4"
   },
   "repository": {}
 }
