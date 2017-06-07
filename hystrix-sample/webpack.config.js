@@ -94,7 +94,7 @@ module.exports = {
 
         new HtmlWebpackPlugin({
             template: 'angular4/index.html',
-            inject: 'head'
+            inject: 'body'
         }),
         new CleanWebpackPlugin(['dist', 'build'], {
             root: path.resolve(__dirname),
