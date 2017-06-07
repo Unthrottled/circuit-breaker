@@ -2,7 +2,7 @@
 var d3 = require("d3");
 var hystrixTemplateCircuit, hystrixTemplateCircuitContainer, sparkline;
 // cache the templates we use on this page as global variables (asynchronously)
-var templateDirectory = '../templates/hystrixCommand/';
+var templateDirectory = '../templates/';
 $.get(getRelativePath(templateDirectory + "hystrixCircuit.html"), function (data) {
     hystrixTemplateCircuit = data;
 });

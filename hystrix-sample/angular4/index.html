@@ -80,7 +80,7 @@
     var poolStream = stream;
     $('#title_name').text("Hystrix Stream: " + decodeURIComponent(stream));
 
-    $(window).load(function () { // within load with a setTimeout to prevent the infinite spinner
+    $(window).on('load',function () { // within load with a setTimeout to prevent the infinite spinner
         setTimeout(function () {
             // sort by error+volume by default
             hystrixMonitor.sortByErrorThenVolume();
@@ -109,7 +109,7 @@
     // thread pool
     var dependencyThreadPoolMonitor = new HystrixThreadPoolMonitor('dependencyThreadPools');
 
-    $(window).load(function () { // within load with a setTimeout to prevent the infinite spinner
+    $(window).on('load',function () { // within load with a setTimeout to prevent the infinite spinner
         setTimeout(function () {
 
             dependencyThreadPoolMonitor.sortByVolume();

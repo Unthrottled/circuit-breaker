@@ -2,7 +2,7 @@
 var d3 = require("d3");
 var htmlTemplate, htmlTemplateContainer;
 // cache the templates we use on this page as global variables (asynchronously)
-var templateDirectory = '../templates/hystrixThreadPool/';
+var templateDirectory = '../templates/';
 $.get(getRelativePath(templateDirectory + "hystrixThreadPool.html"), function (data) {
     htmlTemplate = data;
 });

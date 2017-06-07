@@ -46,7 +46,11 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'html-loader',
-                exclude: [/node_modules/, /build/, /dist/, /angular-project/, /src/, /gradle/]
+                exclude: [/node_modules/, /build/, /dist/, /angular-project/, /src/, /gradle/,/sandwich/]
+            },
+            { test: /\.(html)$/,
+                exclude: [/index\.html/],
+                loader: "file-loader?name=templates/[name].[ext]"
             },
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
