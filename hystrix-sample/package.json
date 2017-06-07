@@ -10,6 +10,7 @@
     "serve": "lite-server -c=bs-config.json",
     "prestart": "npm run compile && npm run build",
     "start": "npm run compile && webpack --display-error-details --watch",
+    "boobies":"npm run compile && webpack --display-error-details --watch",
     "pretest": "npm run build",
     "test": "concurrently \"npm run build:watch\" \"karma start karma.conf.js\"",
     "pretest:once": "npm run build",
