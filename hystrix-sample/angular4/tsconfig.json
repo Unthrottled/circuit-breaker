@@ -13,7 +13,7 @@
   },
   "sourceMap": true,
   "compileOnSave": true,
-  "files": ["./main.ts","./sandwich/*"],
+  "files": ["./main.ts"],
   "exclude": [
     "../node_modules/*",
     "../build/*",

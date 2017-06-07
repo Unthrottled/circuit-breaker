@@ -13,6 +13,7 @@ var core_1 = require("@angular/core");
 var session_service_1 = require("./session.service");
 var Observable_1 = require("rxjs/Observable");
 var host_service_1 = require("./host.service");
+require("rxjs/add/operator/mergeMap");
 // import  EventSource from 'eventsource';
 /**
  * Created by alex on 6/6/17.
@@ -24,7 +25,7 @@ var MessageService = (function () {
     }
     MessageService.prototype.fetchMessages = function () {
         return this.sessionService.fetchSessionId()
-            .flatMap(function (sessionId) {
+            .mergeMap(function (sessionId) {
             return Observable_1.Observable.create(function (observer) {
                 // let eventSource = new EventSource(this.hostService.fetchUrl() + sessionId + '/test.stream');
                 // eventSource.onmessage = x => observer.next(x.data);

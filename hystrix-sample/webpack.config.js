@@ -19,8 +19,8 @@ module.exports = {
                 loaders: [
                     {
                         loader: 'awesome-typescript-loader',
-                        options: { configFileName: path.resolve(__dirname, 'angular4','tsconfig.json') }
-                    } , 'angular2-template-loader'
+                        options: {configFileName: path.resolve(__dirname, 'angular4', 'tsconfig.json')}
+                    }, 'angular2-template-loader'
                 ]
             },
             {
@@ -36,7 +36,10 @@ module.exports = {
             {
                 test: /\.css$/,
                 exclude: [/node_modules/, /build/, /dist/, /angular-project/, /src/, /gradle/],
-                loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap' })
+                use: ExtractTextPlugin.extract({
+                    use: 'css-loader'
+                })
+
             }
         ]
     },
@@ -78,6 +81,8 @@ module.exports = {
             verbose: true,
             dry: false,
             exclude: ['shared.js']
-        })
+        }),
+        new ExtractTextPlugin('styles.css')
+
     ]
 };
