@@ -14,7 +14,26 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: require.resolve('jquery'), loader: 'expose-loader?jQuery!expose-loader?$' },
+            {
+                test: require.resolve('jquery'), use: [
+                {
+                    loader: 'expose-loader',
+                    options: 'jQuery'
+                }, {
+                    loader: 'expose-loader',
+                    options: '$'
+                }
+            ]
+            },
+            {
+                test: require.resolve('d3'),
+                use: [
+                    {
+                        loader: 'expose-loader',
+                        options: 'd3'
+                    }
+                ]
+            },
             {
                 test: /\.ts$/,
                 loaders: [
@@ -89,7 +108,7 @@ module.exports = {
             // ./dist directory is being served
             host: 'localhost',
             port: 3000,
-            server: { baseDir: ['dist'] }
+            server: {baseDir: ['dist']}
         })
     ]
 };

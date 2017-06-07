@@ -1,5 +1,5 @@
 'use strict';
-
+var d3 = require("d3");
 var htmlTemplate, htmlTemplateContainer;
 // cache the templates we use on this page as global variables (asynchronously)
 var templateDirectory = '../templates/hystrixThreadPool/';
@@ -20,7 +20,7 @@ function getRelativePath(path) {
  *
  * Publish this externally as "HystrixThreadPoolMonitor"
  */
-var HystrixThreadPoolMonitor = function (containerId) {
+    window.HystrixThreadPoolMonitor = function (containerId) {
 
     var self = this; // keep scope under control
 
@@ -35,11 +35,11 @@ var HystrixThreadPoolMonitor = function (containerId) {
     var maxRadiusForCircle = "125";
     var maxDomain = 2000;
 
-    self.circleRadius = d3.scale.pow().exponent(0.5).domain([0, maxDomain]).range(["5", maxRadiusForCircle]); // requests per second per host
-    self.circleYaxis = d3.scale.linear().domain([0, maxDomain]).range(["30%", maxXaxisForCircle]);
-    self.circleXaxis = d3.scale.linear().domain([0, maxDomain]).range(["30%", maxYaxisForCircle]);
-    self.colorRange = d3.scale.linear().domain([10, 25, 40, 50]).range(["green", "#FFCC00", "#FF9900", "red"]);
-    self.errorPercentageColorRange = d3.scale.linear().domain([0, 10, 35, 50]).range(["grey", "black", "#FF9900", "red"]);
+    self.circleRadius = d3.scalePow().exponent(0.5).domain([0, maxDomain]).range(["5", maxRadiusForCircle]); // requests per second per host
+    self.circleYaxis = d3.scaleLinear().domain([0, maxDomain]).range(["30%", maxXaxisForCircle]);
+    self.circleXaxis = d3.scaleLinear().domain([0, maxDomain]).range(["30%", maxYaxisForCircle]);
+    self.colorRange = d3.scaleLinear().domain([10, 25, 40, 50]).range(["green", "#FFCC00", "#FF9900", "red"]);
+    self.errorPercentageColorRange = d3.scaleLinear().domain([0, 10, 35, 50]).range(["grey", "black", "#FF9900", "red"]);
 
     /**
      * We want to keep sorting in the background since data values are always changing, so this will re-sort every X milliseconds
