@@ -5,8 +5,8 @@ import org.springframework.cloud.client.actuator.HasFeatures;
 import org.springframework.cloud.netflix.hystrix.dashboard.HystrixDashboardConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.ui.freemarker.SpringTemplateLoader;
+import org.springframework.web.filter.RequestContextFilter;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 @Configuration
@@ -14,6 +14,21 @@ public class AppConfig {
     private static final String DEFAULT_TEMPLATE_LOADER_PATH = "classpath:/templates/";
 
     private static final String DEFAULT_CHARSET = "UTF-8";
+
+    @Bean
+    public RequestContextFilter requestContextFilter(){
+        return new RequestContextFilter();
+    }
+
+    @Bean
+    public Beano beano(){
+        return new Beano();
+    }
+
+    @Bean
+    public Throttle throttle(){
+        return new Throttle();
+    }
 
     @Bean
     public HasFeatures hystrixDashboardFeature() {

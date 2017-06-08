@@ -12,6 +12,7 @@
 
     <!-- Javascript to monitor and display -->
     <script type="text/javascript" src="<@spring.url '/webjars/jquery/2.1.1/jquery.min.js'/>"></script>
+    <script src="bower_components/rxjs/dist/rx.all.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/ng-knob/dist/ng-knob.min.js"></script>
     <script src="bower_components/angularjs-slider/dist/rzslider.min.js"></script>
@@ -22,6 +23,7 @@
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/angular-rx/dist/rx.angular.min.js"></script>
 
 
     <script src="js/angular-app.js"></script>
@@ -29,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
 
 </head>
-<body ng-app="myApp">
+<body ng-app="myApp" ng-controller="mainCtrl" ng-init="initSession()">
 <div class="hystrix-dashbord">
     <div id="header">
         <h2><span id="title_name"></span></h2>
@@ -82,22 +84,19 @@
 </div>
 
 
-<div ng-controller="powerCtrl">
-    <md-button class="md-icon-button" aria-label="FAB" ng-click="powerToggle()">
-        <md-icon md-svg-src="images/power-symbol.svg"></md-icon>
-    </md-button>
-
-    <div ng-show="power">
-        <div ng-controller="knobCtrl">
-            <ui-knob value="value" options="options"></ui-knob>
-        </div>
-        <div ng-controller="sliderCtrl">
-            <rzslider rz-slider-model="value"></rzslider>
-        </div>
-        <div ng-controller="switchCtrl">
-            <switch ng-model="enabled" class="green"></switch>
-        </div>
-    </div>
+<div ng-controller="knobCtrl">
+    <ui-knob value="value" options="options"></ui-knob>
+</div>
+<div ng-controller="sliderCtrl">
+    <rzslider rz-slider-model="value"></rzslider>
+</div>
+<div ng-controller="switchCtrl">
+    <switch ng-model="enabled" class="green"></switch>
+</div>
+<div ng-controller="messageCtrl">
+    <ul ng-repeat="eventData in messages">
+        <li>{{eventData}}</li>
+    </ul>
 </div>
 
 <script>
@@ -128,9 +127,11 @@
             source.addEventListener('message', hystrixMonitor.eventSourceMessageListener, false);
 
             source.addEventListener('error', function (e) {
-                $("#dependencies .loading").html("Unable to connect to Command Metric Stream.");
-                $("#dependencies .loading").addClass("failed");
-                if (e.eventPhase == EventSource.CLOSED) {
+                var $dependencies = $("#dependencies");
+                var find = $dependencies.find(".loading");
+                find.html("Unable to connect to Command Metric Stream.");
+                find.addClass("failed");
+                if (e.eventPhase === EventSource.CLOSED) {
                     // Connection was closed.
                     console.log("Connection was closed on error: " + JSON.stringify(e));
                 } else {

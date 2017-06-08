@@ -2,7 +2,8 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
-    'knob',
+    'rx',
+    'ui.knob',
     'slider',
     'switch',
     'power'

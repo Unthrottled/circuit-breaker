@@ -1,28 +1,55 @@
 package io.acari;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import io.acari.pojo.LatencyParameters;
+import io.acari.pojo.LivenessParameters;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 
-import javax.annotation.PostConstruct;
-import java.util.Random;
-
-@Component
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Beano {
-    private static final Logger logger = LoggerFactory.getLogger(Beano.class);
-    private final Random ranbo = new Random(9001);
+    private final static int DEFAULT_DELAY = 50;
+    private int delay = DEFAULT_DELAY;
+    private boolean liveness;
 
-    @HystrixCommand(fallbackMethod = "fallback")
-    public String getMessage() {
-        try {
-            Thread.sleep(ranbo.nextInt(500));
-        } catch (InterruptedException ignored) {
-        }
-        return "THING WORKED, BRUV";
+    public Beano() {
     }
 
-    private String fallback() {
-        return "THING BROKE";
+    @HystrixCommand(fallbackMethod = "thingsBroke")
+    public Long getMessage(Long aLong) {
+        if(!liveness){
+            throw new IllegalStateException("I AM DEAD");
+        }
+        if (delay > 0) {
+            sleepyTime();
+        }
+        return aLong;
+    }
+
+    private void sleepyTime() {
+        try {
+            Thread.sleep(delay);
+        } catch (InterruptedException ignored) {
+        }
+    }
+
+    public Long thingsBroke(Long aLong) {
+        return -9001L;
+    }
+
+    public int getDelay() {
+        return delay;
+    }
+
+    public void setDelay(LatencyParameters delay) {
+        this.delay = delay.getMillisecondsDelay();
+    }
+
+    public void setLiveness(LivenessParameters liveness) {
+        this.liveness = liveness.isServiceAlive();
+    }
+
+    public boolean getLiveness() {
+        return liveness;
     }
 }
