@@ -17,6 +17,7 @@ var message_component_1 = require("./message.component");
 var message_service_1 = require("./message.service");
 var window_1 = require("./window");
 var knob_component_1 = require("./knob.component");
+var ng2_nouislider_1 = require("ng2-nouislider");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -27,7 +28,8 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
-            http_1.HttpModule
+            http_1.HttpModule,
+            ng2_nouislider_1.NouisliderModule
         ],
         declarations: [
             app_component_1.AppComponent,

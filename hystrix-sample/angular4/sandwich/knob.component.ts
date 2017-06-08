@@ -1,37 +1,37 @@
 /**
  * Created by alex on 6/7/17.
  */
-import { Component, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
-import { GaugeSegment, GaugeLabel } from 'ng2-kw-gauge';
+import { Component } from '@angular/core';
+import './knob.component.htm';
 
 
 @Component({
     selector: 'knob',
-    templateUrl: `./knob.component.htm`,
-    styleUrls: [],
-    encapsulation: ViewEncapsulation.None
+    templateUrl: `./templates/knob.component.htm`,
+    styleUrls: []
 })
-export class KnobCompontent implements AfterViewInit
+export class KnobCompontent
 {
-    ngAfterViewInit(): void
-    {
-
-    }
-    onChange(event: any): void
-    {
-        // if (event.args.changeSource == 'propertyChange' || event.args.changeSource == 'val') { return; }
-        // this.numberInput.val(event.args.value);
-    }
-    onMouseDown(event: any): void
-    {
-        event.stopPropagation();
-    }
-    onKeyup(): void
-    {
-    }
-    onValueChanged(): void
-    {
-    }
+    // ngAfterViewInit(): void
+    // {
+    //
+    // }
+    // onChange(event: any): void
+    // {
+    // {
+    //     event.stopPropagation();
+    //     // if (event.args.changeSource == 'propertyChange' || event.args.changeSource == 'val') { return; }
+    //     // this.numberInput.val(event.args.value);
+    // }
+    // onMouseDown(event: any): void
+    // }
+    // onKeyup(): void
+    // {
+    // }
+    // onValueChanged(): void
+    // {
+    // }
+    poop = 10;
     style: any =
         {
             stroke: '#dfe3e9', strokeWidth: 3,

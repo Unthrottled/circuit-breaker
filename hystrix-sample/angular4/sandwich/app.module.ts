@@ -10,12 +10,14 @@ import {MessageComponent} from './message.component';
 import {MessageService} from './message.service';
 import {WindowRef} from './window';
 import {KnobCompontent} from './knob.component';
+import { NouisliderModule } from 'ng2-nouislider';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
-        HttpModule
+        HttpModule,
+        NouisliderModule
     ],
     declarations: [
         AppComponent,

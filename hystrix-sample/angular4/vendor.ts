@@ -24,4 +24,5 @@ import 'd3';
 import 'angular2-ui-switch';
 import 'bootstrap-slider';
 import 'eventsource';
-import 'ng2-kw-gauge';
+import 'ng2-nouislider';
+// import "nouislider/distribute/nouislider.css";

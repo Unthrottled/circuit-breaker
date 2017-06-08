@@ -48,7 +48,7 @@ module.exports = {
                 loader: 'html-loader',
                 exclude: [/node_modules/, /build/, /dist/, /angular-project/, /src/, /gradle/,/sandwich/]
             },
-            { test: /\.(html)$/,
+            { test: /\.(html?)$/,
                 exclude: [/index\.html/],
                 loader: "file-loader?name=templates/[name].[ext]"
             },
