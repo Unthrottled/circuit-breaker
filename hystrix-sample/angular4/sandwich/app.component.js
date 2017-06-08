@@ -20,7 +20,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'poop',
-        template: "\n        <message-ticker></message-ticker>\n    "
+        template: "\n        <message-ticker></message-ticker>\n        <knob></knob>\n    "
     }),
     __metadata("design:paramtypes", [])
 ], AppComponent);

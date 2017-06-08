@@ -22,6 +22,6 @@ import 'rxjs';
 import 'jquery';
 import 'd3';
 import 'angular2-ui-switch';
-import 'ng2-knob';
 import 'bootstrap-slider';
 import 'eventsource';
+import 'ng2-kw-gauge';

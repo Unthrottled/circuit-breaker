@@ -22,7 +22,7 @@ require("rxjs");
 require("jquery");
 require("d3");
 require("angular2-ui-switch");
-require("ng2-knob");
 require("bootstrap-slider");
 require("eventsource");
+require("ng2-kw-gauge");
 //# sourceMappingURL=vendor.js.map

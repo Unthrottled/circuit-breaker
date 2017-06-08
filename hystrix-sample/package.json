@@ -61,7 +61,8 @@
     "ng2-knob": "^1.0.4",
     "angular2-ui-switch": "^1.2.0",
     "bootstrap-slider": "^9.8.0",
-    "eventsource": "^1.0.2"
+    "eventsource": "^1.0.2",
+    "ng2-kw-gauge": "^0.0.8"
   },
   "devDependencies": {
     "@types/angular": "^1.5.16",

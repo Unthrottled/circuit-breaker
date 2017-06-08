@@ -16,6 +16,7 @@ var session_service_1 = require("./session.service");
 var message_component_1 = require("./message.component");
 var message_service_1 = require("./message.service");
 var window_1 = require("./window");
+var knob_component_1 = require("./knob.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,7 +31,8 @@ AppModule = __decorate([
         ],
         declarations: [
             app_component_1.AppComponent,
-            message_component_1.MessageComponent
+            message_component_1.MessageComponent,
+            knob_component_1.KnobCompontent
         ],
         bootstrap: [app_component_1.AppComponent],
         providers: [host_service_1.HostService, session_service_1.SessionService, message_service_1.MessageService, window_1.WindowRef]

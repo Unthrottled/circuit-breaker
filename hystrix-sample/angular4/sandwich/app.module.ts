@@ -9,6 +9,7 @@ import {SessionService} from './session.service';
 import {MessageComponent} from './message.component';
 import {MessageService} from './message.service';
 import {WindowRef} from './window';
+import {KnobCompontent} from './knob.component';
 
 @NgModule({
     imports: [
@@ -18,7 +19,8 @@ import {WindowRef} from './window';
     ],
     declarations: [
         AppComponent,
-        MessageComponent
+        MessageComponent,
+        KnobCompontent
     ],
     bootstrap: [AppComponent],
     providers: [HostService, SessionService, MessageService, WindowRef]
