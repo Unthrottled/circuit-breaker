@@ -9,7 +9,7 @@ import {SessionService} from './session.service';
 import {MessageComponent} from './message.component';
 import {MessageService} from './message.service';
 import {WindowRef} from './window';
-import {KnobCompontent} from './knob.component';
+import {SliderCompontent} from './slider.component';
 import { NouisliderModule } from 'ng2-nouislider';
 
 @NgModule({
@@ -22,7 +22,7 @@ import { NouisliderModule } from 'ng2-nouislider';
     declarations: [
         AppComponent,
         MessageComponent,
-        KnobCompontent
+        SliderCompontent
     ],
     bootstrap: [AppComponent],
     providers: [HostService, SessionService, MessageService, WindowRef]

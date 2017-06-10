@@ -5,27 +5,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Created by alex on 6/7/17.
  */
 var core_1 = require("@angular/core");
-require("./knob.component.htm");
-var KnobCompontent = (function () {
-    function KnobCompontent() {
+require("./slider.component.htm");
+var SliderCompontent = (function () {
+    function SliderCompontent() {
         this.poop = 10;
+        this.change = function () {
+            console.log("default");
+        };
     }
-    KnobCompontent.prototype.onChange = function () {
-        //do things.
-    };
-    return KnobCompontent;
+    return SliderCompontent;
 }());
-KnobCompontent = __decorate([
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], SliderCompontent.prototype, "change", void 0);
+SliderCompontent = __decorate([
     core_1.Component({
-        selector: 'knob',
-        templateUrl: "./templates/knob.component.htm",
+        selector: 'slider',
+        templateUrl: "./templates/slider.component.htm",
         styleUrls: []
     })
-], KnobCompontent);
-exports.KnobCompontent = KnobCompontent;
-//# sourceMappingURL=knob.component.js.map
+], SliderCompontent);
+exports.SliderCompontent = SliderCompontent;
+//# sourceMappingURL=slider.component.js.map

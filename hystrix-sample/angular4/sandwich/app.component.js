@@ -15,12 +15,18 @@ var AppComponent = (function () {
     }
     AppComponent.prototype.ngOnInit = function () {
     };
+    AppComponent.prototype.chango = function () {
+        console.log("fixo chango");
+    };
+    AppComponent.prototype.changoDose = function () {
+        console.log("Dose Equis");
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'poop',
-        template: "\n        <message-ticker></message-ticker>\n        <knob></knob>\n    "
+        template: "\n        <message-ticker></message-ticker>\n        <slider [change]=\"chango\"></slider>\n        <slider [change]=\"changoDose\"></slider>\n    "
     }),
     __metadata("design:paramtypes", [])
 ], AppComponent);

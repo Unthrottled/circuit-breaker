@@ -4,7 +4,8 @@ import {Component, OnInit} from '@angular/core';
     selector: 'poop',
     template: `
         <message-ticker></message-ticker>
-        <knob></knob>
+        <slider [change]="chango"></slider>
+        <slider [change]="changoDose"></slider>
     `
 })
 export class AppComponent implements OnInit {
@@ -13,5 +14,13 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
 
+    }
+
+    chango(): void {
+        console.log("fixo chango");
+    }
+
+    changoDose(): void {
+        console.log("Dose Equis");
     }
 }
