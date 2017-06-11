@@ -14,6 +14,7 @@ import java.time.Instant;
 import java.util.concurrent.TimeUnit;
 
 @RestController
+@RequestMapping("/hystrix")
 public class RestControl {
     public static final int INTERVAL = 10;
     private Beano beano;

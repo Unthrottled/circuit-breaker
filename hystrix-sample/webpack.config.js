@@ -4,6 +4,16 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+var proxy = require('http-proxy-middleware');
+
+var proxyPeel = proxy('/hystrix', {
+    target: 'http://192.168.1.127:3344',
+    changeOrigin: true,               // needed for virtual hosted sites
+    ws: true,
+    proxyRes: function (proxyRes, req, res) {
+        console.log('RAW Response from the target', JSON.stringify(proxyRes.headers, true, 2));
+    }
+});
 
 module.exports = {
     entry: {
@@ -46,9 +56,10 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'html-loader',
-                exclude: [/node_modules/, /build/, /dist/, /angular-project/, /src/, /gradle/,/sandwich/]
+                exclude: [/node_modules/, /build/, /dist/, /angular-project/, /src/, /gradle/, /sandwich/]
             },
-            { test: /\.(html?)$/,
+            {
+                test: /\.(html?)$/,
                 exclude: [/index\.html/],
                 loader: "file-loader?name=templates/[name].[ext]"
             },
@@ -112,7 +123,8 @@ module.exports = {
             // ./dist directory is being served
             host: 'localhost',
             port: 3000,
-            server: {baseDir: ['dist']}
+            server: {baseDir: ['dist']},
+            middleware: [proxyPeel]
         })
     ]
 };

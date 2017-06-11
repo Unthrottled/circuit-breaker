@@ -10,7 +10,7 @@ import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/publishReplay';
 
 @Injectable()
-export class SessionService{
+export class SessionService {
     constructor(private http: Http, private hostService: HostService){}
 
     fetchSessionId(): Observable<String> {
