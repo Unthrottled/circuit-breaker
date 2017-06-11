@@ -39,11 +39,11 @@ function getRelativePath(path) {
     var maxRadiusForCircle = "125";
 
     // CIRCUIT_BREAKER circle visualization settings
-    self.circuitCircleRadius = d3.scalePow().exponent(0.5).domain([0, 400]).range(["5", maxRadiusForCircle]); // requests per second per host
-    self.circuitCircleYaxis = d3.scaleLinear().domain([0, 400]).range(["30%", maxXaxisForCircle]);
-    self.circuitCircleXaxis = d3.scaleLinear().domain([0, 400]).range(["30%", maxYaxisForCircle]);
-    self.circuitColorRange = d3.scaleLinear().domain([10, 25, 40, 50]).range(["green", "#FFCC00", "#FF9900", "red"]);
-    self.circuitErrorPercentageColorRange = d3.scaleLinear().domain([0, 10, 35, 50]).range(["grey", "black", "#FF9900", "red"]);
+        self.circuitCircleRadius = d3.scale.pow().exponent(0.5).domain([0, 400]).range(["5", maxRadiusForCircle]); // requests per second per host
+        self.circuitCircleYaxis = d3.scale.linear().domain([0, 400]).range(["30%", maxXaxisForCircle]);
+        self.circuitCircleXaxis = d3.scale.linear().domain([0, 400]).range(["30%", maxYaxisForCircle]);
+        self.circuitColorRange = d3.scale.linear().domain([10, 25, 40, 50]).range(["green", "#FFCC00", "#FF9900", "red"]);
+        self.circuitErrorPercentageColorRange = d3.scale.linear().domain([0, 10, 35, 50]).range(["grey", "black", "#FF9900", "red"]);
 
     /**
      * We want to keep sorting in the background since data values are always changing, so this will re-sort every X milliseconds
@@ -358,7 +358,7 @@ function getRelativePath(path) {
         var yMax = d3.max(data, function (d) {
             return d.v;
         });
-        var yScale = d3.scaleLinear().domain([yMin, yMax]).nice().range([60, 0]); // y goes DOWN, so 60 is the "lowest"
+        var yScale = d3.scale.linear().domain([yMin, yMax]).nice().range([60, 0]); // y goes DOWN, so 60 is the "lowest"
 
         sparkline = d3.svg.line()
         // assign the X function to plot our line as we wish
