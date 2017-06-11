@@ -18,6 +18,8 @@ var message_service_1 = require("./message.service");
 var window_1 = require("./window");
 var slider_component_1 = require("./slider.component");
 var ng2_nouislider_1 = require("ng2-nouislider");
+var angular2_ui_switch_1 = require("angular2-ui-switch");
+var switch_component_1 = require("./switch.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -29,12 +31,14 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule,
-            ng2_nouislider_1.NouisliderModule
+            ng2_nouislider_1.NouisliderModule,
+            angular2_ui_switch_1.UiSwitchModule
         ],
         declarations: [
             app_component_1.AppComponent,
             message_component_1.MessageComponent,
-            slider_component_1.SliderCompontent
+            slider_component_1.SliderCompontent,
+            switch_component_1.SwitchComponent
         ],
         bootstrap: [app_component_1.AppComponent],
         providers: [host_service_1.HostService, session_service_1.SessionService, message_service_1.MessageService, window_1.WindowRef]

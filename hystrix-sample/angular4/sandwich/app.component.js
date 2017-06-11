@@ -11,21 +11,13 @@ var AppComponent = (function () {
     function AppComponent() {
     }
     AppComponent.prototype.ngOnInit = function () {
-        console.log("poopy");
-    };
-    AppComponent.prototype.chango = function (value) {
-        console.log("fixo chango" + value);
-        ;
-    };
-    AppComponent.prototype.changoDose = function (value) {
-        console.log("Dose Equis" + value);
     };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'poop',
-        template: "        \n        <slider></slider>\n        <message-ticker></message-ticker>\n    "
+        template: "        \n        <slider></slider>\n        <dead-mans-switch></dead-mans-switch>\n        <message-ticker></message-ticker>\n    "
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

@@ -8,21 +8,12 @@ import {HostService} from './host.service';
     selector: 'poop',
     template: `        
         <slider></slider>
+        <dead-mans-switch></dead-mans-switch>
         <message-ticker></message-ticker>
     `
 })
 export class AppComponent implements OnInit {
 
     ngOnInit(): void {
-        console.log("poopy");
-    }
-
-    chango(value: Number): void {
-        console.log("fixo chango"+ value);
-;
-    }
-
-    changoDose(value: Number): void {
-        console.log("Dose Equis"+ value);
     }
 }

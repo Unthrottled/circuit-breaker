@@ -10,6 +10,7 @@ public class LivenessParameters extends SessionParameters {
 
     public LivenessParameters(Session session) {
         super(session);
+        setServiceAlive(session.getBeano().getLiveness());
     }
 
     public boolean isServiceAlive() {

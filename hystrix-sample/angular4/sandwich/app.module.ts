@@ -11,18 +11,22 @@ import {MessageService} from './message.service';
 import {WindowRef} from './window';
 import {SliderCompontent} from './slider.component';
 import { NouisliderModule } from 'ng2-nouislider';
+import {UiSwitchModule} from 'angular2-ui-switch';
+import {SwitchComponent} from './switch.component';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        NouisliderModule
+        NouisliderModule,
+        UiSwitchModule
     ],
     declarations: [
         AppComponent,
         MessageComponent,
-        SliderCompontent
+        SliderCompontent,
+        SwitchComponent
     ],
     bootstrap: [AppComponent],
     providers: [HostService, SessionService, MessageService, WindowRef]
