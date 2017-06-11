@@ -18,15 +18,21 @@ var host_service_1 = require("./host.service");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/share");
 require("rxjs/add/operator/publishReplay");
+var ReplaySubject_1 = require("rxjs/ReplaySubject");
 var SessionService = (function () {
     function SessionService(http, hostService) {
         this.http = http;
         this.hostService = hostService;
+        this.sessionIdo = new ReplaySubject_1.ReplaySubject(1);
     }
     SessionService.prototype.fetchSessionId = function () {
-        return this.http.get(this.hostService.fetchUrl() + 'hystrix/get/stream-id')
-            .map(function (response) { return response.json(); })
-            .publishReplay(1).refCount();
+        var _this = this;
+        if (!this.sessionIdo.observers.length) {
+            this.http.get(this.hostService.fetchUrl() + 'hystrix/get/stream-id')
+                .map(function (response) { return response.json(); })
+                .subscribe(function (sessionId) { return _this.sessionIdo.next(sessionId); });
+        }
+        return this.sessionIdo;
     };
     return SessionService;
 }());
