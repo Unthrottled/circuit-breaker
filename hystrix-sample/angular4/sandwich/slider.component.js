@@ -18,20 +18,36 @@ var host_service_1 = require("./host.service");
 var session_service_1 = require("./session.service");
 var http_1 = require("@angular/http");
 var SliderCompontent = (function () {
-    function SliderCompontent(sessionService, http, hostService) {
+    function SliderCompontent(sessionService, http, hostService, zone) {
         this.sessionService = sessionService;
         this.http = http;
         this.hostService = hostService;
+        this.zone = zone;
         this.poop = 10;
     }
+    SliderCompontent.prototype.ngOnInit = function () {
+        var httpo = this.http;
+        var hosto = this.hostService;
+        var self = this;
+        var zono = self.zone;
+        this.sessionService.fetchSessionId()
+            .subscribe(function (sessionId) {
+            httpo.get(hosto.fetchUrl() + 'hystrix/get/' + sessionId + '/throttle')
+                .subscribe(function (response) {
+                zono.run(function () { return self.poop = response.json().requestsPerSecond; });
+            });
+        });
+    };
     SliderCompontent.prototype.change = function (value) {
         var httpo = this.http;
         var hosto = this.hostService;
+        var self = this;
+        var zono = self.zone;
         this.sessionService.fetchSessionId()
             .subscribe(function (sessionId) {
             httpo.post(hosto.fetchUrl() + 'hystrix/post/' + sessionId + '/throttle', { requestsPerSecond: value, sessionId: sessionId })
                 .subscribe(function (response) {
-                response.json();
+                zono.run(function () { return self.poop = response.json().requestsPerSecond; });
             });
         });
     };
@@ -43,7 +59,7 @@ SliderCompontent = __decorate([
         templateUrl: "./templates/slider.component.htm",
         styleUrls: []
     }),
-    __metadata("design:paramtypes", [session_service_1.SessionService, http_1.Http, host_service_1.HostService])
+    __metadata("design:paramtypes", [session_service_1.SessionService, http_1.Http, host_service_1.HostService, core_1.NgZone])
 ], SliderCompontent);
 exports.SliderCompontent = SliderCompontent;
 //# sourceMappingURL=slider.component.js.map

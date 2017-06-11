@@ -6,16 +6,11 @@ import io.acari.pojo.LivenessParameters;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 
-@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Beano {
     private final static int DEFAULT_DELAY = 50;
     private int delay = DEFAULT_DELAY;
     private boolean liveness;
 
-    public Beano() {
-    }
-
-    @HystrixCommand(fallbackMethod = "thingsBroke")
     public Long getMessage(Long aLong) {
         if(!liveness){
             throw new IllegalStateException("I AM DEAD");
@@ -31,10 +26,6 @@ public class Beano {
             Thread.sleep(delay);
         } catch (InterruptedException ignored) {
         }
-    }
-
-    public Long thingsBroke(Long aLong) {
-        return -9001L;
     }
 
     public int getDelay() {

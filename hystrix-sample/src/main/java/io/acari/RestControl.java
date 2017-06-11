@@ -18,23 +18,21 @@ import java.time.Instant;
 public class RestControl {
     private static final Log log = LogFactory.getLog(RestControl.class);
     public static final int INTERVAL = 10;
-    private Beano beano;
-    private Throttle throttle;
     private SessionRepository sessionRepository;
     private IdRepository idRepository;
+    private HystrixCommandBean hystrixCommandBean;
 
     @Autowired
-    public RestControl(Beano beano, Throttle throttle, SessionRepository sessionRepository, IdRepository idRepository) {
-        this.beano = beano;
-        this.throttle = throttle;
+    public RestControl(SessionRepository sessionRepository, IdRepository idRepository, HystrixCommandBean hystrixCommandBean) {
         this.sessionRepository = sessionRepository;
         this.idRepository = idRepository;
+        this.hystrixCommandBean = hystrixCommandBean;
     }
 
     @RequestMapping("/get/stream-id")
     public Long streamId() {
         Long ranbo = idRepository.getRanbo();
-        sessionRepository.addSession(new Session(ranbo, beano, throttle));
+        sessionRepository.addSession(new Session(ranbo, new Beano(), new Throttle()));
         return ranbo;
     }
 
@@ -108,7 +106,7 @@ public class RestControl {
         Beano beanBurrito = session.getBeano();
         Throttle iCantDive55 = session.getThrottle();
         StreamSource.stream.map(iCantDive55::whoaDoggy)
-                .map(beanBurrito::getMessage)
+                .map(aLong -> hystrixCommandBean.processFunction(aLong, beanBurrito::getMessage))
                 .subscribe(subscriber);
         return emitter;
     }
