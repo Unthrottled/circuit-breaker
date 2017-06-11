@@ -51,13 +51,13 @@ public class RestControl {
     }
 
     @RequestMapping("/get/{sessionId}/latency")
-    public LatencyParameters getLatencyParameters(@PathVariable Long id) {
-        return new LatencyParameters(sessionRepository.getSession(id));
+    public LatencyParameters getLatencyParameters(@PathVariable Long sessionId) {
+        return new LatencyParameters(sessionRepository.getSession(sessionId));
     }
 
     @RequestMapping(value = "/post/{sessionId}/latency", method = RequestMethod.POST)
-    public LatencyParameters getLatencyParameters(@PathVariable Long id, @RequestBody LatencyParameters latencyParameters) {
-        Session session = sessionRepository.getSession(id);
+    public LatencyParameters getLatencyParameters(@PathVariable Long sessionId, @RequestBody LatencyParameters latencyParameters) {
+        Session session = sessionRepository.getSession(sessionId);
         session.getBeano().setDelay(latencyParameters);
         return new LatencyParameters(session);
     }

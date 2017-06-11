@@ -24,6 +24,8 @@ var SliderCompontent = (function () {
         this.hostService = hostService;
         this.zone = zone;
         this.poop = 10;
+        this.min = 1;
+        this.max = 100;
     }
     SliderCompontent.prototype.ngOnInit = function () {
         var httpo = this.http;

@@ -20,6 +20,7 @@ var slider_component_1 = require("./slider.component");
 var ng2_nouislider_1 = require("ng2-nouislider");
 var angular2_ui_switch_1 = require("angular2-ui-switch");
 var switch_component_1 = require("./switch.component");
+var latency_component_1 = require("./latency.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -38,7 +39,8 @@ AppModule = __decorate([
             app_component_1.AppComponent,
             message_component_1.MessageComponent,
             slider_component_1.SliderCompontent,
-            switch_component_1.SwitchComponent
+            switch_component_1.SwitchComponent,
+            latency_component_1.LatencyCompontent
         ],
         bootstrap: [app_component_1.AppComponent],
         providers: [host_service_1.HostService, session_service_1.SessionService, message_service_1.MessageService, window_1.WindowRef]

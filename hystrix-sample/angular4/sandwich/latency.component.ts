@@ -9,14 +9,14 @@ import {Http} from '@angular/http';
 
 
 @Component({
-    selector: 'slider',
+    selector: 'latency',
     templateUrl: `./templates/slider.component.htm`,
     styleUrls: []
 })
-export class SliderCompontent implements OnInit {
+export class LatencyCompontent implements OnInit {
     poop: Number = 10;
     min: Number = 1;
-    max: Number = 100;
+    max: Number = 1000;
     ngOnInit(): void {
         let httpo = this.http;
         let hosto = this.hostService;
@@ -24,9 +24,9 @@ export class SliderCompontent implements OnInit {
         let zono = self.zone;
         this.sessionService.fetchSessionId()
             .subscribe(function(sessionId){
-                httpo.get(hosto.fetchUrl() + 'hystrix/get/' + sessionId + '/throttle')
+                httpo.get(hosto.fetchUrl() + 'hystrix/get/' + sessionId + '/latency')
                     .subscribe(response => {
-                        zono.run(()=>self.poop = response.json().requestsPerSecond);
+                        zono.run(()=>self.poop = response.json().millisecondsDelay);
                     });
             });
     }
@@ -41,10 +41,10 @@ export class SliderCompontent implements OnInit {
         let zono = self.zone;
         this.sessionService.fetchSessionId()
             .subscribe(function(sessionId){
-                httpo.post(hosto.fetchUrl() + 'hystrix/post/' + sessionId + '/throttle',
-                    {requestsPerSecond: value, sessionId: sessionId})
+                httpo.post(hosto.fetchUrl() + 'hystrix/post/' + sessionId + '/latency',
+                    {millisecondsDelay: value, sessionId: sessionId})
                     .subscribe(response => {
-                        zono.run(()=>self.poop = response.json().requestsPerSecond);
+                        zono.run(()=>self.poop = response.json().millisecondsDelay);
                     });
             });
     }

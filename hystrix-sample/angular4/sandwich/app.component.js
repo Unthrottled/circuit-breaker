@@ -17,7 +17,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'poop',
-        template: "        \n        <slider></slider>\n        <dead-mans-switch></dead-mans-switch>\n        <message-ticker></message-ticker>\n    "
+        template: "        \n        <slider></slider>\n        <latency></latency>\n        <dead-mans-switch></dead-mans-switch>\n        <message-ticker></message-ticker>\n    "
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

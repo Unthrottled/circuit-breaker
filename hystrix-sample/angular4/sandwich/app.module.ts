@@ -13,6 +13,7 @@ import {SliderCompontent} from './slider.component';
 import { NouisliderModule } from 'ng2-nouislider';
 import {UiSwitchModule} from 'angular2-ui-switch';
 import {SwitchComponent} from './switch.component';
+import {LatencyCompontent} from './latency.component';
 
 @NgModule({
     imports: [
@@ -26,7 +27,8 @@ import {SwitchComponent} from './switch.component';
         AppComponent,
         MessageComponent,
         SliderCompontent,
-        SwitchComponent
+        SwitchComponent,
+        LatencyCompontent
     ],
     bootstrap: [AppComponent],
     providers: [HostService, SessionService, MessageService, WindowRef]
