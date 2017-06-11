@@ -15,8 +15,19 @@ import {Http} from '@angular/http';
 })
 export class SliderCompontent implements OnInit {
     poop: Number = 10;
-    min: Number = 1;
-    max: Number = 100;
+    someRange2config: any = {
+        behaviour: 'drag',
+        connect: true,
+        margin: 1,
+        range: {
+            min: 0,
+            max: 100
+        },
+        pips: {
+            mode: 'steps',
+            density: 5
+        }
+    };
     ngOnInit(): void {
         let httpo = this.http;
         let hosto = this.hostService;

@@ -10,7 +10,7 @@ import {MessageComponent} from './message.component';
 import {MessageService} from './message.service';
 import {WindowRef} from './window';
 import {SliderCompontent} from './slider.component';
-import { NouisliderModule } from 'ng2-nouislider';
+import {NouisliderModule} from 'ng2-nouislider';
 import {UiSwitchModule} from 'angular2-ui-switch';
 import {SwitchComponent} from './switch.component';
 import {LatencyCompontent} from './latency.component';

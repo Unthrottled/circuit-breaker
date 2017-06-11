@@ -85,6 +85,7 @@ public class RestControl {
                 } catch (IOException e) {
                 } finally {
                     emitter.complete();
+                    sessionRepository.removeSession(sessionId);
                 }
             }
 

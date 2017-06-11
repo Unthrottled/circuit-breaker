@@ -15,8 +15,19 @@ import {Http} from '@angular/http';
 })
 export class LatencyCompontent implements OnInit {
     poop: Number = 10;
-    min: Number = 1;
-    max: Number = 1000;
+    someRange2config: any = {
+        behaviour: 'drag',
+        connect: true,
+        margin: 100,
+        range: {
+            min: 1,
+            max: 1000
+        },
+        pips: {
+            mode: 'steps',
+            density: 100
+        }
+    };
     ngOnInit(): void {
         let httpo = this.http;
         let hosto = this.hostService;
