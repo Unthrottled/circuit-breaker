@@ -29,9 +29,9 @@ var MessageService = (function () {
             .mergeMap(function (sessionId) {
             return Observable_1.Observable.create(function (observer) {
                 var eventSource = new EventSource(_this.hostService.fetchUrl() + 'hystrix/' + sessionId + '/test.stream');
-                eventSource.onmessage = function (x) { return observer.next(x.data); };
+                eventSource.onmessage = function (x) { observer.next(x.data); };
                 eventSource.onerror = function (x) { return observer.error(console.log('EventSource failed ' + x)); };
-                return function () { return eventSource.close(); };
+                return function () { };
             });
         });
     };

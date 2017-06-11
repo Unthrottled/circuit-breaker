@@ -5,14 +5,14 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var proxy = require('http-proxy-middleware');
+var http = require('http');
+var keepAliveAgent = new http.Agent({ keepAlive: true });
 
 var proxyPeel = proxy('/hystrix', {
     target: 'http://192.168.1.127:3344',
     changeOrigin: true,               // needed for virtual hosted sites
     ws: true,
-    proxyRes: function (proxyRes, req, res) {
-        console.log('RAW Response from the target', JSON.stringify(proxyRes.headers, true, 2));
-    }
+    agent: keepAliveAgent
 });
 
 module.exports = {

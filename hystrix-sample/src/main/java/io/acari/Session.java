@@ -6,13 +6,11 @@ public class Session {
     private final Long id;
     private final Beano beano;
     private final Throttle throttle;
-    private final SseEmitter sseEmitter;
 
-    public Session(Long id, Beano beano, Throttle throttle, SseEmitter sseEmitter) {
+    public Session(Long id, Beano beano, Throttle throttle) {
         this.id = id;
         this.beano = beano;
         this.throttle = throttle;
-        this.sseEmitter = sseEmitter;
     }
 
     public Long getId() {
@@ -27,7 +25,4 @@ public class Session {
         return throttle;
     }
 
-    public SseEmitter getSseEmitter() {
-        return sseEmitter;
-    }
 }

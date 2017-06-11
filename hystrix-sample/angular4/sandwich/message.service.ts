@@ -19,9 +19,9 @@ export class MessageService {
             .mergeMap(sessionId => {
                 return Observable.create((observer: Observer<String>) => {
                     let eventSource = new EventSource(this.hostService.fetchUrl() + 'hystrix/' + sessionId + '/test.stream');
-                    eventSource.onmessage = x => observer.next(x.data);
+                    eventSource.onmessage = x => {observer.next(x.data)};
                     eventSource.onerror = x => observer.error(console.log('EventSource failed ' + x));
-                    return () => eventSource.close();
+                    return () => {};
                 });
             })
     }
