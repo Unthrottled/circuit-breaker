@@ -1,1 +1,1 @@
-<nouislider (change)="change()" [connect]="true" [min]="0" [max]="15" [(ngModel)]="poop"></nouislider>
+<nouislider (end)="change(poop)" [connect]="true" [min]="0" [step]="1" [max]="15" [(ngModel)]="poop"></nouislider>

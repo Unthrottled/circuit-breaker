@@ -5,9 +5,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var AppComponent = (function () {
@@ -16,20 +13,20 @@ var AppComponent = (function () {
     AppComponent.prototype.ngOnInit = function () {
         console.log("poopy");
     };
-    AppComponent.prototype.chango = function () {
-        console.log("fixo chango");
+    AppComponent.prototype.chango = function (value) {
+        console.log("fixo chango" + value);
+        ;
     };
-    AppComponent.prototype.changoDose = function () {
-        console.log("Dose Equis");
+    AppComponent.prototype.changoDose = function (value) {
+        console.log("Dose Equis" + value);
     };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'poop',
-        template: "        \n        <slider [change]=\"chango\"></slider>\n        <slider [change]=\"changoDose\"></slider>\n        <message-ticker></message-ticker>\n    "
-    }),
-    __metadata("design:paramtypes", [])
+        template: "        \n        <slider></slider>\n        <message-ticker></message-ticker>\n    "
+    })
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

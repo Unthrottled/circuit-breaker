@@ -14,25 +14,36 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 var core_1 = require("@angular/core");
 require("./slider.component.htm");
+var host_service_1 = require("./host.service");
+var session_service_1 = require("./session.service");
+var http_1 = require("@angular/http");
 var SliderCompontent = (function () {
-    function SliderCompontent() {
+    function SliderCompontent(sessionService, http, hostService) {
+        this.sessionService = sessionService;
+        this.http = http;
+        this.hostService = hostService;
         this.poop = 10;
-        this.change = function () {
-            console.log("default");
-        };
     }
+    SliderCompontent.prototype.change = function (value) {
+        var httpo = this.http;
+        var hosto = this.hostService;
+        this.sessionService.fetchSessionId()
+            .subscribe(function (sessionId) {
+            httpo.post(hosto.fetchUrl() + 'hystrix/post/' + sessionId + '/throttle', { requestsPerSecond: value, sessionId: sessionId })
+                .subscribe(function (response) {
+                response.json();
+            });
+        });
+    };
     return SliderCompontent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object)
-], SliderCompontent.prototype, "change", void 0);
 SliderCompontent = __decorate([
     core_1.Component({
         selector: 'slider',
         templateUrl: "./templates/slider.component.htm",
         styleUrls: []
-    })
+    }),
+    __metadata("design:paramtypes", [session_service_1.SessionService, http_1.Http, host_service_1.HostService])
 ], SliderCompontent);
 exports.SliderCompontent = SliderCompontent;
 //# sourceMappingURL=slider.component.js.map

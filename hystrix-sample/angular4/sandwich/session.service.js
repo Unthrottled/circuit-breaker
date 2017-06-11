@@ -25,8 +25,8 @@ var SessionService = (function () {
     }
     SessionService.prototype.fetchSessionId = function () {
         return this.http.get(this.hostService.fetchUrl() + 'hystrix/get/stream-id')
-            .publishReplay(1).refCount()
-            .map(function (response) { return response.json(); });
+            .map(function (response) { return response.json(); })
+            .publishReplay(1).refCount();
     };
     return SessionService;
 }());

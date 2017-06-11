@@ -1,26 +1,28 @@
 import {Component, OnInit} from '@angular/core';
+import {SessionService} from './session.service';
+import {Http} from '@angular/http';
+import * as http from 'selenium-webdriver/http';
+import {HostService} from './host.service';
 
 @Component({
     selector: 'poop',
     template: `        
-        <slider [change]="chango"></slider>
-        <slider [change]="changoDose"></slider>
+        <slider></slider>
         <message-ticker></message-ticker>
     `
 })
 export class AppComponent implements OnInit {
-    constructor() {
-    }
 
     ngOnInit(): void {
         console.log("poopy");
     }
 
-    chango(): void {
-        console.log("fixo chango");
+    chango(value: Number): void {
+        console.log("fixo chango"+ value);
+;
     }
 
-    changoDose(): void {
-        console.log("Dose Equis");
+    changoDose(value: Number): void {
+        console.log("Dose Equis"+ value);
     }
 }

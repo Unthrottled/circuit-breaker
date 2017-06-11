@@ -15,7 +15,7 @@ export class SessionService {
 
     fetchSessionId(): Observable<String> {
         return this.http.get(this.hostService.fetchUrl() + 'hystrix/get/stream-id')
-            .publishReplay(1).refCount()
-            .map(response => response.json());
+            .map(response => response.json())
+            .publishReplay(1).refCount();
     }
 }
