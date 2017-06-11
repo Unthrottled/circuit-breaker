@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 public class Beano {
     private final static int DEFAULT_DELAY = 50;
     private int delay = DEFAULT_DELAY;
-    private boolean liveness;
+    private boolean liveness = true;
 
     public Long getMessage(Long aLong) {
         if(!liveness){
