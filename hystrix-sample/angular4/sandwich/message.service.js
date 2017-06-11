@@ -9,12 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/// <reference path="./EventSource.d.ts"/>
 var core_1 = require("@angular/core");
 var session_service_1 = require("./session.service");
 var Observable_1 = require("rxjs/Observable");
 var host_service_1 = require("./host.service");
 require("rxjs/add/operator/mergeMap");
-// import  EventSource from 'eventsource';
 /**
  * Created by alex on 6/6/17.
  */
@@ -24,14 +24,14 @@ var MessageService = (function () {
         this.hostService = hostService;
     }
     MessageService.prototype.fetchMessages = function () {
+        var _this = this;
         return this.sessionService.fetchSessionId()
             .mergeMap(function (sessionId) {
             return Observable_1.Observable.create(function (observer) {
-                // let eventSource = new EventSource(this.hostService.fetchUrl() + sessionId + '/test.stream');
-                // eventSource.onmessage = x => observer.next(x.data);
-                // eventSource.onerror = x => observer.error(console.log('EventSource failed ' + x));
-                // return () => eventSource.close();
-                return function () { return observer.next("poop"); };
+                var eventSource = new EventSource(_this.hostService.fetchUrl() + 'hystrix/' + sessionId + '/test.stream');
+                eventSource.onmessage = function (x) { return observer.next(x.data); };
+                eventSource.onerror = function (x) { return observer.error(console.log('EventSource failed ' + x)); };
+                return function () { return eventSource.close(); };
             });
         });
     };

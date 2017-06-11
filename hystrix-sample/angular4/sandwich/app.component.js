@@ -14,6 +14,7 @@ var AppComponent = (function () {
     function AppComponent() {
     }
     AppComponent.prototype.ngOnInit = function () {
+        console.log("poopy");
     };
     AppComponent.prototype.chango = function () {
         console.log("fixo chango");

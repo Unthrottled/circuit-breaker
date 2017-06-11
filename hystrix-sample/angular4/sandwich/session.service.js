@@ -24,10 +24,9 @@ var SessionService = (function () {
         this.hostService = hostService;
     }
     SessionService.prototype.fetchSessionId = function () {
-        return this.http.get(this.hostService.fetchUrl() + 'get/stream-id')
-            .map(function (response) { return response.json().data; })
-            .share()
-            .publishReplay(1);
+        return this.http.get(this.hostService.fetchUrl() + 'hystrix/get/stream-id')
+            .publishReplay(1).refCount()
+            .map(function (response) { return response.json(); });
     };
     return SessionService;
 }());
