@@ -15,18 +15,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var message_service_1 = require("./message.service");
 var MessageComponent = (function () {
-    function MessageComponent(messageService) {
+    function MessageComponent(messageService, zone) {
         this.messageService = messageService;
+        this.zone = zone;
+        this.messages = [];
     }
     MessageComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.messageService.fetchMessages().subscribe(function (message) {
-            if (_this.messages.length > 20) {
-                _this.messages.shift();
-            }
-            else {
+            _this.zone.run(function () {
+                if (_this.messages.length > 20) {
+                    _this.messages.shift();
+                }
                 _this.messages.push(message);
-            }
+            });
         });
     };
     return MessageComponent;
@@ -34,9 +36,9 @@ var MessageComponent = (function () {
 MessageComponent = __decorate([
     core_1.Component({
         selector: 'message-ticker',
-        template: "\n            <ul>\n                <li *ngFor=\"let message of messages\">\n                    <span>{{message}}</span>\n                </li>\n            </ul>\n    "
+        template: "\n        <ul>\n            <li *ngFor=\"let x of messages\">\n                <span>{{x}}</span>\n            </li>\n        </ul>\n    "
     }),
-    __metadata("design:paramtypes", [message_service_1.MessageService])
+    __metadata("design:paramtypes", [message_service_1.MessageService, core_1.NgZone])
 ], MessageComponent);
 exports.MessageComponent = MessageComponent;
 //# sourceMappingURL=message.component.js.map

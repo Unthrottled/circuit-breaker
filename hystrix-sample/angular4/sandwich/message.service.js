@@ -26,7 +26,7 @@ var MessageService = (function () {
     MessageService.prototype.fetchMessages = function () {
         var _this = this;
         return this.sessionService.fetchSessionId()
-            .mergeMap(function (sessionId) {
+            .flatMap(function (sessionId) {
             return Observable_1.Observable.create(function (observer) {
                 var eventSource = new EventSource(_this.hostService.fetchUrl() + 'hystrix/' + sessionId + '/test.stream');
                 eventSource.onmessage = function (x) { observer.next(x.data); };

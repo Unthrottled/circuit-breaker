@@ -27,7 +27,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'poop',
-        template: "\n        <message-ticker></message-ticker>\n        <slider [change]=\"chango\"></slider>\n        <slider [change]=\"changoDose\"></slider>\n    "
+        template: "        \n        <slider [change]=\"chango\"></slider>\n        <slider [change]=\"changoDose\"></slider>\n        <message-ticker></message-ticker>\n    "
     }),
     __metadata("design:paramtypes", [])
 ], AppComponent);

@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 
 @Component({
     selector: 'poop',
-    template: `
-        <message-ticker></message-ticker>
+    template: `        
         <slider [change]="chango"></slider>
         <slider [change]="changoDose"></slider>
+        <message-ticker></message-ticker>
     `
 })
 export class AppComponent implements OnInit {

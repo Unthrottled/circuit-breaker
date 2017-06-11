@@ -16,7 +16,7 @@ export class MessageService {
 
     fetchMessages(): Observable<String> {
         return this.sessionService.fetchSessionId()
-            .mergeMap(sessionId => {
+            .flatMap(sessionId => {
                 return Observable.create((observer: Observer<String>) => {
                     let eventSource = new EventSource(this.hostService.fetchUrl() + 'hystrix/' + sessionId + '/test.stream');
                     eventSource.onmessage = x => {observer.next(x.data)};
