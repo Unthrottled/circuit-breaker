@@ -6,58 +6,58 @@
     <meta charset="utf-8"/>
     <title>Hystrix Monitor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!-- Our custom CSS -->
-
 </head>
 <body>
-<div class="hystrix-dashbord">
-    <div id="header">
-        <h2><span id="title_name"></span></h2>
-    </div>
+<div class="hystrix-dashboard-container">
+    <div class="hystrix-dashbord">
+        <div id="header">
+            <h2><span id="title_name"></span></h2>
+        </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="menubar">
-                <div class="title">
-                    Circuit
-                </div>
-                <div class="menu_actions">
-                    Sort:
-                    <a href="javascript://" onclick="hystrixMonitor.sortByErrorThenVolume();">Error then Volume</a> |
-                    <a href="javascript://" onclick="hystrixMonitor.sortAlphabetically();">Alphabetical</a> |
-                    <a href="javascript://" onclick="hystrixMonitor.sortByVolume();">Volume</a> |
-                    <a href="javascript://" onclick="hystrixMonitor.sortByError();">Error</a> |
-                    <a href="javascript://" onclick="hystrixMonitor.sortByLatencyMean();">Mean</a> |
-                    <a href="javascript://" onclick="hystrixMonitor.sortByLatencyMedian();">Median</a> |
-                    <a href="javascript://" onclick="hystrixMonitor.sortByLatency90();">90</a> |
-                    <a href="javascript://" onclick="hystrixMonitor.sortByLatency99();">99</a> |
-                    <a href="javascript://" onclick="hystrixMonitor.sortByLatency995();">99.5</a>
-                </div>
-                <div class="menu_legend">
-                    <span class="success">Success</span> | <span class="shortCircuited">Short-Circuited</span> | <span
-                        class="badRequest"> Bad Request</span> | <span class="timeout">Timeout</span> | <span
-                        class="rejected">Rejected</span> | <span class="failure">Failure</span> | <span
-                        class="errorPercentage">Error %</span>
+        <div class="container">
+            <div class="row">
+                <div class="menubar">
+                    <div class="title">
+                        Circuit
+                    </div>
+                    <div class="menu_actions">
+                        Sort:
+                        <a href="javascript://" onclick="hystrixMonitor.sortByErrorThenVolume();">Error then Volume</a> |
+                        <a href="javascript://" onclick="hystrixMonitor.sortAlphabetically();">Alphabetical</a> |
+                        <a href="javascript://" onclick="hystrixMonitor.sortByVolume();">Volume</a> |
+                        <a href="javascript://" onclick="hystrixMonitor.sortByError();">Error</a> |
+                        <a href="javascript://" onclick="hystrixMonitor.sortByLatencyMean();">Mean</a> |
+                        <a href="javascript://" onclick="hystrixMonitor.sortByLatencyMedian();">Median</a> |
+                        <a href="javascript://" onclick="hystrixMonitor.sortByLatency90();">90</a> |
+                        <a href="javascript://" onclick="hystrixMonitor.sortByLatency99();">99</a> |
+                        <a href="javascript://" onclick="hystrixMonitor.sortByLatency995();">99.5</a>
+                    </div>
+                    <div class="menu_legend">
+                        <span class="success">Success</span> | <span class="shortCircuited">Short-Circuited</span> | <span
+                            class="badRequest"> Bad Request</span> | <span class="timeout">Timeout</span> | <span
+                            class="rejected">Rejected</span> | <span class="failure">Failure</span> | <span
+                            class="errorPercentage">Error %</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="dependencies" class="row dependencies"><span class="loading">Loading ...</span></div>
+            <div id="dependencies" class="row dependencies"><span class="loading">Loading ...</span></div>
 
-        <div class="spacer"></div>
+            <div class="spacer"></div>
 
-        <div class="row">
-            <div class="menubar">
-                <div class="title">
-                    Thread Pools
-                </div>
-                <div class="menu_actions">
-                    Sort: <a href="javascript://" onclick="dependencyThreadPoolMonitor.sortAlphabetically();">Alphabetical</a>
-                    |
-                    <a href="javascript://" onclick="dependencyThreadPoolMonitor.sortByVolume();">Volume</a> |
+            <div class="row">
+                <div class="menubar">
+                    <div class="title">
+                        Thread Pools
+                    </div>
+                    <div class="menu_actions">
+                        Sort: <a href="javascript://" onclick="dependencyThreadPoolMonitor.sortAlphabetically();">Alphabetical</a>
+                        |
+                        <a href="javascript://" onclick="dependencyThreadPoolMonitor.sortByVolume();">Volume</a> |
+                    </div>
                 </div>
             </div>
+            <div id="dependencyThreadPools" class="row dependencyThreadPools"><span class="loading">Loading ...</span></div>
         </div>
-        <div id="dependencyThreadPools" class="row dependencyThreadPools"><span class="loading">Loading ...</span></div>
     </div>
 </div>
 

@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+require("./app.component.htm");
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -15,7 +16,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'poop',
-        template: "\n        <slider></slider>\n        <latency></latency>\n        <dead-mans-switch></dead-mans-switch>\n        <message-ticker></message-ticker>\n    "
+        templateUrl: './templates/app.component.htm'
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

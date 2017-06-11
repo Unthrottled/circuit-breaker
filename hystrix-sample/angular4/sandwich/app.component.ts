@@ -1,13 +1,9 @@
 import {Component} from '@angular/core';
+import './app.component.htm'
 
 @Component({
     selector: 'poop',
-    template: `
-        <slider></slider>
-        <latency></latency>
-        <dead-mans-switch></dead-mans-switch>
-        <message-ticker></message-ticker>
-    `
+    templateUrl: './templates/app.component.htm'
 })
 export class AppComponent {
 
