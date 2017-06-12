@@ -7,15 +7,15 @@ import {MessageService} from './message.service';
 @Component({
     selector: 'message-ticker',
     template: `
-        <ul>
-            <li *ngFor="let x of messages">
-                <span>{{x}}</span>
-            </li>
-        </ul>
+        <span class="stream-table">
+                    <span *ngFor="let x of messages">
+                        <span class="stream-data">{{x}}</span>
+                    </span>
+        </span>
     `
 })
 export class MessageComponent implements OnInit {
-    public messages: String[] = [];
+    public messages: String[] = ['2222222222222222222222','2222222222222222222222','2222222222222222222222','2222222222222222222222','2222222222222222222222','2222222222222222222222','2222222222222222222222','2222222222222222222222','2222222222222222222222','2222222222222222222222','2222222222222222222222','2222222222222222222222','2222222222222222222222','2222222222222222222222','2222222222222222222222','2222222222222222222222','2222222222222222222222','2222222222222222222222','2222222222222222222222','2222222222222222222222'];
 
     constructor(private messageService: MessageService, private zone: NgZone) {
     }

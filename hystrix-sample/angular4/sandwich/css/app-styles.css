@@ -34,10 +34,14 @@ body {
 }
 
 .message-control-container{
+    color: #3e3e3e;
+}
+
+.stream-data {
+    color: #3e3e3e;
 }
 
 .app-container {
-    display: inline-table;
     width: 95%;
     padding: 20px;
 }
@@ -49,7 +53,6 @@ body {
 .dead-mans-switch {
     float: right;
     display: inline-block;
-    margin-bottom: 3rem;
 }
 
 .content-container {
@@ -62,4 +65,7 @@ body {
 
 .app-control-container{
     text-align: center;
+}
+
+.stream-table {
 }
