@@ -22,10 +22,6 @@ export class LatencyCompontent implements OnInit {
         range: {
             min: 1,
             max: 1000
-        },
-        pips: {
-            mode: 'steps',
-            density: 100
         }
     };
     ngOnInit(): void {

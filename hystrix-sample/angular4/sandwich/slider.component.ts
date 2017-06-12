@@ -18,14 +18,11 @@ export class SliderCompontent implements OnInit {
     someRange2config: any = {
         behaviour: 'drag',
         connect: true,
-        margin: 1,
+        margin: 10,
+        pageSteps: 10,
         range: {
             min: 0,
             max: 100
-        },
-        pips: {
-            mode: 'steps',
-            density: 5
         }
     };
     ngOnInit(): void {

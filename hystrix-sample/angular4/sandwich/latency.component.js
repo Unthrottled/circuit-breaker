@@ -17,8 +17,8 @@ require("./slider.component.htm");
 var host_service_1 = require("./host.service");
 var session_service_1 = require("./session.service");
 var http_1 = require("@angular/http");
-var SliderCompontent = (function () {
-    function SliderCompontent(sessionService, http, hostService, zone) {
+var LatencyCompontent = (function () {
+    function LatencyCompontent(sessionService, http, hostService, zone) {
         this.sessionService = sessionService;
         this.http = http;
         this.hostService = hostService;
@@ -27,49 +27,48 @@ var SliderCompontent = (function () {
         this.someRange2config = {
             behaviour: 'drag',
             connect: true,
-            margin: 10,
-            pageSteps: 10,
+            margin: 100,
             range: {
-                min: 0,
-                max: 100
+                min: 1,
+                max: 1000
             }
         };
     }
-    SliderCompontent.prototype.ngOnInit = function () {
+    LatencyCompontent.prototype.ngOnInit = function () {
         var httpo = this.http;
         var hosto = this.hostService;
         var self = this;
         var zono = self.zone;
         this.sessionService.fetchSessionId()
             .subscribe(function (sessionId) {
-            httpo.get(hosto.fetchUrl() + 'hystrix/get/' + sessionId + '/throttle')
+            httpo.get(hosto.fetchUrl() + 'hystrix/get/' + sessionId + '/latency')
                 .subscribe(function (response) {
-                zono.run(function () { return self.poop = response.json().requestsPerSecond; });
+                zono.run(function () { return self.poop = response.json().millisecondsDelay; });
             });
         });
     };
-    SliderCompontent.prototype.change = function (value) {
+    LatencyCompontent.prototype.change = function (value) {
         var httpo = this.http;
         var hosto = this.hostService;
         var self = this;
         var zono = self.zone;
         this.sessionService.fetchSessionId()
             .subscribe(function (sessionId) {
-            httpo.post(hosto.fetchUrl() + 'hystrix/post/' + sessionId + '/throttle', { requestsPerSecond: value, sessionId: sessionId })
+            httpo.post(hosto.fetchUrl() + 'hystrix/post/' + sessionId + '/latency', { millisecondsDelay: value, sessionId: sessionId })
                 .subscribe(function (response) {
-                zono.run(function () { return self.poop = response.json().requestsPerSecond; });
+                zono.run(function () { return self.poop = response.json().millisecondsDelay; });
             });
         });
     };
-    return SliderCompontent;
+    return LatencyCompontent;
 }());
-SliderCompontent = __decorate([
+LatencyCompontent = __decorate([
     core_1.Component({
-        selector: 'slider',
+        selector: 'latency',
         templateUrl: "./templates/slider.component.htm",
         styleUrls: []
     }),
     __metadata("design:paramtypes", [session_service_1.SessionService, http_1.Http, host_service_1.HostService, core_1.NgZone])
-], SliderCompontent);
-exports.SliderCompontent = SliderCompontent;
-//# sourceMappingURL=slider.component.js.map
+], LatencyCompontent);
+exports.LatencyCompontent = LatencyCompontent;
+//# sourceMappingURL=latency.component.js.map
