@@ -12,7 +12,7 @@ img {
 
 
 #header {
-	background: #FFFFFF url(../images/hystrix-logo-tagline-tiny.png) no-repeat scroll 99% 0%;
+	background: url(../images/hystrix-logo-tagline-tiny.png) no-repeat scroll 99% 0%;
 	height: 65px;
 	margin-bottom: 5px;
 }
