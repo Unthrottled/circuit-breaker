@@ -3,6 +3,8 @@
     z-index: 10000;
     position: relative;
     width: 99.984%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 body {
@@ -31,4 +33,21 @@ body {
 }
 
 .message-control-container{
+}
+
+.app-container {
+    display: inline-table;
+    width: 95%;
+    padding: 20px;
+}
+
+.slider-bro {
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+
+.dead-mans-switch {
+    float: right;
+    display: inline-block;
+    margin-bottom: 3rem;
 }
