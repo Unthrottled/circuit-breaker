@@ -1,10 +1,7 @@
 package io.acari;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import io.acari.pojo.LatencyParameters;
 import io.acari.pojo.LivenessParameters;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
 
 public class Beano {
     private final static int DEFAULT_DELAY = 50;

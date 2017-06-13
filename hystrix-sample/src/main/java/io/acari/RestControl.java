@@ -16,8 +16,8 @@ import java.time.Instant;
 @RestController
 @RequestMapping("/hystrix")
 public class RestControl {
-    private static final Log log = LogFactory.getLog(RestControl.class);
     public static final int INTERVAL = 10;
+    private static final Log log = LogFactory.getLog(RestControl.class);
     private SessionRepository sessionRepository;
     private IdRepository idRepository;
     private HystrixCommandBean hystrixCommandBean;
@@ -45,7 +45,7 @@ public class RestControl {
     @RequestMapping(value = "/post/{sessionId}/throttle", method = RequestMethod.POST)
     public ThrottleParameters getThrottleParameters(@PathVariable Long sessionId, @RequestBody ThrottleParameters throttleParameters) {
         Session session = sessionRepository.getSession(sessionId);
-        session.getThrottle().setSleepyTime(throttleParameters);
+        session.getThrottle().setSleepyTime(throttleParameters.calculateTimeToWait());
         return new ThrottleParameters(session);
 
     }

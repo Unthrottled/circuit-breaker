@@ -1,7 +1,5 @@
 package io.acari;
 
-import org.springframework.stereotype.Component;
-
 import java.util.concurrent.TimeUnit;
 
 import static io.acari.RestControl.INTERVAL;

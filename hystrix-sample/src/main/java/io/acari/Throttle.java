@@ -6,7 +6,6 @@ import org.springframework.context.annotation.ScopedProxyMode;
 
 import static io.acari.RestControl.INTERVAL;
 
-@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Throttle {
     private static final int DEFAULT_SLEEP = 500;
     public static final int MILLIS_IN_SECOND = 1000;
@@ -30,18 +29,12 @@ public class Throttle {
     }
 
     public int getSleepyTime() {
-        return MILLIS_IN_SECOND / sleepyTime;
+        return sleepyTime;
     }
 
-    public void setSleepyTime(ThrottleParameters sleepyTime) {
-        this.sleepyTime = convertToMilliseconds(sleepyTime.getRequestsPerSecond());
+    public void setSleepyTime(int sleepyTime) {
+        this.sleepyTime = sleepyTime;
     }
 
-    private int convertToMilliseconds(int requestsPerSecond) {
-        return requestsPerSecond >= 100 ? 0 :  getDividen(requestsPerSecond) - INTERVAL;
-    }
 
-    private int getDividen(int requestsPerSecond) {
-        return requestsPerSecond == 0 ? MILLIS_IN_SECOND : MILLIS_IN_SECOND / requestsPerSecond;
-    }
 }

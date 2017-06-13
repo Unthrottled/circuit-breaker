@@ -1,7 +1,5 @@
 package io.acari;
 
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
-
 public class Session {
     private final Long id;
     private final Beano beano;

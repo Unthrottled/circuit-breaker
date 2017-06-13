@@ -18,7 +18,7 @@ var MessageComponent = (function () {
     function MessageComponent(messageService, zone) {
         this.messageService = messageService;
         this.zone = zone;
-        this.messages = ['2222222222222222222222', '2222222222222222222222', '2222222222222222222222', '2222222222222222222222', '2222222222222222222222', '2222222222222222222222', '2222222222222222222222', '2222222222222222222222', '2222222222222222222222', '2222222222222222222222', '2222222222222222222222', '2222222222222222222222', '2222222222222222222222', '2222222222222222222222', '2222222222222222222222', '2222222222222222222222', '2222222222222222222222', '2222222222222222222222', '2222222222222222222222', '2222222222222222222222'];
+        this.messages = [];
     }
     MessageComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -36,7 +36,7 @@ var MessageComponent = (function () {
 MessageComponent = __decorate([
     core_1.Component({
         selector: 'message-ticker',
-        template: "\n        <span class=\"stream-table\">\n                    <span *ngFor=\"let x of messages\">\n                        <span class=\"stream-data\">{{x}}</span>\n                    </span>\n        </span>\n    "
+        template: "\n        <span class=\"stream-table\">\n                    <div *ngFor=\"let x of messages\">\n                        <span class=\"stream-data\">{{x}}</span>\n                    </div>\n        </span>\n    "
     }),
     __metadata("design:paramtypes", [message_service_1.MessageService, core_1.NgZone])
 ], MessageComponent);
