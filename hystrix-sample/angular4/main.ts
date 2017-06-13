@@ -1,9 +1,7 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {AppModule} from './sandwich/app.module';
-
 //CSS FILES
-import './styles'
-
+import './styles';
 //JS FILES
 import './sandwich/js/3rdparty-libs/hystrixCommand/hystrixCommand.js';
 import './sandwich/js/3rdparty-libs/hystrixThreadPool/hystrixThreadPool.js';

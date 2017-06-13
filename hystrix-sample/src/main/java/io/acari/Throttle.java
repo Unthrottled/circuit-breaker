@@ -1,15 +1,8 @@
 package io.acari;
 
-import io.acari.pojo.ThrottleParameters;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-
-import static io.acari.RestControl.INTERVAL;
-
 public class Throttle {
-    private static final int DEFAULT_SLEEP = 500;
     public static final int MILLIS_IN_SECOND = 1000;
-
+    private static final int DEFAULT_SLEEP = 500;
     private int sleepyTime = DEFAULT_SLEEP;
 
     public Throttle() {
@@ -25,7 +18,8 @@ public class Throttle {
     private void sleepyTime() {
         try {
             Thread.sleep(sleepyTime);
-        } catch (InterruptedException ignored) {}
+        } catch (InterruptedException ignored) {
+        }
     }
 
     public int getSleepyTime() {

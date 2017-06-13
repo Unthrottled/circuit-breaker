@@ -1,8 +1,8 @@
 /**
  * Created by alex on 6/6/17.
  */
-import {Injectable, OnInit} from '@angular/core';
-import {Http} from '@angular/http'
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
 import {HostService} from './host.service';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';

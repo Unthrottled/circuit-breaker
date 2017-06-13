@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import './app.component.htm'
+import './app.component.htm';
 
 @Component({
     selector: 'poop',

@@ -1,7 +1,7 @@
 /**
  * Created by alex on 6/7/17.
  */
-import {Component, Input, NgZone, OnInit} from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
 import './slider.component.htm';
 import {HostService} from './host.service';
 import {SessionService} from './session.service';
