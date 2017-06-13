@@ -10,10 +10,7 @@ require("@angular/core");
 require("@angular/common");
 require("@angular/http");
 require("@angular/router");
-require("@angular/core");
-require("@angular/platform-browser");
 require("@angular/forms");
-require("@angular/http");
 require("angular-in-memory-web-api");
 // RxJS
 require("rxjs");

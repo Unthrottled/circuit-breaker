@@ -1,5 +1,7 @@
 package io.acari;
 
+import static io.acari.RestControl.INTERVAL;
+
 public class Throttle {
     public static final int MILLIS_IN_SECOND = 1000;
     private static final int DEFAULT_SLEEP = 500;
@@ -22,8 +24,8 @@ public class Throttle {
         }
     }
 
-    public int getSleepyTime() {
-        return sleepyTime;
+    public int calculateRequestsPerSecond() {
+        return MILLIS_IN_SECOND / (sleepyTime + INTERVAL) ;
     }
 
     public void setSleepyTime(int sleepyTime) {

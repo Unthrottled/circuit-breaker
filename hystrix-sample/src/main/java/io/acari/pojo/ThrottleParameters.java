@@ -13,7 +13,7 @@ public class ThrottleParameters extends SessionParameters {
 
     public ThrottleParameters(Session session) {
         super(session);
-        setRequestsPerSecond(session.getThrottle().getSleepyTime());
+        setRequestsPerSecond(session.getThrottle().calculateRequestsPerSecond());
     }
 
     public int getRequestsPerSecond() {

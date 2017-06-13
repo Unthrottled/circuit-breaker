@@ -93,6 +93,7 @@ public class RestControl {
             public void onError(Throwable e) {
                 log.error("shit broke", e);
                 emitter.complete();
+                sessionRepository.removeSession(sessionId);
             }
 
             @Override
