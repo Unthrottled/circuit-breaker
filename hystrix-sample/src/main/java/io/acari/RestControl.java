@@ -82,7 +82,7 @@ public class RestControl {
             public void onCompleted() {
                 try {
                     emitter.send("All dun");
-                } catch (IOException e) {
+                } catch (IOException | IllegalStateException e) {
                 } finally {
                     emitter.complete();
                     sessionRepository.removeSession(sessionId);
@@ -100,7 +100,7 @@ public class RestControl {
             public void onNext(Long aLong) {
                 try {
                     emitter.send(aLong + " @ " + Instant.now());
-                } catch (IOException e) {
+                } catch (IOException | IllegalStateException e) {
                 }
             }
         };
