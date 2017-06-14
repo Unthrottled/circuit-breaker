@@ -14,7 +14,7 @@ import {Http} from '@angular/http';
     styleUrls: []
 })
 export class LatencyCompontent implements OnInit {
-    poop: Number = 10;
+    sliderValue: Number = 10;
     someRange2config: any = {
         behaviour: 'drag',
         connect: true,
@@ -33,7 +33,7 @@ export class LatencyCompontent implements OnInit {
             .subscribe(function(sessionId){
                 httpo.get(hosto.fetchUrl() + 'hystrix/get/' + sessionId + '/latency')
                     .subscribe(response => {
-                        zono.run(()=>self.poop = response.json().millisecondsDelay);
+                        zono.run(()=>self.sliderValue = response.json().millisecondsDelay);
                     });
             });
     }
@@ -51,7 +51,7 @@ export class LatencyCompontent implements OnInit {
                 httpo.post(hosto.fetchUrl() + 'hystrix/post/' + sessionId + '/latency',
                     {millisecondsDelay: value, sessionId: sessionId})
                     .subscribe(response => {
-                        zono.run(()=>self.poop = response.json().millisecondsDelay);
+                        zono.run(()=>self.sliderValue = response.json().millisecondsDelay);
                     });
             });
     }

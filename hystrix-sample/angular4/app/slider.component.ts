@@ -14,7 +14,7 @@ import {Http} from '@angular/http';
     styleUrls: []
 })
 export class SliderCompontent implements OnInit {
-    poop: Number = 10;
+    sliderValue: Number = 10;
     someRange2config: any = {
         behaviour: 'drag',
         connect: true,
@@ -34,7 +34,7 @@ export class SliderCompontent implements OnInit {
             .subscribe(function(sessionId){
                 httpo.get(hosto.fetchUrl() + 'hystrix/get/' + sessionId + '/throttle')
                     .subscribe(response => {
-                        zono.run(()=>self.poop = response.json().requestsPerSecond);
+                        zono.run(()=>self.sliderValue = response.json().requestsPerSecond);
                     });
             });
     }
@@ -52,7 +52,7 @@ export class SliderCompontent implements OnInit {
                 httpo.post(hosto.fetchUrl() + 'hystrix/post/' + sessionId + '/throttle',
                     {requestsPerSecond: value, sessionId: sessionId})
                     .subscribe(response => {
-                        zono.run(()=>self.poop = response.json().requestsPerSecond);
+                        zono.run(()=>self.sliderValue = response.json().requestsPerSecond);
                     });
             });
     }
