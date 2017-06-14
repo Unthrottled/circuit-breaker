@@ -15,6 +15,7 @@ var session_service_1 = require("./session.service");
 var Observable_1 = require("rxjs/Observable");
 var host_service_1 = require("./host.service");
 require("rxjs/add/operator/mergeMap");
+var message_1 = require("./message");
 /**
  * Created by alex on 6/6/17.
  */
@@ -29,7 +30,7 @@ var MessageService = (function () {
             .flatMap(function (sessionId) {
             return Observable_1.Observable.create(function (observer) {
                 var eventSource = new EventSource(_this.hostService.fetchUrl() + 'hystrix/' + sessionId + '/test.stream');
-                eventSource.onmessage = function (x) { observer.next(x.data); };
+                eventSource.onmessage = function (x) { observer.next(new message_1.Message(x.data)); };
                 eventSource.onerror = function (x) { return observer.error(console.log('EventSource failed ' + x)); };
                 return function () { };
             });

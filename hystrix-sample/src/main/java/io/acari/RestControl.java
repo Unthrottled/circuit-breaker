@@ -112,7 +112,7 @@ public class RestControl {
         StreamSource.stream.map(iCantDive55::whoaDoggy)
                 .map(aLong -> {
                     Long result = hystrixCommandBean.processFunction(aLong, beanBurrito::getMessage);
-                    return "Message " + aLong + " " + (result == FALL_BACK ? "Failed." : "Succeded.");
+                    return "Message " + aLong + " " + (result == FALL_BACK ? "Failed. ☹️" : "Succeeded. ☺️");
                 })
                 .subscribe(subscriber);
         return emitter;
