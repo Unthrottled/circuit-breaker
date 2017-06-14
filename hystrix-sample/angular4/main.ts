@@ -1,17 +1,17 @@
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {AppModule} from './sandwich/app.module';
+import {AppModule} from './app/app.module';
 //CSS FILES
 import './styles';
 //JS FILES
-import './sandwich/js/3rdparty-libs/hystrixCommand/hystrixCommand.js';
-import './sandwich/js/3rdparty-libs/hystrixThreadPool/hystrixThreadPool.js';
-import './sandwich/js/jquery.tinysort.min.js';
-import './sandwich/js/tmpl.js';
+import './app/js/3rdparty-libs/hystrixCommand/hystrixCommand.js';
+import './app/js/3rdparty-libs/hystrixThreadPool/hystrixThreadPool.js';
+import './app/js/jquery.tinysort.min.js';
+import './app/js/tmpl.js';
 
-import './sandwich/templates/hystrixCommand/hystrixCircuit.html';
-import './sandwich/templates/hystrixCommand/hystrixCircuitContainer.html';
-import './sandwich/templates/hystrixCommand/hystrixCircuitProperties.html';
-import './sandwich/templates/hystrixThreadPool/hystrixThreadPool.html';
-import './sandwich/templates/hystrixThreadPool/hystrixThreadPoolContainer.html';
+import './app/templates/hystrixCommand/hystrixCircuit.html';
+import './app/templates/hystrixCommand/hystrixCircuitContainer.html';
+import './app/templates/hystrixCommand/hystrixCircuitProperties.html';
+import './app/templates/hystrixThreadPool/hystrixThreadPool.html';
+import './app/templates/hystrixThreadPool/hystrixThreadPoolContainer.html';
 
 platformBrowserDynamic().bootstrapModule(AppModule);

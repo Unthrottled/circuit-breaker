@@ -56,7 +56,7 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'html-loader',
-                exclude: [/node_modules/, /build/, /dist/, /angular-project/, /src/, /gradle/, /sandwich/]
+                exclude: [/node_modules/, /build/, /dist/, /angular-project/, /src/, /gradle/, /app/]
             },
             {
                 test: /\.(html?)$/,
