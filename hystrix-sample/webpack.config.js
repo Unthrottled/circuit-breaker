@@ -9,7 +9,7 @@ var http = require('http');
 var keepAliveAgent = new http.Agent({ keepAlive: true });
 
 var proxyPeel = proxy('/hystrix', {
-    target: 'http://192.168.1.127:3344',
+    target: 'http://localhost:3344',
     changeOrigin: true,               // needed for virtual hosted sites
     ws: true,
     agent: keepAliveAgent
@@ -84,17 +84,17 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     plugins: [
-        // new webpack.optimize.UglifyJsPlugin({
-        //     compress: {
-        //         warnings: false
-        //     },
-        //     output: {
-        //         comments: false
-        //     },
-        //     mangle: {
-        //         keep_fnames: true
-        //     }
-        // }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            },
+            output: {
+                comments: false
+            },
+            mangle: {
+                keep_fnames: true
+            }
+        }),
 
         new webpack.ContextReplacementPlugin(
             // The (\\|\/) piece accounts for path separators in *nix and Windows
