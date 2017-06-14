@@ -7,15 +7,16 @@ import java.util.function.UnaryOperator;
 
 @Component
 public class HystrixCommandBean {
+    public static final long FALL_BACK = -9001L;
 
-    @HystrixCommand(fallbackMethod = "thingsBroke")
+    @HystrixCommand(fallbackMethod = "fallback")
     public Long processFunction(Long aLong, UnaryOperator<Long> unaryOperator) {
         return unaryOperator.apply(aLong);
     }
 
 
-    public Long thingsBroke(Long aLong, UnaryOperator<Long> unaryOperator) {
-        return -9001L;
+    public Long fallback(Long aLong, UnaryOperator<Long> unaryOperator) {
+        return FALL_BACK;
     }
 
 }

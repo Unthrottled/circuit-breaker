@@ -13,6 +13,8 @@ import rx.Subscriber;
 import java.io.IOException;
 import java.time.Instant;
 
+import static io.acari.HystrixCommandBean.FALL_BACK;
+
 @RestController
 @RequestMapping("/hystrix")
 public class RestControl {
@@ -77,11 +79,11 @@ public class RestControl {
     @RequestMapping("/{sessionId}/test.stream")
     public SseEmitter testo(@PathVariable Long sessionId) {
         SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
-        Subscriber<Long> subscriber = new Subscriber<Long>() {
+        Subscriber<String> subscriber = new Subscriber<String>() {
             @Override
             public void onCompleted() {
                 try {
-                    emitter.send("All dun");
+                    emitter.send("Stream Complete.");
                 } catch (IOException | IllegalStateException e) {
                 } finally {
                     emitter.complete();
@@ -91,13 +93,13 @@ public class RestControl {
 
             @Override
             public void onError(Throwable e) {
-                log.error("shit broke", e);
+                log.error("An error occurred when sending messages.", e);
                 emitter.complete();
                 sessionRepository.removeSession(sessionId);
             }
 
             @Override
-            public void onNext(Long aLong) {
+            public void onNext(String aLong) {
                 try {
                     emitter.send(aLong + " @ " + Instant.now());
                 } catch (IOException | IllegalStateException e) {
@@ -108,7 +110,10 @@ public class RestControl {
         Beano beanBurrito = session.getBeano();
         Throttle iCantDive55 = session.getThrottle();
         StreamSource.stream.map(iCantDive55::whoaDoggy)
-                .map(aLong -> hystrixCommandBean.processFunction(aLong, beanBurrito::getMessage))
+                .map(aLong -> {
+                    Long result = hystrixCommandBean.processFunction(aLong, beanBurrito::getMessage);
+                    return "Message " + aLong + " " + (result == FALL_BACK ? "Failed." : "Succeded.");
+                })
                 .subscribe(subscriber);
         return emitter;
     }
