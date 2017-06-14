@@ -13,7 +13,7 @@
     "serve": "lite-server -c=bs-config.json",
     "prestart": "npm run compile && npm run build",
     "start": "npm run compile && webpack --display-error-details --watch",
-    "boobies":"npm run compile && webpack --display-error-details --watch",
+    "watch":"npm run compile && webpack --display-error-details --watch",
     "pretest": "npm run build",
     "test": "concurrently \"npm run build:watch\" \"karma start karma.conf.js\"",
     "pretest:once": "npm run build",
@@ -61,11 +61,8 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "angular2-template-loader": "^0.6.2",
     "zone.js": "^0.8.4",
-    "ng2-knob": "^1.0.4",
     "angular2-ui-switch": "^1.2.0",
     "bootstrap-slider": "^9.8.0",
-    "eventsource": "^1.0.2",
-    "ng2-kw-gauge": "^0.0.8",
     "ng2-nouislider":"^1.6.1",
     "nouislider": "^10.0.0"
   },
@@ -110,7 +107,6 @@
     "clean-webpack-plugin": "^0.1.16",
     "browser-sync-webpack-plugin": "^1.1.4",
     "expose-loader": "^0.7.3",
-    "node-gyp": "^3.6.2",
     "http-proxy-middleware": "^0.17.4"
   },
   "repository": {}
