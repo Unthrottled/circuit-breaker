@@ -7,7 +7,7 @@ import {HostService} from './host.service';
 import {SessionService} from './session.service';
 import {Http} from '@angular/http';
 import {Supplier} from './supplier';
-import {BinaryFunction} from '../binaryfunction';
+import {BinaryFunction} from './binaryfunction';
 import {UnaryOperator} from './UnaryOperator';
 
 export class SliderImpl implements OnInit {
