@@ -12,9 +12,10 @@ import {ReplaySubject} from 'rxjs/ReplaySubject';
 
 @Injectable()
 export class SessionService {
-    constructor(private http: Http, private hostService: HostService){}
-
     private sessionIdo = new ReplaySubject(1);
+
+    constructor(private http: Http, private hostService: HostService) {
+    }
 
     fetchSessionId(): Observable<String> {
         if (!this.sessionIdo.observers.length) {

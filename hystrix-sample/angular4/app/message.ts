@@ -5,13 +5,13 @@ export class Message {
     private message: String;
     private success: Boolean = false;
 
-    constructor(private msg: String){
-        this.message = msg;
-        this.success = Message.didSucced(this.message);
+    private static didSucced(msg: String): Boolean {
+        return msg.indexOf('Succeeded') >= 0;
     }
 
-    private static didSucced(msg: String): Boolean {
-        return msg.indexOf('Succeeded') >=0;
+    constructor(private msg: String) {
+        this.message = msg;
+        this.success = Message.didSucced(this.message);
     }
 
     public getMessage(): String {

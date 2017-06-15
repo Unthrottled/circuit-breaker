@@ -23,7 +23,7 @@ var SliderCompontent = (function () {
         this.http = http;
         this.hostService = hostService;
         this.zone = zone;
-        this.poop = 10;
+        this.sliderValue = 10;
         this.someRange2config = {
             behaviour: 'drag',
             connect: true,
@@ -44,7 +44,7 @@ var SliderCompontent = (function () {
             .subscribe(function (sessionId) {
             httpo.get(hosto.fetchUrl() + 'hystrix/get/' + sessionId + '/throttle')
                 .subscribe(function (response) {
-                zono.run(function () { return self.poop = response.json().requestsPerSecond; });
+                zono.run(function () { return self.sliderValue = response.json().requestsPerSecond; });
             });
         });
     };
@@ -57,7 +57,7 @@ var SliderCompontent = (function () {
             .subscribe(function (sessionId) {
             httpo.post(hosto.fetchUrl() + 'hystrix/post/' + sessionId + '/throttle', { requestsPerSecond: value, sessionId: sessionId })
                 .subscribe(function (response) {
-                zono.run(function () { return self.poop = response.json().requestsPerSecond; });
+                zono.run(function () { return self.sliderValue = response.json().requestsPerSecond; });
             });
         });
     };

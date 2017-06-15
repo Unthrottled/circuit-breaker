@@ -23,7 +23,7 @@ var LatencyCompontent = (function () {
         this.http = http;
         this.hostService = hostService;
         this.zone = zone;
-        this.poop = 10;
+        this.sliderValue = 10;
         this.someRange2config = {
             behaviour: 'drag',
             connect: true,
@@ -43,7 +43,7 @@ var LatencyCompontent = (function () {
             .subscribe(function (sessionId) {
             httpo.get(hosto.fetchUrl() + 'hystrix/get/' + sessionId + '/latency')
                 .subscribe(function (response) {
-                zono.run(function () { return self.poop = response.json().millisecondsDelay; });
+                zono.run(function () { return self.sliderValue = response.json().millisecondsDelay; });
             });
         });
     };
@@ -56,7 +56,7 @@ var LatencyCompontent = (function () {
             .subscribe(function (sessionId) {
             httpo.post(hosto.fetchUrl() + 'hystrix/post/' + sessionId + '/latency', { millisecondsDelay: value, sessionId: sessionId })
                 .subscribe(function (response) {
-                zono.run(function () { return self.poop = response.json().millisecondsDelay; });
+                zono.run(function () { return self.sliderValue = response.json().millisecondsDelay; });
             });
         });
     };

@@ -20,4 +20,3 @@ import 'angular2-ui-switch';
 import 'bootstrap-slider';
 import 'eventsource';
 import 'ng2-nouislider';
-// import "nouislider/distribute/nouislider.css";

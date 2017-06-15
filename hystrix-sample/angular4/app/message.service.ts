@@ -20,10 +20,13 @@ export class MessageService {
             .flatMap(sessionId => {
                 return Observable.create((observer: Observer<Message>) => {
                     let eventSource = new EventSource(this.hostService.fetchUrl() + 'hystrix/' + sessionId + '/test.stream');
-                    eventSource.onmessage = x => {observer.next(new Message(x.data))};
+                    eventSource.onmessage = x => {
+                        observer.next(new Message(x.data));
+                    };
                     eventSource.onerror = x => observer.error(console.log('EventSource failed ' + x));
-                    return () => {};
+                    return () => {
+                    };
                 });
-            })
+            });
     }
 }
