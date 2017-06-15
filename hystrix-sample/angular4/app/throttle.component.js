@@ -20,7 +20,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Created by alex on 6/7/17.
+ * Created by alex on 6/14/17.
  */
 var core_1 = require("@angular/core");
 require("./slider.component.htm");
@@ -28,27 +28,27 @@ var host_service_1 = require("./host.service");
 var session_service_1 = require("./session.service");
 var http_1 = require("@angular/http");
 var slider_implementation_1 = require("./slider.implementation");
-var LatencyCompontent = (function (_super) {
-    __extends(LatencyCompontent, _super);
-    function LatencyCompontent(sessionService2, http2, hostService2, ngZone) {
-        var _this = _super.call(this, sessionService2, http2, hostService2, ngZone, function () { return '/latency'; }, function (changedValue, sessionId) {
-            return { millisecondsDelay: changedValue, sessionId: sessionId };
-        }, function (jsonResponse) { return jsonResponse.millisecondsDelay; }) || this;
+var ThrottleComponent = (function (_super) {
+    __extends(ThrottleComponent, _super);
+    function ThrottleComponent(sessionService2, http2, hostService2, zone2) {
+        var _this = _super.call(this, sessionService2, http2, hostService2, zone2, function () { return '/throttle'; }, function (changedValue, sessionId) {
+            return { requestsPerSecond: changedValue, sessionId: sessionId };
+        }, function (jsonResponse) { return jsonResponse.requestsPerSecond; }) || this;
         _this.sessionService2 = sessionService2;
         _this.http2 = http2;
         _this.hostService2 = hostService2;
-        _this.ngZone = ngZone;
+        _this.zone2 = zone2;
         return _this;
     }
-    return LatencyCompontent;
+    return ThrottleComponent;
 }(slider_implementation_1.SliderImpl));
-LatencyCompontent = __decorate([
+ThrottleComponent = __decorate([
     core_1.Component({
-        selector: 'latency',
+        selector: 'throttle',
         templateUrl: "./templates/slider.component.htm",
         styleUrls: []
     }),
     __metadata("design:paramtypes", [session_service_1.SessionService, http_1.Http, host_service_1.HostService, core_1.NgZone])
-], LatencyCompontent);
-exports.LatencyCompontent = LatencyCompontent;
-//# sourceMappingURL=latency.component.js.map
+], ThrottleComponent);
+exports.ThrottleComponent = ThrottleComponent;
+//# sourceMappingURL=throttle.component.js.map

@@ -16,11 +16,11 @@ var session_service_1 = require("./session.service");
 var message_component_1 = require("./message.component");
 var message_service_1 = require("./message.service");
 var window_1 = require("./window");
-var slider_component_1 = require("./slider.component");
 var ng2_nouislider_1 = require("ng2-nouislider");
 var angular2_ui_switch_1 = require("angular2-ui-switch");
 var switch_component_1 = require("./switch.component");
 var latency_component_1 = require("./latency.component");
+var throttle_component_1 = require("./throttle.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -38,8 +38,8 @@ AppModule = __decorate([
         declarations: [
             app_component_1.AppComponent,
             message_component_1.MessageComponent,
-            slider_component_1.SliderCompontent,
             switch_component_1.SwitchComponent,
+            throttle_component_1.ThrottleComponent,
             latency_component_1.LatencyCompontent
         ],
         bootstrap: [app_component_1.AppComponent],

@@ -30,9 +30,12 @@ var MessageService = (function () {
             .flatMap(function (sessionId) {
             return Observable_1.Observable.create(function (observer) {
                 var eventSource = new EventSource(_this.hostService.fetchUrl() + 'hystrix/' + sessionId + '/test.stream');
-                eventSource.onmessage = function (x) { observer.next(new message_1.Message(x.data)); };
+                eventSource.onmessage = function (x) {
+                    observer.next(new message_1.Message(x.data));
+                };
                 eventSource.onerror = function (x) { return observer.error(console.log('EventSource failed ' + x)); };
-                return function () { };
+                return function () {
+                };
             });
         });
     };

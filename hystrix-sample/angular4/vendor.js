@@ -22,5 +22,4 @@ require("angular2-ui-switch");
 require("bootstrap-slider");
 require("eventsource");
 require("ng2-nouislider");
-// import "nouislider/distribute/nouislider.css"; 
 //# sourceMappingURL=vendor.js.map
