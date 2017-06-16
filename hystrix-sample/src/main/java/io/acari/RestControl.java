@@ -3,6 +3,7 @@ package io.acari;
 import io.acari.pojo.LatencyParameters;
 import io.acari.pojo.LivenessParameters;
 import io.acari.pojo.ThrottleParameters;
+import io.acari.pojo.Translator;
 import io.acari.session.IdRepository;
 import io.acari.session.Session;
 import io.acari.session.SessionRepository;
@@ -20,6 +21,7 @@ import java.io.IOException;
 import java.time.Instant;
 
 import static io.acari.HystrixCommandBean.FALL_BACK;
+import static io.acari.pojo.Translator.*;
 
 @RestController
 @RequestMapping("/hystrix")
@@ -53,7 +55,8 @@ public class RestControl {
     @RequestMapping(value = "/post/{sessionId}/throttle", method = RequestMethod.POST)
     public ThrottleParameters getThrottleParameters(@PathVariable Long sessionId, @RequestBody ThrottleParameters throttleParameters) {
         Session session = sessionRepository.getSession(sessionId);
-        session.getThrottle().setSleepyTime(throttleParameters.calculateTimeToWait());
+        int sleepyTimeInMilliseconds = calculateTimeToWait(throttleParameters.getRequestsPerSecond());
+        session.getThrottle().setSleepyTime(sleepyTimeInMilliseconds);
         return new ThrottleParameters(session);
 
     }
