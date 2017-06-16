@@ -7,7 +7,6 @@ import {HostService} from '../session/host.service';
 import {SessionService} from '../session/session.service';
 import {Http} from '@angular/http';
 import {SliderImpl} from './slider.implementation';
-import {BinaryFunction} from '../util/binaryfunction';
 
 
 @Component({
