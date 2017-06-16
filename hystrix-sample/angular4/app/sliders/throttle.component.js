@@ -33,7 +33,7 @@ var ThrottleComponent = (function (_super) {
     function ThrottleComponent(sessionService2, http2, hostService2, zone2) {
         var _this = _super.call(this, sessionService2, http2, hostService2, zone2, function () { return '/throttle'; }, function (changedValue, sessionId) {
             return { requestsPerSecond: changedValue, sessionId: sessionId };
-        }, function (jsonResponse) { return jsonResponse.requestsPerSecond; }) || this;
+        }, function (jsonResponse) { return jsonResponse.requestsPerSecond; }, 100) || this;
         _this.sessionService2 = sessionService2;
         _this.http2 = http2;
         _this.hostService2 = hostService2;

@@ -7,6 +7,7 @@ import {HostService} from '../session/host.service';
 import {SessionService} from '../session/session.service';
 import {Http} from '@angular/http';
 import {SliderImpl} from './slider.implementation';
+import {BinaryFunction} from '../util/binaryfunction';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class ThrottleComponent extends SliderImpl {
             (changedValue: Number, sessionId: String) => {
                 return {requestsPerSecond: changedValue, sessionId: sessionId};
             },
-            (jsonResponse: any) => jsonResponse.requestsPerSecond);
+            (jsonResponse: any) => jsonResponse.requestsPerSecond,
+            100);
     }
 }
