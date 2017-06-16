@@ -9,16 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-/// <reference path="./EventSource.d.ts"/>
+/// <reference path="../util/EventSource.d.ts"/>
 var core_1 = require("@angular/core");
-var session_service_1 = require("./session.service");
+var session_service_1 = require("../session/session.service");
 var Observable_1 = require("rxjs/Observable");
-var host_service_1 = require("./host.service");
+var host_service_1 = require("../session/host.service");
 require("rxjs/add/operator/mergeMap");
 var message_1 = require("./message");
-/**
- * Created by alex on 6/6/17.
- */
 var MessageService = (function () {
     function MessageService(sessionService, hostService) {
         this.sessionService = sessionService;

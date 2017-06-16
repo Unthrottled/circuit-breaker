@@ -24,8 +24,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 var core_1 = require("@angular/core");
 require("./slider.component.htm");
-var host_service_1 = require("./host.service");
-var session_service_1 = require("./session.service");
+var host_service_1 = require("../session/host.service");
+var session_service_1 = require("../session/session.service");
 var http_1 = require("@angular/http");
 var slider_implementation_1 = require("./slider.implementation");
 var ThrottleComponent = (function (_super) {

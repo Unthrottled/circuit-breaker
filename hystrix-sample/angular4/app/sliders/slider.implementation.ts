@@ -6,9 +6,9 @@ import './slider.component.htm';
 import {HostService} from '../session/host.service';
 import {SessionService} from '../session/session.service';
 import {Http} from '@angular/http';
-import {Supplier} from './supplier';
-import {BinaryFunction} from './binaryfunction';
-import {UnaryOperator} from './UnaryOperator';
+import {Supplier} from '../util/supplier';
+import {BinaryFunction} from '../util/binaryfunction';
+import {UnaryOperator} from '../util/UnaryOperator';
 
 export class SliderImpl implements OnInit {
     sliderValue: Number = 10;

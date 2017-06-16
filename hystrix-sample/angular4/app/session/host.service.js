@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var window_1 = require("./window");
+var window_1 = require("../util/window");
 /**
  * Created by alex on 6/6/17.
  */

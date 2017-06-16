@@ -14,7 +14,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
-var host_service_1 = require("./host.service");
+var host_service_1 = require("../session/host.service");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/share");
 require("rxjs/add/operator/publishReplay");

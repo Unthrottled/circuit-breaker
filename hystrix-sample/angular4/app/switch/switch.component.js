@@ -14,9 +14,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 var core_1 = require("@angular/core");
 require("./switch.component.htm");
-var host_service_1 = require("./host.service");
-var session_service_1 = require("./session.service");
 var http_1 = require("@angular/http");
+var session_service_1 = require("../session/session.service");
+var host_service_1 = require("../session/host.service");
 var SwitchComponent = (function () {
     function SwitchComponent(sessionService, http, hostService, zone) {
         this.sessionService = sessionService;

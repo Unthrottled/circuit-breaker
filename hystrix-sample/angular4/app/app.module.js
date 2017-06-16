@@ -11,16 +11,16 @@ var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
 var http_1 = require("@angular/http");
-var host_service_1 = require("./host.service");
-var session_service_1 = require("./session.service");
-var message_component_1 = require("./message.component");
-var message_service_1 = require("./message.service");
-var window_1 = require("./window");
 var ng2_nouislider_1 = require("ng2-nouislider");
 var angular2_ui_switch_1 = require("angular2-ui-switch");
-var switch_component_1 = require("./switch.component");
-var latency_component_1 = require("./latency.component");
-var throttle_component_1 = require("./throttle.component");
+var message_component_1 = require("./messages/message.component");
+var switch_component_1 = require("./switch/switch.component");
+var throttle_component_1 = require("./sliders/throttle.component");
+var latency_component_1 = require("./sliders/latency.component");
+var host_service_1 = require("./session/host.service");
+var session_service_1 = require("./session/session.service");
+var message_service_1 = require("./messages/message.service");
+var window_1 = require("./util/window");
 var AppModule = (function () {
     function AppModule() {
     }
