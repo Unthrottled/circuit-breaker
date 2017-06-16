@@ -1,14 +1,11 @@
-/// <reference path="./EventSource.d.ts"/>
+/// <reference path="../util/EventSource.d.ts"/>
 import {Injectable} from '@angular/core';
-import {SessionService} from './session.service';
+import {SessionService} from '../session/session.service';
 import {Observable} from 'rxjs/Observable';
-import {HostService} from './host.service';
+import {HostService} from '../session/host.service';
 import {Observer} from 'rxjs/Observer';
 import 'rxjs/add/operator/mergeMap';
 import {Message} from './message';
-/**
- * Created by alex on 6/6/17.
- */
 
 @Injectable()
 export class MessageService {

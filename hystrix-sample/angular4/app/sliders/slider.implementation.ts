@@ -3,8 +3,8 @@
  */
 import {NgZone, OnInit} from '@angular/core';
 import './slider.component.htm';
-import {HostService} from './host.service';
-import {SessionService} from './session.service';
+import {HostService} from '../session/host.service';
+import {SessionService} from '../session/session.service';
 import {Http} from '@angular/http';
 import {Supplier} from './supplier';
 import {BinaryFunction} from './binaryfunction';

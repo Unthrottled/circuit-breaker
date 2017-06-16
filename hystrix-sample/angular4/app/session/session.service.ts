@@ -3,7 +3,7 @@
  */
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
-import {HostService} from './host.service';
+import {HostService} from '../session/host.service';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/share';

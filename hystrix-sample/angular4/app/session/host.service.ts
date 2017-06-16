@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {WindowRef} from './window';
+import {WindowRef} from '../util/window';
 /**
  * Created by alex on 6/6/17.
  */

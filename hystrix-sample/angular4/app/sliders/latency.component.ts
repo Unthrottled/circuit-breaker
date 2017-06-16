@@ -3,10 +3,10 @@
  */
 import {Component, NgZone} from '@angular/core';
 import './slider.component.htm';
-import {HostService} from './host.service';
-import {SessionService} from './session.service';
 import {Http} from '@angular/http';
 import {SliderImpl} from './slider.implementation';
+import {SessionService} from '../session/session.service';
+import {HostService} from '../session/host.service';
 
 
 @Component({
