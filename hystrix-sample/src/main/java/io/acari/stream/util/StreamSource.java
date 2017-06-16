@@ -1,7 +1,6 @@
-package io.acari;
+package io.acari.stream.util;
 
 import rx.Observable;
-import rx.Scheduler;
 import rx.schedulers.Schedulers;
 
 import java.util.concurrent.TimeUnit;

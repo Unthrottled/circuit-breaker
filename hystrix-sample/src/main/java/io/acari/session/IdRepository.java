@@ -1,4 +1,4 @@
-package io.acari;
+package io.acari.session;
 
 import org.springframework.stereotype.Component;
 

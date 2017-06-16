@@ -3,6 +3,12 @@ package io.acari;
 import io.acari.pojo.LatencyParameters;
 import io.acari.pojo.LivenessParameters;
 import io.acari.pojo.ThrottleParameters;
+import io.acari.session.IdRepository;
+import io.acari.session.Session;
+import io.acari.session.SessionRepository;
+import io.acari.stream.util.StreamSource;
+import io.acari.stream.util.Throttle;
+import io.acari.stream.util.TroubleMaker;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +40,7 @@ public class RestControl {
     @RequestMapping("/get/stream-id")
     public Long streamId() {
         Long ranbo = idRepository.getRanbo();
-        sessionRepository.addSession(new Session(ranbo, new Beano(), new Throttle()));
+        sessionRepository.addSession(new Session(ranbo, new TroubleMaker(), new Throttle()));
         return ranbo;
     }
 
@@ -60,7 +66,7 @@ public class RestControl {
     @RequestMapping(value = "/post/{sessionId}/latency", method = RequestMethod.POST)
     public LatencyParameters getLatencyParameters(@PathVariable Long sessionId, @RequestBody LatencyParameters latencyParameters) {
         Session session = sessionRepository.getSession(sessionId);
-        session.getBeano().setDelay(latencyParameters);
+        session.getTroubleMaker().setDelay(latencyParameters);
         return new LatencyParameters(session);
     }
 
@@ -72,7 +78,7 @@ public class RestControl {
     @RequestMapping("/post/{sessionId}/liveness")
     public LivenessParameters getLiveness(@PathVariable Long sessionId, @RequestBody LivenessParameters livenessParameters) {
         Session session = sessionRepository.getSession(sessionId);
-        session.getBeano().setLiveness(livenessParameters);
+        session.getTroubleMaker().setLiveness(livenessParameters);
         return new LivenessParameters(session);
     }
 
@@ -107,11 +113,11 @@ public class RestControl {
             }
         };
         Session session = sessionRepository.getSession(sessionId);
-        Beano beanBurrito = session.getBeano();
+        TroubleMaker troubleMaker = session.getTroubleMaker();
         Throttle iCantDive55 = session.getThrottle();
         StreamSource.stream.map(iCantDive55::whoaDoggy)
                 .map(aLong -> {
-                    Long result = hystrixCommandBean.processFunction(aLong, beanBurrito::getMessage);
+                    Long result = hystrixCommandBean.processFunction(aLong, troubleMaker::getMessage);
                     return "Message " + aLong + " " + (result == FALL_BACK ? "Failed. ☹️" : "Succeeded. ☺️");
                 })
                 .subscribe(subscriber);

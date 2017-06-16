@@ -1,6 +1,6 @@
 package io.acari.pojo;
 
-import io.acari.Session;
+import io.acari.session.Session;
 
 public class LatencyParameters extends SessionParameters {
     private int millisecondsDelay;
@@ -10,7 +10,7 @@ public class LatencyParameters extends SessionParameters {
 
     public LatencyParameters(Session session) {
         super(session);
-        setMillisecondsDelay(session.getBeano().getDelay());
+        setMillisecondsDelay(session.getTroubleMaker().getDelay());
     }
 
     public int getMillisecondsDelay() {

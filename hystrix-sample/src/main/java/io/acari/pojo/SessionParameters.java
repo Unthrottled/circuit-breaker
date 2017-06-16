@@ -1,6 +1,6 @@
 package io.acari.pojo;
 
-import io.acari.Session;
+import io.acari.session.Session;
 
 public class SessionParameters {
     private Long sessionId;

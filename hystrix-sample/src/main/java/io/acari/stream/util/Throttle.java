@@ -1,4 +1,4 @@
-package io.acari;
+package io.acari.stream.util;
 
 import static io.acari.RestControl.INTERVAL;
 
@@ -28,8 +28,8 @@ public class Throttle {
         return MILLIS_IN_SECOND / (sleepyTime + INTERVAL) ;
     }
 
-    public void setSleepyTime(int sleepyTime) {
-        this.sleepyTime = sleepyTime;
+    public void setSleepyTime(int sleepyTimeInMilliseconds) {
+        this.sleepyTime = sleepyTimeInMilliseconds;
     }
 
 

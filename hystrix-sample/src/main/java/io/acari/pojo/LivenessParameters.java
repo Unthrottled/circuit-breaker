@@ -1,6 +1,6 @@
 package io.acari.pojo;
 
-import io.acari.Session;
+import io.acari.session.Session;
 
 public class LivenessParameters extends SessionParameters {
     private boolean serviceAlive;
@@ -10,7 +10,7 @@ public class LivenessParameters extends SessionParameters {
 
     public LivenessParameters(Session session) {
         super(session);
-        setServiceAlive(session.getBeano().getLiveness());
+        setServiceAlive(session.getTroubleMaker().getLiveness());
     }
 
     public boolean isServiceAlive() {

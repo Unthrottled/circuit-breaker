@@ -1,9 +1,9 @@
-package io.acari;
+package io.acari.stream.util;
 
 import io.acari.pojo.LatencyParameters;
 import io.acari.pojo.LivenessParameters;
 
-public class Beano {
+public class TroubleMaker {
     private final static int DEFAULT_DELAY = 50;
     private int delay = DEFAULT_DELAY;
     private boolean liveness = true;

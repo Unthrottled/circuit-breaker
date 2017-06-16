@@ -1,9 +1,9 @@
 package io.acari.pojo;
 
-import io.acari.Session;
+import io.acari.session.Session;
 
 import static io.acari.RestControl.INTERVAL;
-import static io.acari.Throttle.MILLIS_IN_SECOND;
+import static io.acari.stream.util.Throttle.MILLIS_IN_SECOND;
 
 public class ThrottleParameters extends SessionParameters {
     private int requestsPerSecond;
