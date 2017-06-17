@@ -1,0 +1,1064 @@
+/* 
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}body {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+img, object, embed {
+	max-width: 100%;
+}
+
+img {
+	height: auto;
+}
+
+
+#header {
+	background: url(assets/hystrix-logo-tagline-tiny.1550405a95d559c37093d6bb379e3069.png) no-repeat scroll 99% 0%;
+	height: 65px;
+	margin-bottom: 5px;
+}
+
+#header h2 {
+	float:left;
+	color: black;
+	position:relative;
+	padding-left: 20px;
+	top: 26px;
+	font-size: 20px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+#header .header_nav {
+	position:absolute;
+	top:48px;
+	right:15px;
+}
+
+#header .header_links {
+	float:left;
+	color: lightgray;
+	font-size: 18px;
+	top: 3px;
+	padding-left: 10px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+#header .header_links a {
+	color: white;
+}
+
+#header .header_clusters {
+	float:left;
+	position:relative;
+	padding-left: 10px;
+	top: -1px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+
+@media screen and (min-width: 1500px) {
+	
+	#header .header_nav {
+		top:13px;
+		right:130px;
+	}
+	
+	#header {
+		background: #FFFFFF url(assets/hystrix-logo-tagline-tiny.1550405a95d559c37093d6bb379e3069.png) no-repeat scroll 99% 50%;
+		height: 65px;
+	}
+}
+.container {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.row {
+	width: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.spacer {
+	width: 100%;
+	margin: 0 auto;
+	padding-top:4px;
+	clear:both;
+}
+
+
+.last {
+	margin-right: 0px;
+}
+
+.menubar {
+	overflow: hidden;
+	border-bottom: 1px solid black;
+}
+
+.menubar div {
+	padding-bottom:5px;
+
+	margin: 0 auto;
+	overflow: hidden;
+	
+	font-size: 80%;
+	font-family:'Bookman Old Style',Bookman,'URW Bookman L','Palatino Linotype',serif;
+	
+	float:left;
+}
+
+.menubar .title {
+	float: left;
+	padding-right: 20px;
+	
+	font-size: 110%;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: bold;
+	
+	vertical-align: bottom;
+}
+
+.menubar .menu_actions {
+	float: left;
+	position:relative;
+	top: 4px;
+}
+
+.menubar .menu_legend {
+	float: right;
+	position:relative;
+	top: 4px;
+	
+}
+
+h3.sectionHeader {
+	color: black;
+	font-size: 110%;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	background: lightgrey;
+}
+
+.success {
+	color: green;	
+}
+.shortCircuited {
+	color: blue;	
+}
+.timeout {
+	color: #FF9900;	 /* shade of orange */
+}
+.failure {
+	color: red;	
+}
+
+.rejected {
+	color: purple;
+}
+	
+.exceptionsThrown {
+	color: brown;
+}
+
+.badRequest {
+	color: #00CC99;
+}
+
+@media screen and (max-width: 1100px) {
+	.container {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+}
+
+.thread-pool-name{
+
+}
+
+.circuit-name {
+
+}/*! nouislider - 10.0.0 - 2017-05-28 14:52:48 */
+/* Functional styling;
+ * These styles are required for noUiSlider to function.
+ * You don't need to change these rules to apply your design.
+ */
+.noUi-target,
+.noUi-target * {
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-user-select: none;
+    -ms-touch-action: none;
+    touch-action: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.noUi-target {
+    position: relative;
+    direction: ltr;
+}
+.noUi-base {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    /* Fix 401 */
+}
+.noUi-connect {
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+.noUi-origin {
+    position: absolute;
+    height: 0;
+    width: 0;
+}
+.noUi-handle {
+    position: relative;
+    z-index: 1;
+}
+.noUi-state-tap .noUi-connect,
+.noUi-state-tap .noUi-origin {
+    -webkit-transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+    transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+}
+.noUi-state-drag * {
+    cursor: inherit !important;
+}
+/* Painting and performance;
+ * Browsers can paint handles in their own layer.
+ */
+.noUi-base,
+.noUi-handle {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+/* Slider size and handle placement;
+ */
+.noUi-horizontal {
+    height: 18px;
+}
+.noUi-horizontal .noUi-handle {
+    width: 34px;
+    height: 28px;
+    left: -17px;
+    top: -6px;
+}
+.noUi-vertical {
+    width: 18px;
+}
+.noUi-vertical .noUi-handle {
+    width: 28px;
+    height: 34px;
+    left: -6px;
+    top: -17px;
+}
+/* Styling;
+ */
+.noUi-target {
+    background: #FAFAFA;
+    border-radius: 4px;
+    border: 1px solid #D3D3D3;
+    box-shadow: inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB;
+}
+.noUi-connect {
+    background: #3FB8AF;
+    border-radius: 4px;
+    box-shadow: inset 0 0 3px rgba(51, 51, 51, 0.45);
+    -webkit-transition: background 450ms;
+    transition: background 450ms;
+}
+/* Handles and cursors;
+ */
+.noUi-draggable {
+    cursor: ew-resize;
+}
+.noUi-vertical .noUi-draggable {
+    cursor: ns-resize;
+}
+.noUi-handle {
+    border: 1px solid #D9D9D9;
+    border-radius: 3px;
+    background: #FFF;
+    cursor: default;
+    box-shadow: inset 0 0 1px #FFF, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB;
+}
+.noUi-active {
+    box-shadow: inset 0 0 1px #FFF, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB;
+}
+/* Handle stripes;
+ */
+.noUi-handle:before,
+.noUi-handle:after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 14px;
+    width: 1px;
+    background: #E8E7E6;
+    left: 14px;
+    top: 6px;
+}
+.noUi-handle:after {
+    left: 17px;
+}
+.noUi-vertical .noUi-handle:before,
+.noUi-vertical .noUi-handle:after {
+    width: 14px;
+    height: 1px;
+    left: 6px;
+    top: 14px;
+}
+.noUi-vertical .noUi-handle:after {
+    top: 17px;
+}
+/* Disabled state;
+ */
+[disabled] .noUi-connect {
+    background: #B8B8B8;
+}
+[disabled].noUi-target,
+[disabled].noUi-handle,
+[disabled] .noUi-handle {
+    cursor: not-allowed;
+}
+/* Base;
+ *
+ */
+.noUi-pips,
+.noUi-pips * {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.noUi-pips {
+    position: absolute;
+    color: #999;
+}
+/* Values;
+ *
+ */
+.noUi-value {
+    position: absolute;
+    white-space: nowrap;
+    text-align: center;
+}
+.noUi-value-sub {
+    color: #ccc;
+    font-size: 10px;
+}
+/* Markings;
+ *
+ */
+.noUi-marker {
+    position: absolute;
+    background: #CCC;
+}
+.noUi-marker-sub {
+    background: #AAA;
+}
+.noUi-marker-large {
+    background: #AAA;
+}
+/* Horizontal layout;
+ *
+ */
+.noUi-pips-horizontal {
+    padding: 10px 0;
+    height: 80px;
+    top: 100%;
+    left: 0;
+    width: 100%;
+}
+.noUi-value-horizontal {
+    -webkit-transform: translate3d(-50%, 50%, 0);
+    transform: translate3d(-50%, 50%, 0);
+}
+.noUi-marker-horizontal.noUi-marker {
+    margin-left: -1px;
+    width: 2px;
+    height: 5px;
+}
+.noUi-marker-horizontal.noUi-marker-sub {
+    height: 10px;
+}
+.noUi-marker-horizontal.noUi-marker-large {
+    height: 15px;
+}
+/* Vertical layout;
+ *
+ */
+.noUi-pips-vertical {
+    padding: 0 10px;
+    height: 100%;
+    top: 0;
+    left: 100%;
+}
+.noUi-value-vertical {
+    -webkit-transform: translate3d(0, 50%, 0);
+    transform: translate3d(0, 50%, 0);
+    padding-left: 25px;
+}
+.noUi-marker-vertical.noUi-marker {
+    width: 5px;
+    height: 2px;
+    margin-top: -1px;
+}
+.noUi-marker-vertical.noUi-marker-sub {
+    width: 10px;
+}
+.noUi-marker-vertical.noUi-marker-large {
+    width: 15px;
+}
+.noUi-tooltip {
+    display: block;
+    position: absolute;
+    border: 1px solid #D9D9D9;
+    border-radius: 3px;
+    background: #fff;
+    color: #000;
+    padding: 5px;
+    text-align: center;
+    white-space: nowrap;
+}
+.noUi-horizontal .noUi-tooltip {
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    left: 50%;
+    bottom: 120%;
+}
+.noUi-vertical .noUi-tooltip {
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    top: 50%;
+    right: 120%;
+}
+.boxed-content {
+    background: #afafaf;
+    z-index: 10000;
+    position: relative;
+    width: 99.984%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+body {
+    font-family:Tahoma, Geneva, sans-serif;
+    font-size:16px;
+    line-height:1.5;
+    font-weight: 300;
+    color:#f9f9f9;
+    background-color:#464646;
+    background-image: url(assets/stripe.ea57599555451c53af1db0db4f5b2664.png);
+    -webkit-text-size-adjust: 100%;
+    max-width: 1060px;
+    overflow-x: hidden;
+    display: block;
+    margin: auto;
+    padding: 40px 50px;
+}
+
+.hystrix-dashboard-container{
+    display: inline-block;
+    margin: 20px;
+    padding: 10px;
+    background-color: #e6e6e6;
+    color: #3e3e3e;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.message-control-container{
+    color: #3e3e3e;
+}
+
+.stream-data {
+    color: #3e3e3e;
+}
+
+.app-container {
+    width: 95%;
+    padding: 20px;
+}
+
+.slider-bro {
+    margin-top: 3rem;
+}
+
+.dead-mans-switch {
+    float: right;
+    display: inline-block;
+}
+
+.content-container {
+    background: #e6e6e6;
+    color: #3e3e3e;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.app-control-container{
+    text-align: center;
+}
+
+.stream-table {
+}
+
+.failed {
+    color: red;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.worked {
+    color: green;
+    font-weight: bold;
+    font-size: 1.5rem;
+}/*	SimpleGrid - a fork of CSSGrid by Crowd Favorite (https://github.com/crowdfavorite/css-grid)
+ *	http://simplegrid.info
+ *	by Conor Muirhead (http://conor.cc) of Early LLC (http://earlymade.com)	
+ *  License: http://creativecommons.org/licenses/MIT/	*/
+
+/* Containers */
+body { font-size: 0.875em; }
+.grid{ margin:0 auto; padding: 0 10px; width:700px; }
+.row{ clear:left; }
+
+/* Slots Setup */
+.slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5,.slot-0-1,.slot-0-1-2,.slot-0-1-2-3,.slot-0-1-2-3-4,.slot-0-1-2-3-4-5,.slot-1-2,.slot-1-2-3,.slot-1-2-3-4,.slot-1-2-3-4-5,.slot-2-3,.slot-2-3-4,.slot-2-3-4-5,.slot-3-4,.slot-3-4-5,.slot-4-5,.slot-6,.slot-7,.slot-8,.slot-9,.slot-6-7,.slot-6-7-8,.slot-6-7-8-9,.slot-7-8,.slot-7-8-9,.slot-8-9{ display:inline; float:left; margin-left:20px; }
+
+/* 6-Col Grid Sizes */
+.slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5{ width:100px; } /* Sixths */
+.slot-0-1,.slot-1-2,.slot-2-3,.slot-3-4,.slot-4-5{ width:220px; } /* Thirds */
+.slot-0-1-2-3,.slot-1-2-3-4,.slot-2-3-4-5{ width:460px; } /* Two-Thirds */
+.slot-0-1-2-3-4,.slot-1-2-3-4-5{ width:580px; } /* Five-Sixths */
+
+/* 4-Col Grid Sizes */
+.slot-6,.slot-7,.slot-8,.slot-9{ width:160px; } /* Quarters */
+.slot-6-7-8,.slot-7-8-9{ width:520px; } /* Three-Quarters */
+
+/* 6-Col/4-Col Shared Grid Sizes */
+.slot-0-1-2,.slot-1-2-3,.slot-2-3-4,.slot-3-4-5, .slot-6-7,.slot-7-8,.slot-8-9{ width:340px; } /* Halves */
+.slot-0-1-2-3-4-5, .slot-6-7-8-9{ width: 100%; } /* Full-Width */
+
+/* Zeroing Out Leftmost Slot Margins */
+.slot-0,.slot-0-1,.slot-0-1-2,.slot-0-1-2-3,.slot-0-1-2-3-4,.slot-0-1-2-3-4-5,.slot-6,.slot-6-7,.slot-6-7-8,.slot-6-7-8-9,.slot-1 .slot-1,.slot-1-2 .slot-1,.slot-1-2 .slot-1-2,.slot-1-2-3 .slot-1,.slot-1-2-3 .slot-1-2,.slot-1-2-3 .slot-1-2-3,.slot-1-2-3-4 .slot-1,.slot-1-2-3-4 .slot-1-2,.slot-1-2-3-4 .slot-1-2-3,.slot-1-2-3-4 .slot-1-2-3-4,.slot-1-2-3-4-5 .slot-1,.slot-1-2-3-4-5 .slot-1-2,.slot-1-2-3-4-5 .slot-1-2-3,.slot-1-2-3-4-5 .slot-1-2-3-4,.slot-1-2-3-4-5 .slot-1-2-3-4-5,.slot-2 .slot-2,.slot-2-3 .slot-2,.slot-2-3 .slot-2-3,.slot-2-3-4 .slot-2,.slot-2-3-4 .slot-2-3,.slot-2-3-4 .slot-2-3-4,.slot-2-3-4-5 .slot-2,.slot-2-3-4-5 .slot-2-3,.slot-2-3-4-5 .slot-2-3-4,.slot-2-3-4-5 .slot-2-3-4-5,.slot-3 .slot-3,.slot-3-4 .slot-3,.slot-3-4 .slot-3-4,.slot-3-4-5 .slot-3,.slot-3-4-5 .slot-3-4,.slot-3-4-5 .slot-3-4-5,.slot-4 .slot-4,.slot-4-5 .slot-4,.slot-4-5 .slot-4-5,.slot-5 .slot-5,.slot-7 .slot-7,.slot-7-8 .slot-7,.slot-7-8 .slot-7-8,.slot-7-8-9 .slot-7,.slot-7-8-9 .slot-7-8,.slot-7-8-9 .slot-7-8-9,.slot-8 .slot-8,.slot-8-9 .slot-8,.slot-8-9 .slot-8-9{ margin-left:0 !important; } /* Important is to avoid repeating this in larger screen css files */
+
+/* Row Clearfix */
+.row:after{ visibility:hidden; display:block; font-size:0; content:" "; clear:both; height:0; }
+.row{ zoom:1; }/*	SimpleGrid - a fork of CSSGrid by Crowd Favorite (https://github.com/crowdfavorite/css-grid)
+ *	http://simplegrid.info
+ *	by Conor Muirhead (http://conor.cc) of Early LLC (http://earlymade.com)	
+ *  License: http://creativecommons.org/licenses/MIT/	*/
+
+/* Containers */
+body { font-size: 100%; }
+.grid{ width:966px; }
+
+/* Slots Setup */
+.slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5,.slot-0-1,.slot-0-1-2,.slot-0-1-2-3,.slot-0-1-2-3-4,.slot-0-1-2-3-4-5,.slot-1-2,.slot-1-2-3,.slot-1-2-3-4,.slot-1-2-3-4-5,.slot-2-3,.slot-2-3-4,.slot-2-3-4-5,.slot-3-4,.slot-3-4-5,.slot-4-5,.slot-6,.slot-7,.slot-8,.slot-9,.slot-6-7,.slot-6-7-8,.slot-6-7-8-9,.slot-7-8,.slot-7-8-9,.slot-8-9{ display:inline; float:left; margin-left:30px; }
+
+/* 6-Col Grid Sizes */
+.slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5{ width:136px; } /* Sixths */
+.slot-0-1,.slot-1-2,.slot-2-3,.slot-3-4,.slot-4-5{ width:302px; } /* Thirds */
+.slot-0-1-2-3,.slot-1-2-3-4,.slot-2-3-4-5{ width:634px; } /* Two-Thirds */
+.slot-0-1-2-3-4,.slot-1-2-3-4-5{ width:800px; } /* Five-Sixths */
+
+/* 4-Col Grid Sizes */
+.slot-6,.slot-7,.slot-8,.slot-9{ width:219px; } /* Quarters */
+.slot-6-7-8,.slot-7-8-9{ width:717px; } /* Three-Quarters */
+
+/* 6-Col/4-Col Shared Grid Sizes */
+.slot-0-1-2,.slot-1-2-3,.slot-2-3-4,.slot-3-4-5, .slot-6-7,.slot-7-8,.slot-8-9{ width:468px; } /* Halves *//*	SimpleGrid - a fork of CSSGrid by Crowd Favorite (https://github.com/crowdfavorite/css-grid)
+ *	http://simplegrid.info
+ *	by Conor Muirhead (http://conor.cc) of Early LLC (http://earlymade.com)	
+ *  License: http://creativecommons.org/licenses/MIT/	*/
+
+/* Containers */
+body { font-size: 1.125em; }
+.grid{ width:1206px; }
+
+/* 6-Col Grid Sizes */
+.slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5{ width:176px; } /* Sixths */
+.slot-0-1,.slot-1-2,.slot-2-3,.slot-3-4,.slot-4-5{ width:382px; } /* Thirds */
+.slot-0-1-2-3,.slot-1-2-3-4,.slot-2-3-4-5{ width:794px; } /* Two-Thirds */
+.slot-0-1-2-3-4,.slot-1-2-3-4-5{ width:1000px; } /* Five-Sixths */
+
+/* 4-Col Grid Sizes */
+.slot-6,.slot-7,.slot-8,.slot-9{ width:279px; } /* Quarters */
+.slot-6-7-8,.slot-7-8-9{ width:897px; } /* Three-Quarters */
+
+/* 6-Col/4-Col Shared Grid Sizes */
+.slot-0-1-2,.slot-1-2-3,.slot-2-3-4,.slot-3-4-5, .slot-6-7,.slot-7-8,.slot-8-9{ width:588px; } /* Halves *//* Extension of SimpleGrid by benjchristensen to allow percentage based sizing on very large displays	
+ *
+ * SimpleGrid - a fork of CSSGrid by Crowd Favorite (https://github.com/crowdfavorite/css-grid)
+ *	http://simplegrid.info
+ *	by Conor Muirhead (http://conor.cc) of Early LLC (http://earlymade.com)	
+ *  License: http://creativecommons.org/licenses/MIT/	*/
+
+/* Containers */
+body { font-size: 1.125em; }
+.grid{ width:100%; }
+
+/* Slots Setup */
+.slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5,.slot-0-1,.slot-0-1-2,.slot-0-1-2-3,.slot-0-1-2-3-4,.slot-0-1-2-3-4-5,.slot-1-2,.slot-1-2-3,.slot-1-2-3-4,.slot-1-2-3-4-5,.slot-2-3,.slot-2-3-4,.slot-2-3-4-5,.slot-3-4,.slot-3-4-5,.slot-4-5,.slot-6,.slot-7,.slot-8,.slot-9,.slot-6-7,.slot-6-7-8,.slot-6-7-8-9,.slot-7-8,.slot-7-8-9,.slot-8-9{ display:inline; float:left; margin-left:0px; }
+
+
+/* 6-Col Grid Sizes */
+.slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5{ width:16.6%; } /* Sixths */
+.slot-0-1,.slot-1-2,.slot-2-3,.slot-3-4,.slot-4-5{ width:33.3%; } /* Thirds */
+.slot-0-1-2-3,.slot-1-2-3-4,.slot-2-3-4-5{ width:66.6%; } /* Two-Thirds */
+.slot-0-1-2-3-4,.slot-1-2-3-4-5{ width:83.3%; } /* Five-Sixths */
+
+/* 4-Col Grid Sizes */
+.slot-6,.slot-7,.slot-8,.slot-9{ width:25%; } /* Quarters */
+.slot-6-7-8,.slot-7-8-9{ width:75%; } /* Three-Quarters */
+
+/* 6-Col/4-Col Shared Grid Sizes */
+.slot-0-1-2,.slot-1-2-3,.slot-2-3-4,.slot-3-4-5, .slot-6-7,.slot-7-8,.slot-8-9{ width:50%; } /* Halves */.dependencies .spacer {
+	width: 100%;
+	margin: 0 auto;
+	padding-top:4px;
+	clear:both;
+}
+
+
+.dependencies .last {
+	margin-right: 0px;
+}
+
+.dependencies span.loading {
+	display: block;
+	padding-top: 6%;
+	padding-bottom: 6%;
+	color: gray;
+	text-align: center;
+}
+
+.dependencies span.loading.failed {
+	color: red;
+}
+
+
+.dependencies div.monitor {
+	float: left;
+	margin-right:5px;
+	margin-top:5px;
+}
+
+.dependencies div.monitor p.name {
+	font-weight:bold;
+	font-size: 10pt;
+	text-align: right;	
+	padding-bottom: 5px;
+}
+
+.dependencies div.monitor_data {
+	margin: 0 auto;	
+}
+
+/* override the HREF when we have specified it as a tooltip to not act like a link */
+.dependencies div.monitor_data a.tooltip {
+	text-decoration: none;
+	cursor: default;	
+}
+
+.dependencies div.monitor_data div.counters {
+	text-align: right;	
+	padding-bottom: 10px;
+	font-size: 10pt;
+	clear: both;
+	
+}
+
+.dependencies div.monitor_data div.counters div.cell {
+	display: inline;
+	float: right;
+}
+
+.dependencies .borderRight {
+	border-right: 1px solid grey;
+	padding-right: 6px;
+	padding-left: 8px;
+}
+
+.dependencies div.cell .line {
+	display: block;
+}
+
+.dependencies div.monitor_data a,
+.dependencies span.rate_value {
+	font-weight:bold;	
+}
+
+
+.dependencies span.smaller {
+	font-size: 8pt;
+	color: grey;	
+}
+
+
+
+.dependencies div.tableRow {
+	width:100%;
+	white-space: nowrap;
+	font-size: 8pt;	
+	margin: 0 auto;
+	clear:both;
+	padding-left:26%;
+}
+
+.dependencies div.tableRow .cell {
+	float:left;
+}
+
+.dependencies div.tableRow .header {
+	width:18%;
+	text-align:right;
+	padding-right:2%;
+}
+
+.dependencies div.tableRow .data {
+	width:17%;
+	font-weight: bold;
+	text-align:right;
+}
+
+
+.dependencies div.monitor {
+	width: 265px; /* we want a fixed width instead of percentage as I want the boxes to be a set size and then fill in as many as can fit in each row ... this allows 3 columns on an iPad */
+	height: 275px;
+}
+
+.dependencies .success {
+	color: green;	
+}
+.dependencies .shortCircuited {
+	color: blue;	
+}
+.dependencies .timeout {
+	color: #FF9900;	 /* shade of orange */
+}
+.dependencies .failure {
+	color: red;	
+}
+
+.badRequest {
+	color: #00CC99;
+}
+
+.dependencies .rejected {
+	color: purple;
+}
+	
+.dependencies .exceptionsThrown {
+	color: brown;
+}
+
+.dependencies div.monitor_data a.rate {
+	color: black;	
+	font-size: 11pt;
+}
+
+.dependencies div.rate {
+	padding-top: 1px;
+	clear:both;
+	text-align:right;
+}
+
+.dependencies .errorPercentage {
+	color: grey;	
+}
+
+.dependencies div.cell .errorPercentage {
+	padding-left:5px;
+	font-size: 12pt !important;
+}
+
+
+.dependencies div.monitor div.chart {
+}
+
+.dependencies div.monitor div.chart svg {
+}
+
+.dependencies div.monitor div.chart svg text {
+	fill: white;
+}
+
+
+.dependencies div.circuitStatus {
+	width:100%;
+	white-space: nowrap;
+	font-size: 9pt;	
+	margin: 0 auto;
+	clear:both;
+	text-align:right;
+	padding-top: 4px;
+}
+
+.dependencies #hidden {
+    width:1px;
+    height:1px;
+    background: lightgrey;
+    display: none;
+}
+
+
+
+/* sparkline */
+.dependencies path {
+	stroke: steelblue;
+	stroke-width: 1;
+	fill: none;
+}
+
+.dependencyThreadPools .spacer {
+	width: 100%;
+	margin: 0 auto;
+	padding-top:4px;
+	clear:both;
+}
+
+
+.dependencyThreadPools .last {
+	margin-right: 0px;
+}
+
+.dependencyThreadPools span.loading {
+	display: block;
+	padding-top: 6%;
+	padding-bottom: 6%;
+	color: gray;
+	text-align: center;
+}
+
+.dependencyThreadPools span.loading.failed {
+	color: red;
+}
+
+
+.dependencyThreadPools div.monitor {
+	float: left;
+	margin-right:5px; /* these are tweaked to look good on desktop and iPad portrait, and fit things densely */
+	margin-top:5px;
+}
+
+.dependencyThreadPools div.monitor p.name {
+	font-weight:bold;
+	font-size: 10pt;
+	text-align: right;	
+	padding-bottom: 5px;
+}
+
+.dependencyThreadPools div.monitor_data {
+	margin: 0 auto;	
+}
+
+.dependencyThreadPools span.smaller {
+	font-size: 8pt;
+	color: grey;	
+}
+
+
+.dependencyThreadPools div.tableRow {
+	width:100%;
+	white-space: nowrap;
+	font-size: 8pt;	
+	margin: 0 auto;
+	clear:both;
+}
+
+.dependencyThreadPools div.tableRow .cell {
+	float:left;
+}
+
+.dependencyThreadPools div.tableRow .header {
+	text-align:right;
+	padding-right:5px;
+}
+
+.dependencyThreadPools div.tableRow .header.left {
+	width:85px;
+}
+
+.dependencyThreadPools div.tableRow .header.right {
+	width:75px;
+}
+
+.dependencyThreadPools div.tableRow .data {
+	font-weight: bold;
+	text-align:right;
+}
+
+.dependencyThreadPools div.tableRow .data.left {
+	width:30px;
+}
+
+.dependencyThreadPools div.tableRow .data.right {
+	width:45px;
+}
+
+.dependencyThreadPools div.monitor {
+	width: 245px; /* we want a fixed width instead of percentage as I want the boxes to be a set size and then fill in as many as can fit in each row ... this allows 3 columns on an iPad */
+	height: 110px;
+}
+
+
+
+
+
+/* override the HREF when we have specified it as a tooltip to not act like a link */
+.dependencyThreadPools div.monitor_data a.tooltip {
+	text-decoration: none;
+	cursor: default;	
+}
+
+.dependencyThreadPools div.monitor_data a.rate {
+	font-weight:bold;
+	color: black;	
+	font-size: 11pt;
+}
+
+.dependencyThreadPools div.rate {
+	padding-top: 1px;
+	clear:both;
+	text-align:right;
+}
+
+.dependencyThreadPools span.rate_value {
+	font-weight:bold;	
+}
+
+
+
+
+
+
+
+.dependencyThreadPools div.monitor div.chart {
+}
+
+.dependencyThreadPools div.monitor div.chart svg {
+}
+
+.dependencyThreadPools div.monitor div.chart svg text {
+	fill: white;
+}
+
+.dependencyThreadPools #hidden {
+    width:1px;
+    height:1px;
+    background: lightgrey;
+    display: none;
+}
+
+
