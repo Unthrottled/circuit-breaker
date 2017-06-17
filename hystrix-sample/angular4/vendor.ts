@@ -18,5 +18,4 @@ import 'jquery';
 import 'd3';
 import 'angular2-ui-switch';
 import 'bootstrap-slider';
-import 'eventsource';
 import 'ng2-nouislider';
