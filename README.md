@@ -28,8 +28,33 @@ There are three controls:
     
 1. Number of Requests synchronously queued to execute.
 1. How long each synchronous request will take.
-1. Wether or not each invokation will throw an exception.
+1. Whether or not each invokation will throw an exception.
 
 
 As an example if the number of requests is set to 50 requests per second, and request latency is set to 500ms per request.
 All you are really going to get is 2 requests per second.
+
+Bare Minimum, to run the sample you will need:
+ - Internet Connection (At least the first time it is run)
+ - [Java 8 runtime](http://blog.acari.io/jvm/2017/05/05/Gradle-Install.html)
+ - [Gradle 2.3+ ](http://blog.acari.io/jvm/2017/05/05/Gradle-Install.html)
+ 
+To run any server in this repository just do the following.
+1. Open a command line with the hystrix-sample as the current working directory.
+1. Run 'gradle bootRun'.
+
+This will start a Spring Boot server running on port 3344, so accessing the application is as simple as going to 
+
+    http://localhost:3344/
+    
+Which should yield something like this:
+
+![sample-project-screenshot](images/sample-screenshot.png)
+
+So the repository has the production ready code already checked into the static resources directory of the Spring Boot project.
+Which is handy if modifying the front-end code is not necessary.
+Howevery if that is something that sounds like up your alley, things you will need:
+
+- An internet connection
+- At least node 6.9.x and npm 3.x.x. (Would highly recommend using the [node docker image](https://hub.docker.com/_/node/))
+
