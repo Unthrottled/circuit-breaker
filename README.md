@@ -67,4 +67,28 @@ Running this command will transpile the code, package it and move all of the new
 - The lint process is run by `npm run lint`, which is currently not part of the build process, but can be run separatly.
 - Live code changes can be visualized by browser sync and webpack watch, which can be started by `npm run watch`. 
 
-//todo: docker
+If installing node on your local machine does not tickle your fancy, here is how docker can be used to manage the application lifecycle.
+
+For starters, you can use my node image that extends the official node image, but also creates a app directory at the root, which will be handy for mounting the code onto.
+
+Accessing the image is as simple as 
+    
+    sudo docker pull alexsimons/node
+
+After the image has downloaded, running the following commands should look something like this:
+
+    sudo docker run --rm -i -t  -v /home/alex/workspace/circuit-breaker/hystrix-sample/:/app alexsimons/node npm run lint   
+    
+This tells docker to start a container, with the hystrix-sample directory mounted on the app directory (your path will vary but the `/app` will remain the same). 
+In addition, when the container finishes running the `npm run lint` command docker will remove the inactive container.
+The `-i -t` tells docker to attach to the running container and run a [tty](http://www.abouttty.com/), respectively. 
+
+The only goof in using docker is when you want to use the watch functionality. 
+I had to create a proxy to localhost:3344 to get around cross-origin requests (CORS), rather than setting CORS headers.
+Since docker containers are really there own thing, its localhost is not the same as the docker host's localhost (your machine).
+So the proxy has to be reconfigured from localhost:3344 to your ip and port 3344.
+This configuration is located in the _webpack.config.js_ file on line 12.
+After configuration all you have to do is run the equivalent command: 
+
+    sudo docker run --rm -i -t  -v /home/alex/workspace/circuit-breaker/hystrix-sample/:/app alexsimons/node npm run watch
+       
