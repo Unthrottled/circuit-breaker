@@ -39,6 +39,8 @@ All you are really going to get is 2 requests per second.
 Also, the application tries to replicate sessions. So you can have more than one tab open and each message stream should be unique.
 I have noticed some odd quirks with chrome and not wanting to make http requests when the application is open in more than one tab in chrome. :|
 
+For more information about Circuit breakers be sure to [checkout my post](http://blog.acari.io/2017/06/18/Circuit-Breakers.html)!
+
 ---
 
 #### Bare Minimum, to run the sample you will need:
