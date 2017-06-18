@@ -53,8 +53,18 @@ Which should yield something like this:
 
 So the repository has the production ready code already checked into the static resources directory of the Spring Boot project.
 Which is handy if modifying the front-end code is not necessary.
-Howevery if that is something that sounds like up your alley, things you will need:
+However if that is something that sounds like up your alley, things you will need:
 
 - An internet connection
 - At least node 6.9.x and npm 3.x.x. (Would highly recommend using the [node docker image](https://hub.docker.com/_/node/))
 
+All of the front end code is stored in the angular4 directory.
+The frontend code lifecycle is managed by some node commands.
+
+- Dependency management during packaging is managed by webpack, which can be run by the command `npm run build`.
+Running this command will transpile the code, package it and move all of the new files into circuit-breaker/hystrix-sample/src/main/resources/static.
+- Typescript transpiling is managed by `npm run compile`
+- The lint process is run by `npm run lint`, which is currently not part of the build process, but can be run separatly.
+- Live code changes can be visualized by browser sync and webpack watch, which can be started by `npm run watch`. 
+
+//todo: docker
