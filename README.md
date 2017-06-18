@@ -99,3 +99,6 @@ After configuration all you have to do is run the equivalent command:
 
     sudo docker run --rm -i -t  -v /home/alex/workspace/circuit-breaker/hystrix-sample/:/app alexsimons/node npm run watch
        
+Enjoy!
+
+-Alex
