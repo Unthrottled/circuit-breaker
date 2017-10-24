@@ -13,7 +13,10 @@
   },
   "sourceMap": true,
   "compileOnSave": true,
-  "files": ["./main.ts", "./vendor.ts"],
+  "files": [
+    "./main.ts",
+    "./vendor.ts"
+  ],
   "exclude": [
     "../node_modules/*",
     "../build/*",
