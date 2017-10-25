@@ -64,7 +64,8 @@
     "ng2-nouislider": "^1.6.1",
     "nouislider": "^10.0.0",
     "bootstrap": "^4.0.0-beta",
-    "popper.js": "^1.12.6"
+    "popper.js": "^1.12.6",
+    "tether": "^1.4.0",
   },
   "devDependencies": {
     "@types/angular": "^1.5.16",
