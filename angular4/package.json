@@ -13,7 +13,7 @@
     "serve": "lite-server -c=bs-config.json",
     "prestart": "npm run compile && npm run build",
     "start": "npm run compile && webpack --display-error-details --watch",
-    "watch":"npm run compile && webpack --display-error-details --watch",
+    "watch": "npm run compile && webpack --display-error-details --watch",
     "pretest": "npm run build",
     "test": "concurrently \"npm run build:watch\" \"karma start karma.conf.js\"",
     "pretest:once": "npm run build",
@@ -61,7 +61,7 @@
     "zone.js": "^0.8.4",
     "angular2-ui-switch": "^1.2.0",
     "bootstrap-slider": "^9.8.0",
-    "ng2-nouislider":"^1.6.1",
+    "ng2-nouislider": "^1.6.1",
     "nouislider": "^10.0.0"
   },
   "devDependencies": {

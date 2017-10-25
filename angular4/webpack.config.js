@@ -9,7 +9,7 @@ var http = require('http');
 var keepAliveAgent = new http.Agent({ keepAlive: true });
 
 var proxyPeel = proxy('/hystrix', {
-    target: 'http://localhost:3344',
+    target: 'http://web-service:3344',
     changeOrigin: true,               // needed for virtual hosted sites
     ws: true,
     agent: keepAliveAgent
@@ -19,7 +19,7 @@ module.exports = {
     entry: {
         'app': './src/main.ts',
         'vendor': './src/vendor.ts',
-        'polyfills': './srcf/polyfills.ts'
+        'polyfills': './src/polyfills.ts'
 
     },
     module: {
@@ -56,7 +56,7 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'html-loader',
-                exclude: [/node_modules/, /build/, /dist/, /angular-project/, /src/, /gradle/, /app/]
+                exclude: [/node_modules/, /build/, /dist/, /angular-project/, /gradle/]
             },
             {
                 test: /\.(html?)$/,
@@ -66,11 +66,11 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
                 loader: 'file-loader?name=assets/[name].[hash].[ext]',
-                exclude: [/node_modules/, /build/, /dist/, /angular-project/, /src/, /gradle/]
+                exclude: [/node_modules/, /build/, /dist/, /angular-project/, /gradle/]
             },
             {
                 test: /\.css$/,
-                exclude: [/node_modules/, /build/, /dist/, /angular-project/, /src/, /gradle/],
+                exclude: [/node_modules/, /build/, /dist/, /angular-project/, /gradle/],
                 use: ExtractTextPlugin.extract({
                     use: 'css-loader'
                 })
