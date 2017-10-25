@@ -17,9 +17,9 @@ var proxyPeel = proxy('/hystrix', {
 
 module.exports = {
     entry: {
-        'app': './angular4/main.ts',
-        'vendor': './angular4/vendor.ts',
-        'polyfills': './angular4/polyfills.ts'
+        'app': './src/main.ts',
+        'vendor': './src/vendor.ts',
+        'polyfills': './srcf/polyfills.ts'
 
     },
     module: {
@@ -49,7 +49,7 @@ module.exports = {
                 loaders: [
                     {
                         loader: 'awesome-typescript-loader',
-                        options: {configFileName: path.resolve(__dirname, 'angular4', 'tsconfig.json')}
+                        options: {configFileName: path.resolve(__dirname, 'src', 'tsconfig.json')}
                     }, 'angular2-template-loader'
                 ]
             },
@@ -99,7 +99,7 @@ module.exports = {
         new webpack.ContextReplacementPlugin(
             // The (\\|\/) piece accounts for path separators in *nix and Windows
             /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-            path.resolve(__dirname, 'angular4'), // location of your src
+            path.resolve(__dirname, 'src'), // location of your src
             {} // a map of your routes
         ),
 
@@ -108,7 +108,7 @@ module.exports = {
         }),
 
         new HtmlWebpackPlugin({
-            template: 'angular4/index.html',
+            template: 'src/index.html',
             inject: 'body'
         }),
         new CleanWebpackPlugin(['dist', 'build'], {
