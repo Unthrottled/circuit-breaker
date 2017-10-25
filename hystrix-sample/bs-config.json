@@ -1,8 +1,0 @@
-{
-  "server": {
-    "baseDir": "angular4",
-    "routes": {
-      "/node_modules": "node_modules"
-    }
-  }
-}

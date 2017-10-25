@@ -2,8 +2,6 @@
 gradle
 /build/
 !gradle/wrapper/gradle-wrapper.jar
-web-service/out
-
 
 ### STS ###
 .apt_generated
@@ -12,7 +10,6 @@ web-service/out
 .project
 .settings
 .springBeans
-scripts
 
 ### IntelliJ IDEA ###
 .idea
@@ -28,12 +25,4 @@ dist/
 nbdist/
 .nb-gradle/
 
-logs/*
-!.gitkeep
-node_modules/
-bower_components/
-tmp
-.DS_Store
-/hystrix-sample/npmInstall.sh
-/hystrix-sample/src/main/resources/static/
-/out/
+*.sh

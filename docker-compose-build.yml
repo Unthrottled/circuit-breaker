@@ -1,0 +1,11 @@
+version: "3"
+services:
+  node-install:
+    build:
+      dockerfile: Dockerfile-install
+      context: ./angular4
+    image: alexsimons/nodeinstall
+    volumes:
+      - ./angular4:/app
+
+#runs the node install
