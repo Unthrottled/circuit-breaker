@@ -8,7 +8,7 @@ ENV GRADLE_USER_HOME=/opt/gradle/.gradle
 
 #Cache gradle dependencies, will only run if any of these files changes
 ADD ./build.gradle ./
-ADD ./grade.properties ./
+#ADD ./grade.properties ./
 ADD ./settings.gradle ./
 #RUN gradle --refresh-dependencies dependencies
 #TODO ACTUALLY MAKE CACHE WORK
