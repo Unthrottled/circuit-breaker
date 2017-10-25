@@ -23,6 +23,6 @@ export class ThrottleComponent extends SliderImpl {
                 return {requestsPerSecond: changedValue, sessionId: sessionId};
             },
             (jsonResponse: any) => jsonResponse.requestsPerSecond,
-            100);
+            20);
     }
 }

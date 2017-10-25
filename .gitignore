@@ -10,6 +10,7 @@ gradle
 .project
 .settings
 .springBeans
+scripts
 
 ### IntelliJ IDEA ###
 .idea
