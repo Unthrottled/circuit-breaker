@@ -12,3 +12,4 @@ import './app/assets/css/simplegrid/1236_grid.css';
 import './app/assets/css/simplegrid/percentage_grid.css';
 import './app/assets/css/hystrix/hystrixCommand.css';
 import './app/assets/css/hystrix/hystrixThreadPool.css';
+import "bootstrap";

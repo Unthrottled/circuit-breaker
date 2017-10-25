@@ -14,4 +14,5 @@ require("./app/assets/css/simplegrid/1236_grid.css");
 require("./app/assets/css/simplegrid/percentage_grid.css");
 require("./app/assets/css/hystrix/hystrixCommand.css");
 require("./app/assets/css/hystrix/hystrixThreadPool.css");
+require("bootstrap");
 //# sourceMappingURL=styles.js.map
