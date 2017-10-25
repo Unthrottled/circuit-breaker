@@ -10,11 +10,14 @@ buildscript {
 	}
 }
 
+group 'io.acari'
+version '1.0'
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
-version = '0.0.1'
 sourceCompatibility = 1.8
 
 repositories {
