@@ -16,7 +16,7 @@ ADD ./settings.gradle ./
 #Add rest of source code :)
 ADD . .
 
-RUN gradle clean shadowJar
+RUN gradle clean build
 
 FROM java:8u111-alpine
 
@@ -24,7 +24,7 @@ WORKDIR /app
 
 COPY --from=packager /app/build/libs /app
 
-ENTRYPOINT ["gradle", "bootRun"]
+ENTRYPOINT ["java", "-jar", "hystrix-sample-1.0.0.jar"]
 
 
 
