@@ -2,6 +2,8 @@
 gradle
 /build/
 !gradle/wrapper/gradle-wrapper.jar
+web-service/out
+
 
 ### STS ###
 .apt_generated

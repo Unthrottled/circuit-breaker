@@ -1,7 +1,5 @@
 package io.acari.stream.util;
 
-import static io.acari.RestControl.INTERVAL;
-
 public class Throttle {
     private static final int DEFAULT_SLEEP = 500;
     private int sleepyTime = DEFAULT_SLEEP;

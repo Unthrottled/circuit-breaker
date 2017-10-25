@@ -4,6 +4,7 @@ import static io.acari.RestControl.INTERVAL;
 
 public class Translator {
     public static final int MILLIS_IN_SECOND = 1000;
+    public static final int MAX_REQUESTS = 20;
 
     public static int calculateRequestsPerSecond(int sleepyTime) {
         return MILLIS_IN_SECOND / (sleepyTime + INTERVAL);
@@ -14,7 +15,7 @@ public class Translator {
     }
 
     private static int convertToMilliseconds(int requestsPerSecond) {
-        return requestsPerSecond >= 100 ? 0 : getDividen(requestsPerSecond) - INTERVAL;
+        return requestsPerSecond >= MAX_REQUESTS ? 0 : getDividen(requestsPerSecond) - INTERVAL;
     }
 
     private static int getDividen(int requestsPerSecond) {

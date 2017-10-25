@@ -18,31 +18,31 @@ public class TranslatorTest {
     }
     @Test
     public void setRequestsPerSecond_1() throws Exception {
-        assertEquals(990, Translator.calculateTimeToWait(-1));
+        assertEquals(950, Translator.calculateTimeToWait(-1));
     }
     @Test
     public void setRequestsPerSecond_10() throws Exception {
-        assertEquals(990, Translator.calculateTimeToWait(-10));
+        assertEquals(950, Translator.calculateTimeToWait(-10));
     }
     @Test
     public void setRequestsPerSecond1() throws Exception {
-        assertEquals(990, Translator.calculateTimeToWait(1));
+        assertEquals(950, Translator.calculateTimeToWait(1));
     }
     @Test
     public void setRequestsPerSecond2() throws Exception {
-        assertEquals(490, Translator.calculateTimeToWait(2));
+        assertEquals(450, Translator.calculateTimeToWait(2));
     }
     @Test
     public void setRequestsPerSecond10() throws Exception {
-        assertEquals(90, Translator.calculateTimeToWait(10));
+        assertEquals(0, Translator.calculateTimeToWait(50));
     }
     @Test
     public void setRequestsPerSecond99() throws Exception {
-        assertEquals(1, Translator.calculateTimeToWait(99));
+        assertEquals(0, Translator.calculateTimeToWait(99));
 
     }
     @Test
     public void setRequestsPerSecond50() throws Exception {
-        assertEquals(10, Translator.calculateTimeToWait(50));
+        assertEquals(0, Translator.calculateTimeToWait(50));
     }
 }
