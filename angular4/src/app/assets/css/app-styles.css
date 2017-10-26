@@ -1,5 +1,5 @@
 .boxed-content {
-    background: #afafaf;
+    background: #152f56;
     z-index: 10000;
     position: relative;
     width: 99.984%;
@@ -13,13 +13,13 @@ body {
     line-height:1.5;
     font-weight: 300;
     color:#f9f9f9;
-    background-color:#464646;
+    background-color:#284A81 !important;
     background-image: url('../images/stripe.png');
     -webkit-text-size-adjust: 100%;
     max-width: 1060px;
     overflow-x: hidden;
     display: block;
-    margin: auto;
+    margin: auto !important;
     padding: 40px 50px;
 }
 
@@ -27,18 +27,18 @@ body {
     display: inline-block;
     margin: 20px;
     padding: 10px;
-    background-color: #e6e6e6;
-    color: #3e3e3e;
+    background-color: #284A81;
+    color: #f9f9f9;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .message-control-container{
-    color: #3e3e3e;
+    color: #f9f9f9;
 }
 
 .stream-data {
-    color: #3e3e3e;
+    color: #f9f9f9;
 }
 
 .app-container {
@@ -56,8 +56,8 @@ body {
 }
 
 .content-container {
-    background: #e6e6e6;
-    color: #3e3e3e;
+    background: #284A81;
+    color: #f9f9f9;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
