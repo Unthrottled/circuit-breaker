@@ -26,7 +26,7 @@ body {
 .hystrix-dashboard-container{
     display: inline-block;
     margin: 20px;
-    padding: 10px;
+    padding: 20px;
     background-color: #284A81;
     color: #f9f9f9;
     border-radius: 5px;
@@ -42,7 +42,6 @@ body {
 }
 
 .app-container {
-    width: 95%;
     padding: 20px;
 }
 
@@ -51,7 +50,6 @@ body {
 }
 
 .dead-mans-switch {
-    float: right;
     display: inline-block;
 }
 
@@ -65,6 +63,15 @@ body {
 
 .app-control-container{
     text-align: center;
+}
+
+label {
+    display: block !important;
+    text-align: left;
+    margin-bottom: 3rem !important;
+
+
+
 }
 
 .stream-table {
