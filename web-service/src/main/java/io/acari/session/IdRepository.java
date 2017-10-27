@@ -8,7 +8,7 @@ import java.security.SecureRandom;
 public class IdRepository {
     private final SecureRandom secureRandom = new SecureRandom();
 
-    public Long getRanbo(){
+    public Long getRanbo() {
         return (long) secureRandom.nextInt();
     }
 }

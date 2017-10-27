@@ -8,7 +8,7 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 @SpringBootApplication
 public class HystrixSampleApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(HystrixSampleApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(HystrixSampleApplication.class, args);
+    }
 }

@@ -9,7 +9,7 @@ public class TroubleMaker {
     private boolean liveness = true;
 
     public Long getMessage(Long aLong) {
-        if(!liveness){
+        if (!liveness) {
             throw new IllegalStateException("I AM DEAD");
         }
         if (delay > 0) {
@@ -33,11 +33,11 @@ public class TroubleMaker {
         this.delay = delay.getMillisecondsDelay();
     }
 
-    public void setLiveness(LivenessParameters liveness) {
-        this.liveness = liveness.isServiceAlive();
-    }
-
     public boolean getLiveness() {
         return liveness;
+    }
+
+    public void setLiveness(LivenessParameters liveness) {
+        this.liveness = liveness.isServiceAlive();
     }
 }

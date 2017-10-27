@@ -10,15 +10,15 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SessionRepository {
     private final ConcurrentHashMap<Long, Session> sessionConcurrentHashMap = new ConcurrentHashMap<>();
 
-    public Session getSession(Long id){
-        return Optional.ofNullable(sessionConcurrentHashMap.get(id)).orElseThrow(()->new IllegalArgumentException("Session Not Found!"));
+    public Session getSession(Long id) {
+        return Optional.ofNullable(sessionConcurrentHashMap.get(id)).orElseThrow(() -> new IllegalArgumentException("Session Not Found!"));
     }
 
-    public void addSession(Session session){
+    public void addSession(Session session) {
         sessionConcurrentHashMap.put(session.getId(), session);
     }
 
-    public boolean removeSession(Long id){
+    public boolean removeSession(Long id) {
         return Objects.nonNull(sessionConcurrentHashMap.remove(id));
     }
 }
