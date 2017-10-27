@@ -14,11 +14,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var message_service_1 = require("./message.service");
+var Observable_1 = require("rxjs/Observable");
 var MessageComponent = (function () {
     function MessageComponent(messageService, zone) {
         this.messageService = messageService;
         this.zone = zone;
         this.messages = [];
+        this.messagesPerSecond = 0;
+        this.messagesRecieved = [];
+        var self = this;
+        Observable_1.Observable.interval(1000)
+            .subscribe(function (int) {
+            self.zone.run(function () {
+                self.messagesPerSecond = self.messagesRecieved.length;
+                self.messagesRecieved = [];
+            });
+        });
     }
     MessageComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -27,6 +38,7 @@ var MessageComponent = (function () {
                 if (_this.messages.length > 20) {
                     _this.messages.shift();
                 }
+                _this.messagesRecieved.push(message);
                 _this.messages.push(message);
             });
         });
@@ -36,7 +48,7 @@ var MessageComponent = (function () {
 MessageComponent = __decorate([
     core_1.Component({
         selector: 'message-ticker',
-        template: "\n        <span class=\"stream-table\">\n                    <div *ngFor=\"let x of messages\">\n                        <span [ngClass]=\"{'worked': x.isSuccess(), 'failed': !x.isSuccess() }\" class=\"stream-data\">{{x.getMessage()}}</span>\n                    </div>\n        </span>\n    "
+        template: "\n        <div [hidden]=\"messagesPerSecond <= 0\">\n            {{messagesPerSecond}} actual messages per second\n        </div>\n        <span class=\"stream-table\">\n                    <div *ngFor=\"let x of messages\">\n                        <span [ngClass]=\"{'worked': x.isSuccess(), 'failed': !x.isSuccess() }\" class=\"stream-data\">{{x.getMessage()}}</span>\n                    </div>\n        </span>\n    "
     }),
     __metadata("design:paramtypes", [message_service_1.MessageService, core_1.NgZone])
 ], MessageComponent);
