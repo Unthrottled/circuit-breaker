@@ -11,7 +11,7 @@ import {SliderImpl} from './slider.implementation';
 
 @Component({
     selector: 'throttle',
-    templateUrl: `./templates/slider.component.htm`,
+    template: require('./slider.component.htm'),
     styleUrls: []
 })
 export class ThrottleComponent extends SliderImpl {

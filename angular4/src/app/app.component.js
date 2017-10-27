@@ -16,7 +16,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'angular-application',
-        templateUrl: './templates/app.component.htm'
+        template: require('./app.component.htm')
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

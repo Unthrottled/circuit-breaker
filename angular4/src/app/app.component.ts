@@ -3,7 +3,7 @@ import './app.component.htm';
 
 @Component({
     selector: 'angular-application',
-    templateUrl: './templates/app.component.htm'
+    template: require('./app.component.htm')
 })
 export class AppComponent {
 

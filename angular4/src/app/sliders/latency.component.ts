@@ -11,7 +11,7 @@ import {HostService} from '../session/host.service';
 
 @Component({
     selector: 'latency',
-    templateUrl: `./templates/slider.component.htm`,
+    template: require('./slider.component.htm'),
     styleUrls: []
 })
 export class LatencyCompontent extends SliderImpl {

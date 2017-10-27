@@ -45,7 +45,7 @@ var ThrottleComponent = (function (_super) {
 ThrottleComponent = __decorate([
     core_1.Component({
         selector: 'throttle',
-        templateUrl: "./templates/slider.component.htm",
+        template: require('./slider.component.htm'),
         styleUrls: []
     }),
     __metadata("design:paramtypes", [session_service_1.SessionService, http_1.Http, host_service_1.HostService, core_1.NgZone])

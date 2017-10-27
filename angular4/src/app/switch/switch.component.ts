@@ -10,7 +10,7 @@ import {HostService} from '../session/host.service';
 
 @Component({
     selector: 'dead-mans-switch',
-    templateUrl: `./templates/switch.component.htm`,
+    template: require('./switch.component.htm'),
     styleUrls: []
 })
 export class SwitchComponent implements OnInit {
