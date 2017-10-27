@@ -50,7 +50,24 @@ body {
 }
 
 .dead-mans-switch {
+    text-align: right;
     display: inline-block;
+}
+
+.dead-mans-switch::before {
+}
+
+.slider-control{
+    display: flex;
+    margin-right: 5px;
+}
+
+.slider-space {
+    width: 2%;
+}
+
+.sliders {
+    width: 90%;
 }
 
 .content-container {
