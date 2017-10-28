@@ -1,6 +1,6 @@
 package io.acari.pojo;
 
-import static io.acari.RestControl.INTERVAL;
+import static io.acari.stream.util.StreamSource.INTERVAL;
 
 public class Translator {
     public static final int MILLIS_IN_SECOND = 1000;

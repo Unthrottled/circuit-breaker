@@ -29,7 +29,6 @@ import static io.acari.pojo.Translator.*;
 @RestController
 @RequestMapping("/hystrix")
 public class RestControl {
-    public static final int INTERVAL = 50;
     private static final Log log = LogFactory.getLog(RestControl.class);
     private SessionRepository sessionRepository;
     private IdRepository idRepository;
