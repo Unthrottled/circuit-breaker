@@ -1,21 +1,21 @@
 <div class="app-container">
     <div class="content-container">
         <span class="app-control-container">
-            <h3>Stream Control</h3>
+            <h3>Message Stream Control</h3>
             <div class="slider-control">
                 <div class="sliders">
                     <label>
                         <throttle></throttle>
-                        Requst Backpressure (Requests Per Second)
+                        Message Backpressure (Messages per second)
                     </label>
                     <label>
                         <latency></latency>
-                        Request Latency(ms)
+                        Message Creation Latency(ms)
                     </label>
                 </div>
                 <div class="slider-space"></div>
                 <label class="dead-mans-switch">
-                    Power Switch
+                    Message Factory Power
                     <dead-mans-switch></dead-mans-switch>
             </label>
             </div>
@@ -25,7 +25,7 @@
 <div class="app-container">
     <div class="content-container">
         <span class="app-control-container">
-            <h3>Stream Output</h3>
+            <h3>Message Stream Output</h3>
             <span class="message-control-container">
                 <message-ticker></message-ticker>
             </span>
