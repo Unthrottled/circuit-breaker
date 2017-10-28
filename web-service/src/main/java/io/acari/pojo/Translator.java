@@ -7,7 +7,7 @@ public class Translator {
     public static final int MAX_REQUESTS = 20;
 
     public static int calculateRequestsPerSecond(int sleepyTime) {
-        return MILLIS_IN_SECOND / (sleepyTime + INTERVAL);
+        return (int) Math.round(MILLIS_IN_SECOND /(double) (sleepyTime + INTERVAL));
     }
 
     public static int calculateTimeToWait(int requestsPerSecond) {
