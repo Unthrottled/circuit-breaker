@@ -1,6 +1,7 @@
 server:
   port: 3344
 
+
 hystrix:
   command:
     default:
@@ -8,3 +9,8 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 200
+logging:
+  level:
+    org:
+      apache:
+        coyote: WARN
