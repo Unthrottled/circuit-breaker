@@ -3,7 +3,6 @@ package io.acari;
 import io.acari.pojo.LatencyParameters;
 import io.acari.pojo.LivenessParameters;
 import io.acari.pojo.ThrottleParameters;
-import io.acari.pojo.Translator;
 import io.acari.session.IdRepository;
 import io.acari.session.Session;
 import io.acari.session.SessionRepository;
@@ -17,11 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
-import rx.Subscriber;
 
 import java.io.IOException;
 import java.time.Instant;
-import java.util.function.Supplier;
 
 import static io.acari.HystrixCommandBean.FALL_BACK;
 import static io.acari.pojo.Translator.*;
@@ -33,12 +30,14 @@ public class RestControl {
     private SessionRepository sessionRepository;
     private IdRepository idRepository;
     private HystrixCommandBean hystrixCommandBean;
+    private final MessageSinkBean messageSinkBean;
 
     @Autowired
-    public RestControl(SessionRepository sessionRepository, IdRepository idRepository, HystrixCommandBean hystrixCommandBean) {
+    public RestControl(SessionRepository sessionRepository, IdRepository idRepository, HystrixCommandBean hystrixCommandBean, MessageSinkBean messageSinkBean) {
         this.sessionRepository = sessionRepository;
         this.idRepository = idRepository;
         this.hystrixCommandBean = hystrixCommandBean;
+        this.messageSinkBean = messageSinkBean;
     }
 
     @RequestMapping("/get/stream-id")
@@ -129,6 +128,7 @@ public class RestControl {
                                 Long result = hystrixCommandBean.processFunction(aLong, troubleMaker::getMessage);
                                 return "Message " + aLong + " " + (result == FALL_BACK ? "Failed. ☹️" : "Succeeded. ☺️");
                             })
+                            .map(messageSinkBean::acceptMessage)
                             .subscribe(aLong -> {
                                 try {
                                     emitter.send(aLong + " @ " + Instant.now());
