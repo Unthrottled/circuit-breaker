@@ -10,15 +10,18 @@ import io.acari.session.SessionRepository;
 import io.acari.stream.util.StreamSource;
 import io.acari.stream.util.Throttle;
 import io.acari.stream.util.TroubleMaker;
+import io.acari.util.ChainableOptional;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import rx.Subscriber;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.util.function.Supplier;
 
 import static io.acari.HystrixCommandBean.FALL_BACK;
 import static io.acari.pojo.Translator.*;
@@ -47,83 +50,112 @@ public class RestControl {
     }
 
     @RequestMapping("/get/{sessionId}/throttle")
-    public ThrottleParameters getThrottleParameters(@PathVariable Long sessionId) {
-        return new ThrottleParameters(sessionRepository.getSession(sessionId));
+    public ResponseEntity<ThrottleParameters> getThrottleParameters(@PathVariable Long sessionId) {
+        return sessionRepository.getSession(sessionId)
+                .map(ThrottleParameters::new)
+                .map(ResponseEntity::ok)
+                .orElseGet(this::notFound);
 
     }
 
     @RequestMapping(value = "/post/{sessionId}/throttle", method = RequestMethod.POST)
-    public ThrottleParameters getThrottleParameters(@PathVariable Long sessionId, @RequestBody ThrottleParameters throttleParameters) {
-        Session session = sessionRepository.getSession(sessionId);
-        int sleepyTimeInMilliseconds = calculateTimeToWait(throttleParameters.getRequestsPerSecond());
-        session.getThrottle().setSleepyTime(sleepyTimeInMilliseconds);
-        return new ThrottleParameters(session);
+    public ResponseEntity<ThrottleParameters> getThrottleParameters(@PathVariable Long sessionId, @RequestBody ThrottleParameters throttleParameters) {
+        return sessionRepository.getSession(sessionId)
+                .map(session -> {
+                    int sleepyTimeInMilliseconds = calculateTimeToWait(throttleParameters.getRequestsPerSecond());
+                    session.getThrottle().setSleepyTime(sleepyTimeInMilliseconds);
+                    return session;
+                })
+                .map(ThrottleParameters::new)
+                .map(ResponseEntity::ok)
+                .orElseGet(this::notFound);
 
     }
 
     @RequestMapping("/get/{sessionId}/latency")
-    public LatencyParameters getLatencyParameters(@PathVariable Long sessionId) {
-        return new LatencyParameters(sessionRepository.getSession(sessionId));
+    public ResponseEntity<LatencyParameters> getLatencyParameters(@PathVariable Long sessionId) {
+        return sessionRepository.getSession(sessionId)
+                .map(LatencyParameters::new)
+                .map(ResponseEntity::ok)
+                .orElseGet(this::notFound);
     }
 
     @RequestMapping(value = "/post/{sessionId}/latency", method = RequestMethod.POST)
-    public LatencyParameters getLatencyParameters(@PathVariable Long sessionId, @RequestBody LatencyParameters latencyParameters) {
-        Session session = sessionRepository.getSession(sessionId);
-        session.getTroubleMaker().setDelay(latencyParameters);
-        return new LatencyParameters(session);
+    public ResponseEntity<LatencyParameters> getLatencyParameters(@PathVariable Long sessionId, @RequestBody LatencyParameters latencyParameters) {
+        return sessionRepository.getSession(sessionId)
+                .map(session -> {
+                    session.getTroubleMaker().setDelay(latencyParameters);
+                    return session;
+                })
+                .map(LatencyParameters::new)
+                .map(ResponseEntity::ok)
+                .orElseGet(this::notFound);
     }
 
     @RequestMapping("/get/{sessionId}/liveness")
-    public LivenessParameters getLiveness(@PathVariable Long sessionId) {
-        return new LivenessParameters(sessionRepository.getSession(sessionId));
+    public ResponseEntity<LivenessParameters> getLiveness(@PathVariable Long sessionId) {
+        return sessionRepository.getSession(sessionId)
+                .map(LivenessParameters::new)
+                .map(ResponseEntity::ok)
+                .orElseGet(this::notFound);
     }
 
     @RequestMapping("/post/{sessionId}/liveness")
-    public LivenessParameters getLiveness(@PathVariable Long sessionId, @RequestBody LivenessParameters livenessParameters) {
-        Session session = sessionRepository.getSession(sessionId);
-        session.getTroubleMaker().setLiveness(livenessParameters);
-        return new LivenessParameters(session);
+    public ResponseEntity<LivenessParameters> getLiveness(@PathVariable Long sessionId, @RequestBody LivenessParameters livenessParameters) {
+        return sessionRepository.getSession(sessionId)
+                .map(session -> {
+                    session.getTroubleMaker().setLiveness(livenessParameters);
+                    return session;
+                })
+                .map(LivenessParameters::new)
+                .map(ResponseEntity::ok)
+                .orElseGet(this::notFound);
+
+    }
+
+    private <T> ResponseEntity<T> notFound() {
+        return ResponseEntity.<T>notFound().build();
     }
 
     @RequestMapping("/{sessionId}/test.stream")
-    public SseEmitter testo(@PathVariable Long sessionId) {
-        SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
-        Subscriber<String> subscriber = new Subscriber<String>() {
-            @Override
-            public void onCompleted() {
-                try {
-                    emitter.send("Stream Complete.");
-                } catch (IOException | IllegalStateException e) {
-                } finally {
-                    emitter.complete();
-                    sessionRepository.removeSession(sessionId);
-                }
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                log.error("An error occurred when sending messages.", e);
-                emitter.complete();
-                sessionRepository.removeSession(sessionId);
-            }
-
-            @Override
-            public void onNext(String aLong) {
-                try {
-                    emitter.send(aLong + " @ " + Instant.now());
-                } catch (IOException | IllegalStateException e) {
-                }
-            }
-        };
-        Session session = sessionRepository.getSession(sessionId);
-        TroubleMaker troubleMaker = session.getTroubleMaker();
-        Throttle iCantDive55 = session.getThrottle();
-        StreamSource.stream.map(iCantDive55::whoaDoggy)
-                .map(aLong -> {
-                    Long result = hystrixCommandBean.processFunction(aLong, troubleMaker::getMessage);
-                    return "Message " + aLong + " " + (result == FALL_BACK ? "Failed. ☹️" : "Succeeded. ☺️");
+    public ResponseEntity<SseEmitter> testo(@PathVariable Long sessionId) {
+        return sessionRepository.getSession(sessionId)
+                .map(session -> {
+                    SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
+                    TroubleMaker troubleMaker = session.getTroubleMaker();
+                    Throttle iCantDive55 = session.getThrottle();
+                    StreamSource.stream
+                            .map(iCantDive55::whoaDoggy)
+                            .map(aLong -> {
+                                Long result = hystrixCommandBean.processFunction(aLong, troubleMaker::getMessage);
+                                return "Message " + aLong + " " + (result == FALL_BACK ? "Failed. ☹️" : "Succeeded. ☺️");
+                            })
+                            .subscribe(aLong -> {
+                                try {
+                                    emitter.send(aLong + " @ " + Instant.now());
+                                } catch (IOException | IllegalStateException e) {
+                                    log.info("Issue sending message for session " + sessionId + " " + e.getMessage());
+                                    throw new IllegalStateException("Listener stopped listening");
+                                }
+                            }, e -> {
+                                ChainableOptional
+                                        .ofNullable(e)
+                                        .filter(t -> !(t instanceof IllegalStateException))
+                                        .ifPresent(t -> log.error("An error occurred when sending messages.", t));
+                                sessionRepository.removeSession(sessionId);
+                                emitter.complete();
+                            }, () -> {
+                                try {
+                                    emitter.send("Stream Complete.");
+                                } catch (IOException | IllegalStateException e) {
+                                } finally {
+                                    emitter.complete();
+                                    sessionRepository.removeSession(sessionId);
+                                }
+                            });
+                    return emitter;
                 })
-                .subscribe(subscriber);
-        return emitter;
+                .map(ResponseEntity::ok)
+                .orElseGet(this::notFound);
     }
 }

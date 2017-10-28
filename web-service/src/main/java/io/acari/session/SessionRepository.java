@@ -1,5 +1,6 @@
 package io.acari.session;
 
+import io.acari.util.ChainableOptional;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
@@ -10,8 +11,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SessionRepository {
     private final ConcurrentHashMap<Long, Session> sessionConcurrentHashMap = new ConcurrentHashMap<>();
 
-    public Session getSession(Long id) {
-        return Optional.ofNullable(sessionConcurrentHashMap.get(id)).orElseThrow(() -> new IllegalArgumentException("Session Not Found!"));
+    public ChainableOptional<Session> getSession(Long id) {
+        return ChainableOptional.ofNullable(sessionConcurrentHashMap.get(id));
     }
 
     public void addSession(Session session) {
