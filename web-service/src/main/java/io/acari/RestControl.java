@@ -15,19 +15,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+import rx.Observable;
 
 import java.io.IOException;
 import java.time.Instant;
 
 import static io.acari.HystrixCommandBean.FALL_BACK;
-import static io.acari.pojo.Translator.*;
+import static io.acari.pojo.Translator.calculateTimeToWait;
 
 @RestController
 @RequestMapping("/hystrix")
 public class RestControl {
     private static final Log log = LogFactory.getLog(RestControl.class);
-    private SessionRepository sessionRepository;
     private final SessionManager sessionManager;
+    private SessionRepository sessionRepository;
 
     @Autowired
     public RestControl(SessionRepository sessionRepository,
@@ -43,72 +44,61 @@ public class RestControl {
 
     @RequestMapping("/get/{sessionId}/throttle")
     public ResponseEntity<ThrottleParameters> getThrottleParameters(@PathVariable Long sessionId) {
-        return sessionRepository.getSession(sessionId)
-                .map(ThrottleParameters::new)
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(this.notFound())
-                .toBlocking().first();
+        return respondWith(sessionRepository.getSession(sessionId)
+                .map(ThrottleParameters::new));
 
     }
 
     @RequestMapping(value = "/post/{sessionId}/throttle", method = RequestMethod.POST)
     public ResponseEntity<ThrottleParameters> getThrottleParameters(@PathVariable Long sessionId, @RequestBody ThrottleParameters throttleParameters) {
-        return sessionRepository.getSession(sessionId)
+        return respondWith(sessionRepository.getSession(sessionId)
                 .map(session -> {
                     int sleepyTimeInMilliseconds = calculateTimeToWait(throttleParameters.getRequestsPerSecond());
                     session.getThrottle().setSleepyTime(sleepyTimeInMilliseconds);
                     return session;
                 })
-                .map(ThrottleParameters::new)
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(this.notFound())
-                .toBlocking().first();
+                .map(ThrottleParameters::new));
 
     }
 
     @RequestMapping("/get/{sessionId}/latency")
     public ResponseEntity<LatencyParameters> getLatencyParameters(@PathVariable Long sessionId) {
-        return sessionRepository.getSession(sessionId)
-                .map(LatencyParameters::new)
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(this.notFound())
-                .toBlocking().first();
+        return respondWith(sessionRepository.getSession(sessionId)
+                .map(LatencyParameters::new));
     }
 
     @RequestMapping(value = "/post/{sessionId}/latency", method = RequestMethod.POST)
     public ResponseEntity<LatencyParameters> getLatencyParameters(@PathVariable Long sessionId, @RequestBody LatencyParameters latencyParameters) {
-        return sessionRepository.getSession(sessionId)
+        return respondWith(sessionRepository.getSession(sessionId)
                 .map(session -> {
                     session.getTroubleMaker().setDelay(latencyParameters);
                     return session;
                 })
-                .map(LatencyParameters::new)
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(this.notFound())
-                .toBlocking().first();
+                .map(LatencyParameters::new));
     }
 
     @RequestMapping("/get/{sessionId}/liveness")
     public ResponseEntity<LivenessParameters> getLiveness(@PathVariable Long sessionId) {
-        return sessionRepository.getSession(sessionId)
-                .map(LivenessParameters::new)
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(this.notFound())
-                .toBlocking().first();
+        return respondWith(sessionRepository.getSession(sessionId)
+                .map(LivenessParameters::new));
     }
 
     @RequestMapping("/post/{sessionId}/liveness")
     public ResponseEntity<LivenessParameters> getLiveness(@PathVariable Long sessionId, @RequestBody LivenessParameters livenessParameters) {
-        return sessionRepository.getSession(sessionId)
+        return respondWith(sessionRepository.getSession(sessionId)
                 .map(session -> {
                     session.getTroubleMaker().setLiveness(livenessParameters);
                     return session;
                 })
-                .map(LivenessParameters::new)
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(this.notFound())
-                .toBlocking().first();
+                .map(LivenessParameters::new));
 
+    }
+
+    private <T> ResponseEntity<T> respondWith(Observable<T> observable) {
+        return observable.map(ResponseEntity::ok)
+                .defaultIfEmpty(this.notFound())
+                .toBlocking()
+                .first();
     }
 
     private <T> ResponseEntity<T> notFound() {
@@ -117,7 +107,7 @@ public class RestControl {
 
     @RequestMapping("/{sessionId}/test.stream")
     public ResponseEntity<SseEmitter> testo(@PathVariable Long sessionId) {
-        return sessionRepository.getSession(sessionId)
+        return respondWith(sessionRepository.getSession(sessionId)
                 .map(session -> {
                     SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
                     TroubleMaker troubleMaker = session.getTroubleMaker();
@@ -154,9 +144,6 @@ public class RestControl {
                                 }
                             });
                     return emitter;
-                })
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(this.notFound())
-                .toBlocking().first();
+                }));
     }
 }
