@@ -1,23 +1,35 @@
 package io.acari;
 
+import com.netflix.hystrix.HystrixObservableCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.stereotype.Component;
+import rx.Observable;
 
 import java.util.function.UnaryOperator;
 
-@Component
-public class MessageSinkBean {
-    private static final long FALL_BACK = -9001L;
+public class MessageSinkBean extends HystrixObservableCommand<String> {
+    private final String aString;
 
-    @HystrixCommand(fallbackMethod = "fallback", groupKey = "messageSink",
-            threadPoolKey = "messageSink")
-    public String sendMessage(String message) {
-        return message;
+
+    public MessageSinkBean(Setter setter,
+                           String aString) {
+        super(setter);
+        this.aString = aString;
     }
 
-
-    public String fallback(String message) {
-        return "SHEEEEEEIIIIITTTTTTT";
+    @Override
+    protected Observable<String> construct() {
+        return observe();
     }
 
+    @Override
+    public Observable<String> observe() {
+        return Observable.just(aString);
+    }
+
+    @Override
+    protected Observable<String> resumeWithFallback() {
+        return Observable.just("SHEEEEEEIIIIITTTTTTT");
+    }
 }
+

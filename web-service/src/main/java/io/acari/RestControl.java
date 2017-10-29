@@ -27,17 +27,14 @@ import static io.acari.pojo.Translator.*;
 @RequestMapping("/hystrix")
 public class RestControl {
     private static final Log log = LogFactory.getLog(RestControl.class);
-    private final MessageSinkBean messageSinkBean;
     private SessionRepository sessionRepository;
     private IdRepository idRepository;
 
     @Autowired
     public RestControl(SessionRepository sessionRepository,
-                       IdRepository idRepository,
-                       MessageSinkBean messageSinkBean) {
+                       IdRepository idRepository) {
         this.sessionRepository = sessionRepository;
         this.idRepository = idRepository;
-        this.messageSinkBean = messageSinkBean;
     }
 
     @RequestMapping("/get/stream-id")
@@ -122,14 +119,16 @@ public class RestControl {
                     SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
                     TroubleMaker troubleMaker = session.getTroubleMaker();
                     Throttle iCantDive55 = session.getThrottle();
+                    final HystrixCommandBean hystrixCommandBean = new HystrixCommandBean(session.getCommandSetter(), troubleMaker::getMessage);
                     StreamSource.stream
                             .map(iCantDive55::whoaDoggy)
-                            .flatMap(aLong ->
-                                    new HystrixCommandBean(session.getCommandSetter(),
-                                            aLong, troubleMaker::getMessage)
-                                            .construct()
-                                            .map(result -> "Message " + aLong + " " + (result == FALL_BACK ? "Failed. ☹️" : "Succeeded. ☺️")))
-                            .map(messageSinkBean::sendMessage)
+                            .flatMap(aLong -> hystrixCommandBean
+                                    .setContent(aLong)
+                                    .observe()
+                                    .map(result -> "Message " + aLong + " " + (result == FALL_BACK ? "Failed. ☹️" : "Succeeded. ☺️")))
+                            .flatMap(message ->
+                                    new MessageSinkBean(session.getSinkCommandSetter(), message)
+                                            .observe())
                             .subscribe(aLong -> {
                                 try {
                                     emitter.send(aLong + " @ " + Instant.now());

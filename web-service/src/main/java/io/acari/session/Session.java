@@ -11,6 +11,7 @@ public class Session {
     private final TroubleMaker troubleMaker;
     private final Throttle throttle;
     private final HystrixObservableCommand.Setter commandSetter;
+    private final HystrixObservableCommand.Setter sinkCommandSetter;
 
     public Session(Long id, TroubleMaker troubleMaker, Throttle throttle) {
         this.id = id;
@@ -18,8 +19,12 @@ public class Session {
         this.throttle = throttle;
         this.commandSetter =
                 HystrixObservableCommand.Setter
-                        .withGroupKey(HystrixCommandGroupKey.Factory.asKey("ExampleGroup"))
-                .andCommandKey(HystrixCommandKey.Factory.asKey("messageFactory" + id));
+                        .withGroupKey(HystrixCommandGroupKey.Factory.asKey("CommandGroup"))
+                .andCommandKey(HystrixCommandKey.Factory.asKey("msgFact" + id));
+        this.sinkCommandSetter =
+                HystrixObservableCommand.Setter
+                        .withGroupKey(HystrixCommandGroupKey.Factory.asKey("SinkGroup"))
+                .andCommandKey(HystrixCommandKey.Factory.asKey("sendMsg" + id));
     }
 
     public Long getId() {
@@ -38,4 +43,7 @@ public class Session {
         return commandSetter;
     }
 
+    public HystrixObservableCommand.Setter getSinkCommandSetter() {
+        return sinkCommandSetter;
+    }
 }
