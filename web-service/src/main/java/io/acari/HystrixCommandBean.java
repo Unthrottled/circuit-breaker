@@ -10,7 +10,7 @@ public class HystrixCommandBean {
     public static final long FALL_BACK = -9001L;
 
     @HystrixCommand(fallbackMethod = "fallback")
-    public Long processFunction(Long aLong, UnaryOperator<Long> unaryOperator) {
+    public Long messageFactory(Long aLong, UnaryOperator<Long> unaryOperator) {
         return unaryOperator.apply(aLong);
     }
 

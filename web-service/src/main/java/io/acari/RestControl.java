@@ -125,10 +125,10 @@ public class RestControl {
                     StreamSource.stream
                             .map(iCantDive55::whoaDoggy)
                             .map(aLong -> {
-                                Long result = hystrixCommandBean.processFunction(aLong, troubleMaker::getMessage);
+                                Long result = hystrixCommandBean.messageFactory(aLong, troubleMaker::getMessage);
                                 return "Message " + aLong + " " + (result == FALL_BACK ? "Failed. ☹️" : "Succeeded. ☺️");
                             })
-                            .map(messageSinkBean::acceptMessage)
+                            .map(messageSinkBean::sendMessage)
                             .subscribe(aLong -> {
                                 try {
                                     emitter.send(aLong + " @ " + Instant.now());

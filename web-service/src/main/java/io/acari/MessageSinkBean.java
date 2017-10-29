@@ -11,7 +11,7 @@ public class MessageSinkBean {
 
     @HystrixCommand(fallbackMethod = "fallback", groupKey = "messageSink",
             threadPoolKey = "messageSink")
-    public String acceptMessage(String message) {
+    public String sendMessage(String message) {
         return message;
     }
 
