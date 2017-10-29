@@ -9,5 +9,5 @@ public class StreamSource {
     public static final int INTERVAL = 50;
     public static final Observable<Long> stream = Observable.interval(INTERVAL, TimeUnit.MILLISECONDS)
             .onBackpressureDrop()
-            .subscribeOn(Schedulers.io());
+            .observeOn(Schedulers.io());
 }
