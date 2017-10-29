@@ -2,6 +2,7 @@ package io.acari.session;
 
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.HystrixCommandKey;
+import com.netflix.hystrix.HystrixCommandProperties;
 import com.netflix.hystrix.HystrixObservableCommand;
 import io.acari.stream.util.Throttle;
 import io.acari.stream.util.TroubleMaker;

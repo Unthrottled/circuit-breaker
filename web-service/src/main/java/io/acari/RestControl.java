@@ -119,11 +119,9 @@ public class RestControl {
                     SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
                     TroubleMaker troubleMaker = session.getTroubleMaker();
                     Throttle iCantDive55 = session.getThrottle();
-                    final HystrixCommandBean hystrixCommandBean = new HystrixCommandBean(session.getCommandSetter(), troubleMaker::getMessage);
                     StreamSource.stream
                             .map(iCantDive55::whoaDoggy)
-                            .flatMap(aLong -> hystrixCommandBean
-                                    .setContent(aLong)
+                            .flatMap(aLong -> new HystrixCommandBean(session.getCommandSetter(), aLong, troubleMaker::getMessage)
                                     .observe()
                                     .map(result -> "Message " + aLong + " " + (result == FALL_BACK ? "Failed. ☹️" : "Succeeded. ☺️")))
                             .flatMap(message ->

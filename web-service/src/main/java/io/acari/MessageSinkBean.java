@@ -19,11 +19,6 @@ public class MessageSinkBean extends HystrixObservableCommand<String> {
 
     @Override
     protected Observable<String> construct() {
-        return observe();
-    }
-
-    @Override
-    public Observable<String> observe() {
         return Observable.just(aString);
     }
 
