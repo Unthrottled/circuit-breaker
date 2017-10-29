@@ -3,8 +3,7 @@ package io.acari;
 import io.acari.pojo.LatencyParameters;
 import io.acari.pojo.LivenessParameters;
 import io.acari.pojo.ThrottleParameters;
-import io.acari.session.IdRepository;
-import io.acari.session.Session;
+import io.acari.session.SessionManager;
 import io.acari.session.SessionRepository;
 import io.acari.stream.util.StreamSource;
 import io.acari.stream.util.Throttle;
@@ -28,20 +27,18 @@ import static io.acari.pojo.Translator.*;
 public class RestControl {
     private static final Log log = LogFactory.getLog(RestControl.class);
     private SessionRepository sessionRepository;
-    private IdRepository idRepository;
+    private final SessionManager sessionManager;
 
     @Autowired
     public RestControl(SessionRepository sessionRepository,
-                       IdRepository idRepository) {
+                       SessionManager sessionManager) {
         this.sessionRepository = sessionRepository;
-        this.idRepository = idRepository;
+        this.sessionManager = sessionManager;
     }
 
     @RequestMapping("/get/stream-id")
     public Long streamId() {
-        Long ranbo = idRepository.getRanbo();
-        sessionRepository.addSession(new Session(ranbo, new TroubleMaker(), new Throttle()));
-        return ranbo;
+        return sessionManager.fetchUnusedSession().getId();
     }
 
     @RequestMapping("/get/{sessionId}/throttle")
@@ -49,7 +46,8 @@ public class RestControl {
         return sessionRepository.getSession(sessionId)
                 .map(ThrottleParameters::new)
                 .map(ResponseEntity::ok)
-                .orElseGet(this::notFound);
+                .defaultIfEmpty(this.notFound())
+                .toBlocking().first();
 
     }
 
@@ -63,7 +61,8 @@ public class RestControl {
                 })
                 .map(ThrottleParameters::new)
                 .map(ResponseEntity::ok)
-                .orElseGet(this::notFound);
+                .defaultIfEmpty(this.notFound())
+                .toBlocking().first();
 
     }
 
@@ -72,7 +71,8 @@ public class RestControl {
         return sessionRepository.getSession(sessionId)
                 .map(LatencyParameters::new)
                 .map(ResponseEntity::ok)
-                .orElseGet(this::notFound);
+                .defaultIfEmpty(this.notFound())
+                .toBlocking().first();
     }
 
     @RequestMapping(value = "/post/{sessionId}/latency", method = RequestMethod.POST)
@@ -84,7 +84,8 @@ public class RestControl {
                 })
                 .map(LatencyParameters::new)
                 .map(ResponseEntity::ok)
-                .orElseGet(this::notFound);
+                .defaultIfEmpty(this.notFound())
+                .toBlocking().first();
     }
 
     @RequestMapping("/get/{sessionId}/liveness")
@@ -92,7 +93,8 @@ public class RestControl {
         return sessionRepository.getSession(sessionId)
                 .map(LivenessParameters::new)
                 .map(ResponseEntity::ok)
-                .orElseGet(this::notFound);
+                .defaultIfEmpty(this.notFound())
+                .toBlocking().first();
     }
 
     @RequestMapping("/post/{sessionId}/liveness")
@@ -104,7 +106,8 @@ public class RestControl {
                 })
                 .map(LivenessParameters::new)
                 .map(ResponseEntity::ok)
-                .orElseGet(this::notFound);
+                .defaultIfEmpty(this.notFound())
+                .toBlocking().first();
 
     }
 
@@ -139,20 +142,21 @@ public class RestControl {
                                         .ofNullable(e)
                                         .filter(t -> !(t instanceof IllegalStateException))
                                         .ifPresent(t -> log.error("An error occurred when sending messages.", t));
-                                sessionRepository.removeSession(sessionId);
+                                sessionManager.discardSession(session);
                                 emitter.complete();
                             }, () -> {
                                 try {
                                     emitter.send("Stream Complete.");
-                                } catch (IOException | IllegalStateException e) {
+                                } catch (IOException | IllegalStateException ignored) {
                                 } finally {
                                     emitter.complete();
-                                    sessionRepository.removeSession(sessionId);
+                                    sessionManager.discardSession(session);
                                 }
                             });
                     return emitter;
                 })
                 .map(ResponseEntity::ok)
-                .orElseGet(this::notFound);
+                .defaultIfEmpty(this.notFound())
+                .toBlocking().first();
     }
 }
