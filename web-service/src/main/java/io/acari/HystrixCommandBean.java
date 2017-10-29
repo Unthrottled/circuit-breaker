@@ -1,22 +1,31 @@
 package io.acari;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import org.springframework.stereotype.Component;
+import com.netflix.hystrix.HystrixObservableCommand;
+import rx.Observable;
 
 import java.util.function.UnaryOperator;
 
-@Component
-public class HystrixCommandBean {
+public class HystrixCommandBean extends HystrixObservableCommand<Long> {
     public static final long FALL_BACK = -9001L;
+    private final Long aLong;
+    private final UnaryOperator<Long> unaryOperator;
 
-    @HystrixCommand(fallbackMethod = "fallback")
-    public Long messageFactory(Long aLong, UnaryOperator<Long> unaryOperator) {
-        return unaryOperator.apply(aLong);
+
+    public HystrixCommandBean(Setter setter,
+                              Long aLong,
+                              UnaryOperator<Long> unaryOperator) {
+        super(setter);
+        this.aLong = aLong;
+        this.unaryOperator = unaryOperator;
     }
 
-
-    public Long fallback(Long aLong, UnaryOperator<Long> unaryOperator) {
-        return FALL_BACK;
+    @Override
+    protected Observable<Long> construct() {
+        return Observable.just(unaryOperator.apply(aLong));
     }
 
+    @Override
+    protected Observable<Long> resumeWithFallback() {
+        return Observable.just(FALL_BACK);
+    }
 }

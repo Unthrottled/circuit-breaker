@@ -27,16 +27,16 @@ import static io.acari.pojo.Translator.*;
 @RequestMapping("/hystrix")
 public class RestControl {
     private static final Log log = LogFactory.getLog(RestControl.class);
+    private final MessageSinkBean messageSinkBean;
     private SessionRepository sessionRepository;
     private IdRepository idRepository;
-    private HystrixCommandBean hystrixCommandBean;
-    private final MessageSinkBean messageSinkBean;
 
     @Autowired
-    public RestControl(SessionRepository sessionRepository, IdRepository idRepository, HystrixCommandBean hystrixCommandBean, MessageSinkBean messageSinkBean) {
+    public RestControl(SessionRepository sessionRepository,
+                       IdRepository idRepository,
+                       MessageSinkBean messageSinkBean) {
         this.sessionRepository = sessionRepository;
         this.idRepository = idRepository;
-        this.hystrixCommandBean = hystrixCommandBean;
         this.messageSinkBean = messageSinkBean;
     }
 
@@ -124,10 +124,11 @@ public class RestControl {
                     Throttle iCantDive55 = session.getThrottle();
                     StreamSource.stream
                             .map(iCantDive55::whoaDoggy)
-                            .map(aLong -> {
-                                Long result = hystrixCommandBean.messageFactory(aLong, troubleMaker::getMessage);
-                                return "Message " + aLong + " " + (result == FALL_BACK ? "Failed. ☹️" : "Succeeded. ☺️");
-                            })
+                            .flatMap(aLong ->
+                                    new HystrixCommandBean(session.getCommandSetter(),
+                                            aLong, troubleMaker::getMessage)
+                                            .construct()
+                                            .map(result -> "Message " + aLong + " " + (result == FALL_BACK ? "Failed. ☹️" : "Succeeded. ☺️")))
                             .map(messageSinkBean::sendMessage)
                             .subscribe(aLong -> {
                                 try {
