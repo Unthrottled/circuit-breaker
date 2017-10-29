@@ -34,4 +34,5 @@ import {WindowRef} from './util/window';
     providers: [HostService, SessionService, MessageService, WindowRef]
 })
 export class AppModule {
+
 }
