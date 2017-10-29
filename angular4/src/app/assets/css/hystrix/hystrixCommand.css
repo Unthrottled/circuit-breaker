@@ -32,8 +32,11 @@
 .dependencies div.monitor p.name {
 	font-weight:bold;
 	font-size: 10pt;
+	position: absolute;
 	text-align: right;	
 	padding-bottom: 5px;
+	margin-bottom: 5px;
+	color: black;
 }
 
 .dependencies div.monitor_data {
