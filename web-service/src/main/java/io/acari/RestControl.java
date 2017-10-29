@@ -105,7 +105,7 @@ public class RestControl {
         return ResponseEntity.<T>notFound().build();
     }
 
-    @RequestMapping("/{sessionId}/test.stream")
+    @RequestMapping("/{sessionId}/message.stream")
     public ResponseEntity<SseEmitter> testo(@PathVariable Long sessionId) {
         return respondWith(sessionRepository.getSession(sessionId)
                 .map(session -> {

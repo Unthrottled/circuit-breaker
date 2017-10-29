@@ -26,7 +26,7 @@ var MessageService = (function () {
         return this.sessionService.fetchSessionId()
             .flatMap(function (sessionId) {
             return Observable_1.Observable.create(function (observer) {
-                var eventSource = new EventSource(_this.hostService.fetchUrl() + 'hystrix/' + sessionId + '/test.stream');
+                var eventSource = new EventSource(_this.hostService.fetchUrl() + 'hystrix/' + sessionId + '/message.stream');
                 eventSource.onmessage = function (x) {
                     observer.next(new message_1.Message(x.data));
                 };

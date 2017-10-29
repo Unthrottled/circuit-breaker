@@ -16,7 +16,7 @@ export class MessageService {
         return this.sessionService.fetchSessionId()
             .flatMap(sessionId => {
                 return Observable.create((observer: Observer<Message>) => {
-                    let eventSource = new EventSource(this.hostService.fetchUrl() + 'hystrix/' + sessionId + '/test.stream');
+                    let eventSource = new EventSource(this.hostService.fetchUrl() + 'hystrix/' + sessionId + '/message.stream');
                     eventSource.onmessage = x => {
                         observer.next(new Message(x.data));
                     };
