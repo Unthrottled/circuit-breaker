@@ -51,7 +51,7 @@ module.exports = {
             },
             {
                 test: /\.ts$/,
-                loaders: [
+                loaders: ['awesome-typescript-loader', 'angular2-template-loader',
                     {
                         loader: 'awesome-typescript-loader',
                         options: {configFileName: path.resolve(__dirname, 'src', 'tsconfig.json')}
@@ -61,7 +61,7 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'html-loader',
-                exclude: [/node_modules/, /build/, /dist/, /angular-project/, /gradle/]
+                exclude: [/node_modules/, /build/, /dist/, /angular-project/, /app/]
             },
             {
                 test: /\.(html)$/,
