@@ -106,13 +106,13 @@ label {
 }
 
 .failed {
-    color: red;
+    color: firebrick;
     font-weight: bold;
     font-size: 0.75rem;
 }
 
 .worked {
     color: green;
-    font-weight: bold;
+    font-weight: bo;
     font-size: 0.75rem;
 }
