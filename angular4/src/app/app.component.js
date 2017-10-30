@@ -16,6 +16,13 @@ var AppComponent = (function () {
     function AppComponent(sessionService) {
         this.sessionService = sessionService;
     }
+    Object.defineProperty(AppComponent.prototype, "titleRef", {
+        get: function () {
+            return require('./assets/images/hystrix-title.png');
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(AppComponent.prototype, "sessionId", {
         get: function () {
             return this.sessionService.fetchSessionId();

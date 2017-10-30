@@ -12,6 +12,10 @@ export class AppComponent {
 
     }
 
+    get titleRef(): string {
+        return require('./assets/images/hystrix-title.png');
+    }
+
     get sessionId() : Observable<string> {
         return this.sessionService.fetchSessionId();
     }
