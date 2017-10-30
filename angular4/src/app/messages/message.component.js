@@ -35,7 +35,7 @@ var MessageComponent = (function () {
         var _this = this;
         this.messageService.fetchMessages().subscribe(function (message) {
             _this.zone.run(function () {
-                if (_this.messages.length > 20) {
+                if (_this.messages.length > 15) {
                     _this.messages.shift();
                 }
                 _this.messagesRecieved.push(message);

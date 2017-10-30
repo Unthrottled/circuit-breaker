@@ -31,7 +31,7 @@ export class MessageComponent implements OnInit {
     ngOnInit(): void {
         this.messageService.fetchMessages().subscribe(message => {
             this.zone.run(() => {
-                if (this.messages.length > 20) {
+                if (this.messages.length > 15) {
                     this.messages.shift();
                 }
                 this.messagesRecieved.push(message);
