@@ -30,7 +30,9 @@ body {
 
 .hystrix-dashboard-container{
     display: inline-block;
-    margin: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
     padding: 20px;
     background-color: #284A81;
     color: #f9f9f9;
