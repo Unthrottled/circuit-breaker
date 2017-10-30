@@ -14,6 +14,7 @@ import {HostService} from './session/host.service';
 import {SessionService} from './session/session.service';
 import {MessageService} from './messages/message.service';
 import {WindowRef} from './util/window';
+import {HystrixDashboardComponent} from "./hystrix/HystrixDashboard.component";
 
 @NgModule({
     imports: [
@@ -28,7 +29,8 @@ import {WindowRef} from './util/window';
         MessageComponent,
         SwitchComponent,
         ThrottleComponent,
-        LatencyCompontent
+        LatencyCompontent,
+        HystrixDashboardComponent
     ],
     bootstrap: [AppComponent],
     providers: [HostService, SessionService, MessageService, WindowRef]

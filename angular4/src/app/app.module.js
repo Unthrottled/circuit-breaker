@@ -21,6 +21,7 @@ var host_service_1 = require("./session/host.service");
 var session_service_1 = require("./session/session.service");
 var message_service_1 = require("./messages/message.service");
 var window_1 = require("./util/window");
+var HystrixDashboard_component_1 = require("./hystrix/HystrixDashboard.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -40,7 +41,8 @@ AppModule = __decorate([
             message_component_1.MessageComponent,
             switch_component_1.SwitchComponent,
             throttle_component_1.ThrottleComponent,
-            latency_component_1.LatencyCompontent
+            latency_component_1.LatencyCompontent,
+            HystrixDashboard_component_1.HystrixDashboardComponent
         ],
         bootstrap: [app_component_1.AppComponent],
         providers: [host_service_1.HostService, session_service_1.SessionService, message_service_1.MessageService, window_1.WindowRef]

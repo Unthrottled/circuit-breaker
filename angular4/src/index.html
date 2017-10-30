@@ -9,48 +9,6 @@
 </head>
 <body>
 <div class="boxed-content">
-    <div class="hystrix-dashboard-container">
-        <div class="hystrix-dashbord">
-            <div id="header">
-                <h2><span id="title_name"></span></h2>
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="menubar">
-                        <div class="title">
-                            Circuit
-                        </div>
-                        <div class="menu_actions">
-                            Sort:
-                            <a href="javascript://" onclick="hystrixMonitor.sortByErrorThenVolume();">Error then
-                                Volume</a> |
-                            <a href="javascript://" onclick="hystrixMonitor.sortAlphabetically();">Alphabetical</a> |
-                            <a href="javascript://" onclick="hystrixMonitor.sortByVolume();">Volume</a> |
-                            <a href="javascript://" onclick="hystrixMonitor.sortByError();">Error</a> |
-                            <a href="javascript://" onclick="hystrixMonitor.sortByLatencyMean();">Mean</a> |
-                            <a href="javascript://" onclick="hystrixMonitor.sortByLatencyMedian();">Median</a> |
-                            <a href="javascript://" onclick="hystrixMonitor.sortByLatency90();">90</a> |
-                            <a href="javascript://" onclick="hystrixMonitor.sortByLatency99();">99</a> |
-                            <a href="javascript://" onclick="hystrixMonitor.sortByLatency995();">99.5</a>
-                        </div>
-                        <div class="menu_legend">
-                            <span class="success">Success</span> | <span class="shortCircuited">Short-Circuited</span> |
-                            <span
-                                    class="badRequest"> Bad Request</span> | <span class="timeout">Timeout</span> |
-                            <span
-                                    class="rejected">Rejected</span> | <span class="failure">Failure</span> | <span
-                                class="errorPercentage">Error %</span>
-                        </div>
-                    </div>
-                </div>
-                <div id="dependencies" class="row dependencies"><span class="loading">Loading ...</span></div>
-
-                <div class="spacer"></div>
-            </div>
-        </div>
-    </div>
-
     <angular-application>Loading...</angular-application>
 </div>
 </body>
