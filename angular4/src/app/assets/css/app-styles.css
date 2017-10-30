@@ -102,6 +102,19 @@ label {
 
 }
 
+.site-border {
+    background: gold;
+    background: -webkit-linear-gradient(left, rgba(150, 134, 4, 0.98), #e2d65b);
+    /*Safari 5.1-6*/
+    background: -o-linear-gradient(right, rgba(150, 134, 4, 0.98), #e2d65b);
+    /*Opera 11.1-12*/
+    background: -moz-linear-gradient(right, rgba(150, 134, 4, 0.98), #e2d65b);
+    /*Fx 3.6-15*/
+    background: linear-gradient(to right, rgba(150, 134, 4, 0.98), #e2d65b);
+    /*Standard*/
+    height: 5px; }
+
+
 .stream-table {
 }
 
