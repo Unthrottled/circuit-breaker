@@ -784,8 +784,7 @@ body { font-size: 1.125em; }
 }
 
 .dependencies div.monitor p.name {
-	font-weight:bold;
-	font-size: 10pt;
+	font-size: 8pt;
 	position: absolute;
 	text-align: right;	
 	padding-bottom: 5px;
