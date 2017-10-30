@@ -23,6 +23,6 @@ export class LatencyCompontent extends SliderImpl {
                 return {millisecondsDelay: changedValue, sessionId: sessionId};
             },
             (jsonResponse: any) => jsonResponse.millisecondsDelay,
-            1000);
+            300);
     }
 }

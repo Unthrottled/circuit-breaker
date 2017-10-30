@@ -33,7 +33,7 @@ var LatencyCompontent = (function (_super) {
     function LatencyCompontent(sessionService2, http2, hostService2, ngZone) {
         var _this = _super.call(this, sessionService2, http2, hostService2, ngZone, function () { return '/latency'; }, function (changedValue, sessionId) {
             return { millisecondsDelay: changedValue, sessionId: sessionId };
-        }, function (jsonResponse) { return jsonResponse.millisecondsDelay; }, 1000) || this;
+        }, function (jsonResponse) { return jsonResponse.millisecondsDelay; }, 300) || this;
         _this.sessionService2 = sessionService2;
         _this.http2 = http2;
         _this.hostService2 = hostService2;
