@@ -12,6 +12,10 @@
 
 }
 
+.main-container{
+    display: flex;
+}
+
 body {
     font-family:Tahoma, Geneva, sans-serif;
     font-size:16px;
@@ -21,7 +25,7 @@ body {
     background-color:#284A81 !important;
     background-image: url('../images/stripe.png');
     -webkit-text-size-adjust: 100%;
-    max-width: 1060px;
+    max-width: 1500px;
     overflow-x: hidden;
     display: block;
     margin: auto !important;
@@ -104,11 +108,11 @@ label {
 .failed {
     color: red;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 0.75rem;
 }
 
 .worked {
     color: green;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 0.75rem;
 }

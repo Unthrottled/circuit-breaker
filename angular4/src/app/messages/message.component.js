@@ -48,7 +48,7 @@ var MessageComponent = (function () {
 MessageComponent = __decorate([
     core_1.Component({
         selector: 'message-ticker',
-        template: "\n        <div [hidden]=\"messagesPerSecond <= 0\">\n            {{messagesPerSecond}} actual messages per second\n        </div>\n        <span class=\"stream-table\">\n                    <div *ngFor=\"let x of messages\">\n                        <span [ngClass]=\"{'worked': x.isSuccess(), 'failed': !x.isSuccess() }\" class=\"stream-data\">{{x.getMessage()}}</span>\n                    </div>\n        </span>\n    "
+        template: require('./MessageComponent.htm')
     }),
     __metadata("design:paramtypes", [message_service_1.MessageService, core_1.NgZone])
 ], MessageComponent);

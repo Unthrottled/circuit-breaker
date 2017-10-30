@@ -1,14 +1,18 @@
-<div class="app-container">
-    <div class="content-container">
+<div class="main-container">
+    <div class="hystrix-stuff">
+        <div class="app-container">
+            <div class="content-container">
         <span class="app-control-container">
             <h3>Welcome! Your Session Id is:</h3>
             <h2>{{sessionId | async}}</h2>
         </span>
+            </div>
+        </div>
+        <hystrix-dashboard></hystrix-dashboard>
     </div>
-</div>
-<hystrix-dashboard></hystrix-dashboard>
-<div class="app-container">
-    <div class="content-container">
+    <div class="message-stuff">
+        <div class="app-container">
+            <div class="content-container">
         <span class="app-control-container">
             <h3>Message Factory Control</h3>
             <div class="slider-control">
@@ -29,15 +33,17 @@
             </label>
             </div>
         </span>
-    </div>
-</div>
-<div class="app-container">
-    <div class="content-container">
+            </div>
+        </div>
+        <div class="app-container">
+            <div class="content-container">
         <span class="app-control-container">
             <h3>Message Stream Output</h3>
             <span class="message-control-container">
                 <message-ticker></message-ticker>
             </span>
         </span>
+            </div>
+        </div>
     </div>
 </div>

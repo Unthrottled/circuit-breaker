@@ -8,16 +8,7 @@ import {Message} from './message';
 import {Observable} from 'rxjs/Observable';
 @Component({
     selector: 'message-ticker',
-    template: `
-        <div [hidden]="messagesPerSecond <= 0">
-            {{messagesPerSecond}} actual messages per second
-        </div>
-        <span class="stream-table">
-                    <div *ngFor="let x of messages">
-                        <span [ngClass]="{'worked': x.isSuccess(), 'failed': !x.isSuccess() }" class="stream-data">{{x.getMessage()}}</span>
-                    </div>
-        </span>
-    `
+    template: require('./MessageComponent.htm')
 })
 export class MessageComponent implements OnInit {
     public messages: Message[] = [];
