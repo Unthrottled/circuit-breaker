@@ -19,6 +19,7 @@ var DialogComponent = (function () {
     DialogComponent.prototype.ngOnInit = function () { };
     DialogComponent.prototype.close = function () {
         this.visible = false;
+        console.log('shitter');
         this.visibleChange.emit(this.visible);
     };
     return DialogComponent;

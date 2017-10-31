@@ -10,6 +10,7 @@ import {Observable} from 'rxjs/Observable';
 export class AppComponent {
     private _backpressureHelp: boolean = false;
     private _latencyHelp: boolean = false;
+    private _powerHelp: boolean = false;
 
     constructor(private sessionService: SessionService){
 
@@ -39,5 +40,14 @@ export class AppComponent {
 
     set latencyHelp(value: boolean) {
         this._latencyHelp = value;
+    }
+
+
+    get powerHelp(): boolean {
+        return this._powerHelp;
+    }
+
+    set powerHelp(value: boolean) {
+        this._powerHelp = value;
     }
 }

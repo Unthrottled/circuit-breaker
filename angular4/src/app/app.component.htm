@@ -28,7 +28,7 @@
                     <label>
                         <throttle></throttle>
                         Message Backpressure (Messages per second)
-                        <button (click)="backpressureHelp = !backpressureHelp" class="btn-primary btn btn-sm">?</button>
+                        <span (click)="backpressureHelp = !backpressureHelp" class="btn-primary btn btn-sm">?</span>
                         <app-dialog [(visible)]="backpressureHelp">
                           <h1>Message Backpressure</h1>
                             <p>In the context of this application, message backpressure is the rate at which requests are made to make a message.</p>
@@ -39,7 +39,7 @@
                     <label>
                         <latency></latency>
                         Message Creation Latency(ms)
-                        <button (click)="latencyHelp = !latencyHelp" class="btn-primary btn btn-sm">?</button>
+                        <span (click)="latencyHelp = !latencyHelp" class="btn-primary btn btn-sm">?</span>
                         <app-dialog [(visible)]="latencyHelp">
                           <h1>Message Creation Latency</h1>
                             <p>In the context of this application, message latency is the time it takes to create a single message (not the amount of time it takes to receive a message).</p>
@@ -50,6 +50,12 @@
                 <label class="dead-mans-switch">
                     Message Factory Power
                     <dead-mans-switch></dead-mans-switch>
+                    <span (click)="powerHelp = !powerHelp" class="btn-primary btn btn-sm">?</span>
+                        <app-dialog [(visible)]="powerHelp" style="text-align: center;">
+                          <h1>FactoryPower Switch</h1>
+                            <p>The power switch enables/disables the message factory ability to successfully create a constant stream of messages.</p>
+                            <p>When the power is off, any direct request to create a message will fail.</p>
+                        </app-dialog>
             </label>
             </div>
         </span>
