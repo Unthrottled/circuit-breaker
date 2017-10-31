@@ -53,7 +53,7 @@ function getRelativePath(path) {
      */
     setInterval(function () {
         // sort since we have added a new one
-        self.sortSameAsLast();
+        // self.sortSameAsLast();
     }, 10000);
 
 
