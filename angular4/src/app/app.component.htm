@@ -28,9 +28,9 @@
                     <label>
                         <throttle></throttle>
                         Message Backpressure (Messages per second)
-                        <button (click)="backpressureHelp = !backpressureHelp" class="btn">Open</button>
+                        <button (click)="backpressureHelp = !backpressureHelp" class="btn-primary btn btn-sm">?</button>
                         <app-dialog [(visible)]="backpressureHelp">
-                          <h1>Hello World</h1>
+                          <h1>Message Backpressure</h1>
                         </app-dialog>
                     </label>
                     <label>
