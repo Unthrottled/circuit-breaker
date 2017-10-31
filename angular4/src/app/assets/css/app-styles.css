@@ -9,11 +9,17 @@
 .hystrix-dashbord {
     background: white;
     border-radius: 5px;
+    border: 3px black solid;
 
 }
 
 #header {
     border-radius: 5px;
+}
+
+.session-id {
+    color: #f2ac08;
+    font-weight: bold;
 }
 
 .site-header {
