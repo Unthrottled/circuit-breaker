@@ -15,6 +15,8 @@ import {SessionService} from './session/session.service';
 import {MessageService} from './messages/message.service';
 import {WindowRef} from './util/window';
 import {HystrixDashboardComponent} from "./hystrix/HystrixDashboard.component";
+import {ModalModule} from "ngx-modialog";
+import {BootstrapModalModule} from "ngx-modialog/plugins/bootstrap";
 
 @NgModule({
     imports: [
@@ -22,7 +24,9 @@ import {HystrixDashboardComponent} from "./hystrix/HystrixDashboard.component";
         FormsModule,
         HttpModule,
         NouisliderModule,
-        UiSwitchModule
+        UiSwitchModule,
+        ModalModule.forRoot(),
+        BootstrapModalModule
     ],
     declarations: [
         AppComponent,

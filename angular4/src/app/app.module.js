@@ -22,6 +22,8 @@ var session_service_1 = require("./session/session.service");
 var message_service_1 = require("./messages/message.service");
 var window_1 = require("./util/window");
 var HystrixDashboard_component_1 = require("./hystrix/HystrixDashboard.component");
+var ngx_modialog_1 = require("ngx-modialog");
+var bootstrap_1 = require("ngx-modialog/plugins/bootstrap");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -34,7 +36,9 @@ AppModule = __decorate([
             forms_1.FormsModule,
             http_1.HttpModule,
             ng2_nouislider_1.NouisliderModule,
-            angular2_ui_switch_1.UiSwitchModule
+            angular2_ui_switch_1.UiSwitchModule,
+            ngx_modialog_1.ModalModule.forRoot(),
+            bootstrap_1.BootstrapModalModule
         ],
         declarations: [
             app_component_1.AppComponent,
