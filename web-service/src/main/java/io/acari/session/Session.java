@@ -7,6 +7,8 @@ import com.netflix.hystrix.HystrixObservableCommand;
 import io.acari.stream.util.Throttle;
 import io.acari.stream.util.TroubleMaker;
 
+import static io.acari.pojo.Translator.calculateRequestsPerSecond;
+
 public class Session {
     private final Long id;
     private final TroubleMaker troubleMaker;
@@ -46,5 +48,9 @@ public class Session {
 
     public HystrixObservableCommand.Setter getSinkCommandSetter() {
         return sinkCommandSetter;
+    }
+
+    public int getRequestsPerSecond() {
+        return calculateRequestsPerSecond(getThrottle().getSleepyTime());
     }
 }

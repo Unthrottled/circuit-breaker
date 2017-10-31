@@ -2,8 +2,6 @@ package io.acari.pojo;
 
 import io.acari.session.Session;
 
-import static io.acari.pojo.Translator.*;
-
 public class ThrottleParameters extends SessionParameters {
     private int requestsPerSecond;
 
@@ -12,7 +10,7 @@ public class ThrottleParameters extends SessionParameters {
 
     public ThrottleParameters(Session session) {
         super(session);
-        setRequestsPerSecond(calculateRequestsPerSecond(session.getThrottle().getSleepyTime()));
+        setRequestsPerSecond(session.getRequestsPerSecond());
     }
 
     public int getRequestsPerSecond() {
