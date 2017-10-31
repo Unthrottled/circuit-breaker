@@ -16,6 +16,7 @@ var AppComponent = (function () {
     function AppComponent(sessionService) {
         this.sessionService = sessionService;
         this._backpressureHelp = false;
+        this._latencyHelp = false;
     }
     Object.defineProperty(AppComponent.prototype, "titleRef", {
         get: function () {
@@ -37,6 +38,16 @@ var AppComponent = (function () {
         },
         set: function (value) {
             this._backpressureHelp = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AppComponent.prototype, "latencyHelp", {
+        get: function () {
+            return this._latencyHelp;
+        },
+        set: function (value) {
+            this._latencyHelp = value;
         },
         enumerable: true,
         configurable: true

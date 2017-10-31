@@ -31,11 +31,19 @@
                         <button (click)="backpressureHelp = !backpressureHelp" class="btn-primary btn btn-sm">?</button>
                         <app-dialog [(visible)]="backpressureHelp">
                           <h1>Message Backpressure</h1>
+                            <p>In the context of this application, message backpressure is the rate at which requests are made to make a message.</p>
+                            <p>Think of it like the number of messages that would be created if the factory could create messages without any latency.</p>
+                            <p>However, since the time it takes to create a message is variable, the actual number of messages created will vary in different settings.</p>
                         </app-dialog>
                     </label>
                     <label>
                         <latency></latency>
                         Message Creation Latency(ms)
+                        <button (click)="latencyHelp = !latencyHelp" class="btn-primary btn btn-sm">?</button>
+                        <app-dialog [(visible)]="latencyHelp">
+                          <h1>Message Creation Latency</h1>
+                            <p>In the context of this application, message latency is the time it takes to create a single message (not the amount of time it takes to receive a message).</p>
+                        </app-dialog>
                     </label>
                 </div>
                 <div class="slider-space"></div>
