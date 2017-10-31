@@ -3,12 +3,16 @@ server:
 
 
 hystrix:
+  config:
+    stream:
+      maxConcurrentConnections: 20
   command:
     default:
       execution:
         isolation:
           thread:
             timeoutInMilliseconds: 200
+
 logging:
   level:
     org:

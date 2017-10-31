@@ -33,24 +33,29 @@
             // sort by error+volume by default
             hystrixMonitor.sortByErrorThenVolume();
 
-            // start the EventSource which will open a streaming connection to the server
-            var source = new EventSource(commandStream);
+            try{
+                // start the EventSource which will open a streaming connection to the server
+                var source = new EventSource(commandStream);
 
-            // add the listener that will process incoming events
-            source.addEventListener('message', hystrixMonitor.eventSourceMessageListener, false);
+                // add the listener that will process incoming events
+                source.addEventListener('message', hystrixMonitor.eventSourceMessageListener, false);
 
-            source.addEventListener('error', function (e) {
-                var $dependencies = $("#dependencies");
-                var find = $dependencies.find(".loading");
-                find.html("Unable to connect to Command Metric Stream.");
-                find.addClass("failed");
-                if (e.eventPhase === EventSource.CLOSED) {
-                    // Connection was closed.
-                    console.log("Connection was closed on error: " + JSON.stringify(e));
-                } else {
-                    console.log("Error occurred while streaming: " + JSON.stringify(e));
-                }
-            }, false);
+                source.addEventListener('error', function (e) {
+                    var $dependencies = $("#dependencies");
+                    var find = $dependencies.find(".loading");
+                    find.html("Unable to connect to Command Metric Stream.\n" +
+                        "Maximum concurrent connections reached!");
+                    find.addClass("failed");
+                    if (e.eventPhase === EventSource.CLOSED) {
+                        // Connection was closed.
+                        console.log("Connection was closed on error: " + JSON.stringify(e));
+                    } else {
+                        console.log("Error occurred while streaming: " + JSON.stringify(e));
+                    }
+                }, false);
+            } catch(e) {
+
+            }
         }, 0);
     });
 

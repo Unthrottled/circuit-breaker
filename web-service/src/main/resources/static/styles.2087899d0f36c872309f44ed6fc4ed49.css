@@ -554,16 +554,55 @@ h3.sectionHeader {
 
 }
 
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+}
+
+h1, .h1 {
+    font-size: 2.5rem;
+}
+
+h2, .h2 {
+    font-size: 2rem;
+}
+
+h3, .h3 {
+    font-size: 1.75rem;
+}
+
+h4, .h4 {
+    font-size: 1.5rem;
+}
+
+h5, .h5 {
+    font-size: 1.25rem;
+}
+
+h6, .h6 {
+    font-size: 1rem;
+}
+
+.main-container{
+    display: flex;
+}
+
 body {
     font-family:Tahoma, Geneva, sans-serif;
     font-size:16px;
     line-height:1.5;
     font-weight: 300;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color:#f9f9f9;
-    background-color:#284A81 !important;
+    background-color: #031131 !important;
     background-image: url(assets/stripe.ea57599555451c53af1db0db4f5b2664.png);
     -webkit-text-size-adjust: 100%;
-    max-width: 1060px;
+    max-width: 1500px;
     overflow-x: hidden;
     display: block;
     margin: auto !important;
@@ -572,7 +611,9 @@ body {
 
 .hystrix-dashboard-container{
     display: inline-block;
-    margin: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
     padding: 20px;
     background-color: #284A81;
     color: #f9f9f9;
@@ -582,6 +623,7 @@ body {
 
 .message-control-container{
     color: #f9f9f9;
+
 }
 
 .stream-data {
@@ -638,19 +680,32 @@ label {
 
 }
 
+.site-border {
+    background: gold;
+    background: -webkit-linear-gradient(left, rgba(150, 134, 4, 0.98), #e2d65b);
+    /*Safari 5.1-6*/
+    background: -o-linear-gradient(right, rgba(150, 134, 4, 0.98), #e2d65b);
+    /*Opera 11.1-12*/
+    background: -moz-linear-gradient(right, rgba(150, 134, 4, 0.98), #e2d65b);
+    /*Fx 3.6-15*/
+    background: linear-gradient(to right, rgba(150, 134, 4, 0.98), #e2d65b);
+    /*Standard*/
+    height: 5px; }
+
+
 .stream-table {
 }
 
 .failed {
-    color: red;
+    color: firebrick;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 0.75rem;
 }
 
 .worked {
     color: green;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 0.75rem;
 }/*	SimpleGrid - a fork of CSSGrid by Crowd Favorite (https://github.com/crowdfavorite/css-grid)
  *	http://simplegrid.info
  *	by Conor Muirhead (http://conor.cc) of Early LLC (http://earlymade.com)	
