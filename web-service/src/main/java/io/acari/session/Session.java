@@ -21,11 +21,11 @@ public class Session {
         this.commandSetter =
                 HystrixObservableCommand.Setter
                         .withGroupKey(HystrixCommandGroupKey.Factory.asKey("CommandGroup"))
-                .andCommandKey(HystrixCommandKey.Factory.asKey("msgFact" + id));
+                .andCommandKey(HystrixCommandKey.Factory.asKey(id +"msgFactory"));
         this.sinkCommandSetter =
                 HystrixObservableCommand.Setter
                         .withGroupKey(HystrixCommandGroupKey.Factory.asKey("SinkGroup"))
-                .andCommandKey(HystrixCommandKey.Factory.asKey("sendMsg" + id));
+                .andCommandKey(HystrixCommandKey.Factory.asKey(id + "sendMsg"));
     }
 
     public Long getId() {
