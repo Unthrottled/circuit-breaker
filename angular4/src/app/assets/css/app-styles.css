@@ -12,6 +12,10 @@
 
 }
 
+.header {
+    border-radius: 5px;
+}
+
 .site-header {
     display: block;
     margin: auto;
