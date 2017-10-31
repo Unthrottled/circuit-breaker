@@ -58,7 +58,6 @@ var AppComponent = (function () {
             return this._powerHelp;
         },
         set: function (value) {
-            console.log(value);
             this._powerHelp = value;
         },
         enumerable: true,

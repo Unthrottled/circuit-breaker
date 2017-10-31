@@ -9,7 +9,10 @@
 <div class="app-container">
     <div class="content-container">
         <span class="app-control-container">
-            <h3>More information is located @ <a target="_blank" href="http://blog.acari.io/2017/06/18/Circuit-Breakers.html">My blog post!</a></h3>
+            <h4>More information about circuit breakers is located @
+                <a target="_blank"
+                   class="btn btn-lg btn-primary"
+                   href="http://blog.acari.io/2017/06/18/Circuit-Breakers.html">my blog!</a></h4>
         </span>
     </div>
 </div>
@@ -35,7 +38,7 @@
                     <label>
                         <throttle></throttle>
                         Message Backpressure (Messages per second)
-                        <span (click)="backpressureHelp = !backpressureHelp" class="btn-primary btn btn-sm">?</span>
+                        <span (click)="backpressureHelp = !backpressureHelp" class="btn-info btn btn-sm">?</span>
                         <app-dialog [(visible)]="backpressureHelp">
                           <h1>Message Backpressure</h1>
                             <p>In the context of this application, message backpressure is the rate at which requests are made to make a message.</p>
@@ -46,7 +49,7 @@
                     <label>
                         <latency></latency>
                         Message Creation Latency(ms)
-                        <span (click)="latencyHelp = !latencyHelp" class="btn-primary btn btn-sm">?</span>
+                        <span (click)="latencyHelp = !latencyHelp" class="btn-info btn btn-sm">?</span>
                         <app-dialog [(visible)]="latencyHelp">
                           <h1>Message Creation Latency</h1>
                             <p>In the context of this application, message latency is the time it takes to create a single message (not the amount of time it takes to receive a message).</p>
@@ -57,7 +60,7 @@
                 <label class="dead-mans-switch">
                     Message Factory Power
                     <dead-mans-switch></dead-mans-switch>
-                    <span (click)="powerHelp = !powerHelp" class="btn-primary btn btn-sm">?</span>
+                    <span (click)="powerHelp = !powerHelp" class="btn-info btn btn-sm">?</span>
                         <app-dialog [(visible)]="powerHelp" style="text-align: center;">
                           <h1>FactoryPower Switch</h1>
                             <p>The power switch enables/disables the message factory ability to successfully create a constant stream of messages.</p>
