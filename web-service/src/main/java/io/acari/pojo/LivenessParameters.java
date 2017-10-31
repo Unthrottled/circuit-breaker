@@ -10,7 +10,7 @@ public class LivenessParameters extends SessionParameters {
 
     public LivenessParameters(Session session) {
         super(session);
-        setServiceAlive(session.getTroubleMaker().getLiveness());
+        setServiceAlive(session.getMessageFactoryLiveness());
     }
 
     public boolean isServiceAlive() {

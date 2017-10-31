@@ -53,4 +53,8 @@ public class Session {
     public int getRequestsPerSecond() {
         return calculateRequestsPerSecond(getThrottle().getSleepyTime());
     }
+
+    public boolean getMessageFactoryLiveness() {
+        return getTroubleMaker().getLiveness();
+    }
 }
