@@ -57,4 +57,8 @@ public class Session {
     public boolean getMessageFactoryLiveness() {
         return getTroubleMaker().getLiveness();
     }
+
+    public int getMessageFactoryLatency() {
+        return getTroubleMaker().getDelay();
+    }
 }

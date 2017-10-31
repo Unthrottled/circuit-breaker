@@ -10,7 +10,7 @@ public class LatencyParameters extends SessionParameters {
 
     public LatencyParameters(Session session) {
         super(session);
-        setMillisecondsDelay(session.getTroubleMaker().getDelay());
+        setMillisecondsDelay(session.getMessageFactoryLatency());
     }
 
     public int getMillisecondsDelay() {
