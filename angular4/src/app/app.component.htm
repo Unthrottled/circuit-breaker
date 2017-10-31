@@ -28,6 +28,10 @@
                     <label>
                         <throttle></throttle>
                         Message Backpressure (Messages per second)
+                        <button (click)="backpressureHelp = !backpressureHelp" class="btn">Open</button>
+                        <app-dialog [(visible)]="backpressureHelp">
+                          <h1>Hello World</h1>
+                        </app-dialog>
                     </label>
                     <label>
                         <latency></latency>

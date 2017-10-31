@@ -15,6 +15,7 @@ var session_service_1 = require("./session/session.service");
 var AppComponent = (function () {
     function AppComponent(sessionService) {
         this.sessionService = sessionService;
+        this._backpressureHelp = false;
     }
     Object.defineProperty(AppComponent.prototype, "titleRef", {
         get: function () {
@@ -26,6 +27,16 @@ var AppComponent = (function () {
     Object.defineProperty(AppComponent.prototype, "sessionId", {
         get: function () {
             return this.sessionService.fetchSessionId();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AppComponent.prototype, "backpressureHelp", {
+        get: function () {
+            return this._backpressureHelp;
+        },
+        set: function (value) {
+            this._backpressureHelp = value;
         },
         enumerable: true,
         configurable: true

@@ -8,6 +8,8 @@ import {Observable} from 'rxjs/Observable';
     template: require('./app.component.htm')
 })
 export class AppComponent {
+    private _backpressureHelp: boolean = false;
+
     constructor(private sessionService: SessionService){
 
     }
@@ -18,5 +20,14 @@ export class AppComponent {
 
     get sessionId() : Observable<string> {
         return this.sessionService.fetchSessionId();
+    }
+
+
+    get backpressureHelp(): boolean {
+        return this._backpressureHelp;
+    }
+
+    set backpressureHelp(value: boolean) {
+        this._backpressureHelp = value;
     }
 }

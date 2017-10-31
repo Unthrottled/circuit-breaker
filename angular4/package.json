@@ -44,6 +44,7 @@
     "@angular/router": "~4.0.0",
     "@angular/tsc-wrapped": "~4.0.0",
     "@angular/upgrade": "~4.0.0",
+    "@angular/animations": "~4.0.0",
     "angular-in-memory-web-api": "~0.3.1",
     "jquery": "^3.2.1",
     "d3": "3.5.17",

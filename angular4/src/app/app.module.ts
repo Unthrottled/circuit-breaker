@@ -15,8 +15,8 @@ import {SessionService} from './session/session.service';
 import {MessageService} from './messages/message.service';
 import {WindowRef} from './util/window';
 import {HystrixDashboardComponent} from "./hystrix/HystrixDashboard.component";
-import {ModalModule} from "ngx-modialog";
-import {BootstrapModalModule} from "ngx-modialog/plugins/bootstrap";
+import {DialogComponent} from "./util/dialog.component";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     imports: [
@@ -25,8 +25,7 @@ import {BootstrapModalModule} from "ngx-modialog/plugins/bootstrap";
         HttpModule,
         NouisliderModule,
         UiSwitchModule,
-        ModalModule.forRoot(),
-        BootstrapModalModule
+        BrowserAnimationsModule
     ],
     declarations: [
         AppComponent,
@@ -34,7 +33,8 @@ import {BootstrapModalModule} from "ngx-modialog/plugins/bootstrap";
         SwitchComponent,
         ThrottleComponent,
         LatencyCompontent,
-        HystrixDashboardComponent
+        HystrixDashboardComponent,
+        DialogComponent
     ],
     bootstrap: [AppComponent],
     providers: [HostService, SessionService, MessageService, WindowRef]
