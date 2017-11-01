@@ -63,8 +63,8 @@
                     <span (click)="powerHelp = !powerHelp" class="btn-info btn btn-sm">?</span>
                         <app-dialog [(visible)]="powerHelp" style="text-align: center;">
                           <h1>FactoryPower Switch</h1>
-                            <p>The power switch enables/disables the message factory ability to successfully create a constant stream of messages.</p>
-                            <p>When the power is off, any direct request to create a message will fail.</p>
+                            <p>The power switch enables/disables the Message Factory's ability to successfully create a constant stream of messages.</p>
+                            <p>When the power is off, any direct request to create a message will fail, and the Hystrix fallback will be returned.</p>
                         </app-dialog>
             </label>
             </div>
