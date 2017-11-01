@@ -2,9 +2,15 @@
     <div class="hystrix-hep">
         <div (click)="dashboardHelp = !dashboardHelp" class="btn-info btn btn-sm">?</div>
         <app-dialog [(visible)]="dashboardHelp" class="dashboard-hep">
-            <h1>FactoryPower Switch</h1>
-            <p>The power switch enables/disables the Message Factory's ability to successfully create a constant stream of messages.</p>
-            <p>When the power is off, any direct request to create a message will fail, and the Hystrix fallback will be returned.</p>
+            <h1>Hystrix Dashboard</h1>
+            <p>This Hystrix Dashboard displays the real time metrics of all sessions' circuits.</p>
+            <p>Since all of the metrics are piped into the dashboard, the two ciruits that you care about are the ones prefixed with your session id.</p><br/>
+            <p>The msgFactory circuit is the Hystrix Command that wraps around the call to the Message Factory.</p>
+            <p>Calls to the message factory can be increased or decreased in the control panel.</p><br/>
+            <p>The sendMsg circuit is the Hystrix Command that wraps the call that sends the message to the dashboard</p>
+            <p>Provided that the circuit breaker pattern works, the flow of requests to send a message should remain constant.</p>
+            <p>Therefore promoting a constant laminar flow of our message stream.</p><br/>
+            <p>For even more information you can visit the <a target="_blank" href="https://github.com/Netflix/Hystrix/wiki/Dashboard" class="btn-sm btn btn-primary">Hystrix Wiki</a></p>
         </app-dialog>
     </div>
     <div class="hystrix-dashbord">
