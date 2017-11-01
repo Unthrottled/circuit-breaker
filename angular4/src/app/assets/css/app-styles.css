@@ -150,6 +150,9 @@ body {
 }
 
 .title-container {
+    background-image: url(../images/hex.png) !important;
+    background-position: right !important;
+    background-repeat: repeat-y !important;
     background: #284A81;
     color: #f9f9f9;
     border-radius: 5px;
