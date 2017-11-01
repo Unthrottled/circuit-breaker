@@ -140,7 +140,7 @@ body {
 }
 
 .info-container {
-    border: gold 2px solid;
+    border: gold 2px dotted;
     background: #b4c7d9;
 }
 
@@ -155,6 +155,10 @@ label {
 
 
 
+}
+
+.info-header{
+    color: royalblue;
 }
 
 .site-border {
@@ -179,14 +183,14 @@ label {
 
 .failed-message {
     color: whitesmoke;
-    background-color: firebrick;
+    background-color: rgba(150,0,0,0.25);
     font-weight: bold;
     font-size: 0.75rem;
 }
 
 .worked {
     color: ghostwhite;
-    background: green;
+    background: rgba(0,150,0,0.25);
     font-weight: bold;
     font-size: 0.75rem;
 }
