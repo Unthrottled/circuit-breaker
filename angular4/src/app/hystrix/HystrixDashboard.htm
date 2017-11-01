@@ -3,7 +3,7 @@
         <div (click)="dashboardHelp = !dashboardHelp" class="btn-info btn btn-sm">?</div>
         <app-dialog [(visible)]="dashboardHelp" class="dashboard-hep">
             <h1>Hystrix Dashboard</h1>
-            <p>This Hystrix Dashboard displays the real time metrics of all sessions' circuits.</p>
+            <p>This Hystrix Dashboard displays the real time metrics of all sessions' circuits.</p><br/>
             <p>Since all of the metrics are piped into the dashboard, the two ciruits that you care about are the ones prefixed with your session id.</p><br/>
             <p>The msgFactory circuit is the Hystrix Command that wraps around the call to the Message Factory.</p>
             <p>Calls to the message factory can be increased or decreased in the control panel.</p><br/>
