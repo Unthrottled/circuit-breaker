@@ -6,12 +6,13 @@
     <title>Hystrix Monitor</title>
     <link rel="icon" href="/assets/favicon.038d4f70dddc43c6a7c10044505d73da.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link href="styles.2087899d0f36c872309f44ed6fc4ed49.css" rel="stylesheet"></head>
+<link href="styles.0c18180cc5d8c112eb160deb547cbd3d.css" rel="stylesheet"></head>
 <body>
 <div class="boxed-content">
     <angular-application>Loading...</angular-application>
 </div>
-<script type="text/javascript" src="polyfills.b7ea1e970554192c983f.js"></script><script type="text/javascript" src="vendor.b7ea1e970554192c983f.js"></script><script type="text/javascript" src="app.b7ea1e970554192c983f.js"></script></body>
+<img src="/assets/reach_blue.8abaa09b4dfa6163be14d994cba35077.png">
+<script type="text/javascript" src="polyfills.6e67bb8772597f349660.js"></script><script type="text/javascript" src="vendor.6e67bb8772597f349660.js"></script><script type="text/javascript" src="app.6e67bb8772597f349660.js"></script></body>
 <script>
     /**
      * Queue up the monitor to start once the page has finished loading.
@@ -43,7 +44,8 @@
                 source.addEventListener('error', function (e) {
                     var $dependencies = $("#dependencies");
                     var find = $dependencies.find(".loading");
-                    find.html("Unable to connect to Command Metric Stream.");
+                    find.html("Unable to connect to Command Metric Stream.\n" +
+                        "Maximum concurrent connections reached!");
                     find.addClass("failed");
                     if (e.eventPhase === EventSource.CLOSED) {
                         // Connection was closed.
@@ -53,7 +55,7 @@
                     }
                 }, false);
             } catch(e) {
-                console.log(e);
+
             }
         }, 0);
     });
