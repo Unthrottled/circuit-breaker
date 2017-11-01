@@ -9,7 +9,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var HystrixDashboardComponent = (function () {
     function HystrixDashboardComponent() {
+        this._dashboardHelp = false;
     }
+    Object.defineProperty(HystrixDashboardComponent.prototype, "dashboardHelp", {
+        get: function () {
+            return this._dashboardHelp;
+        },
+        set: function (value) {
+            this._dashboardHelp = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return HystrixDashboardComponent;
 }());
 HystrixDashboardComponent = __decorate([
