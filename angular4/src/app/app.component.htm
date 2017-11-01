@@ -52,7 +52,8 @@
                         <span (click)="latencyHelp = !latencyHelp" class="btn-info btn btn-sm">?</span>
                         <app-dialog [(visible)]="latencyHelp">
                           <h1>Message Creation Latency</h1>
-                            <p>In the context of this application, message latency is the time it takes to create a single message (not the amount of time it takes to receive a message).</p>
+                            <p>In the context of this application, message latency is the time it takes the Message Factory to create a single message</p>
+                            <p>It is not the amount of time it takes to receive a message.</p>
                         </app-dialog>
                     </label>
                 </div>
