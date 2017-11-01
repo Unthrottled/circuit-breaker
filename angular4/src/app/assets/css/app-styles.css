@@ -171,16 +171,22 @@ label {
 
 
 .stream-table {
+    margin: 2px;
+    padding: 2px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.failed {
-    color: firebrick;
+.failed-message {
+    color: whitesmoke;
+    background-color: firebrick;
     font-weight: bold;
     font-size: 0.75rem;
 }
 
 .worked {
-    color: green;
+    color: ghostwhite;
+    background: green;
     font-weight: bold;
     font-size: 0.75rem;
 }
