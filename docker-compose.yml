@@ -6,5 +6,4 @@ services:
       - 80:3344
     image: alexsimons/hystrix-web-service:1.0.0
 
-#Use this compose file to run both the vertx web server and the
-#Mongo database used for data persistence.
+#Use this compose file to run both the spring boot web server
