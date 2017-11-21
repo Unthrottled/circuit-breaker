@@ -84,6 +84,7 @@ body {
     color:#f9f9f9;
     background-color: #031131 !important;
     background-image: url('../images/stripe.png');
+    background-attachment: fixed;
     -webkit-text-size-adjust: 100%;
     max-width: 1500px;
     overflow-x: hidden;

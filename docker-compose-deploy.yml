@@ -1,0 +1,16 @@
+version: "3"
+services:
+  node-install:
+    build:
+      dockerfile: Dockerfile-install
+      context: ./angular4
+    image: alexsimons/nodeinstall
+    volumes:
+      - ./:/app
+    entrypoint:
+      - /bin/bash
+    command:
+      - -c
+      - "cd angular4; npm run build"
+
+#runs the node install
