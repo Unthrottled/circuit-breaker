@@ -626,6 +626,7 @@ body {
     color:#f9f9f9;
     background-color: #031131 !important;
     background-image: url(assets/stripe.dba8059edd90a61d3fc5498598b56df4.png);
+    background-attachment: fixed;
     -webkit-text-size-adjust: 100%;
     max-width: 1500px;
     overflow-x: hidden;
