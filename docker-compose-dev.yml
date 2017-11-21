@@ -4,14 +4,14 @@ services:
     build:
       dockerfile: Dockerfile-dev
       context: ./angular4
-    image: alexsimons/hystrix-web-content
+    image: alexsimons/hystrix-web-content:1.0.4
     ports:
       - "3000:3000"
     volumes:
       - ./angular4:/app
   web-service:
     build: ./web-service
-    image: alexsimons/hystrix-web-service
+    image: alexsimons/hystrix-web-service:1.0.4
     ports:
       - "8989:8989"
 
