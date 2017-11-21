@@ -12,10 +12,10 @@ In general, Hystrix was made to protect your code for everybody else.
 It also has the ability to notify when code, wrapped in a Hystrix circuit breaker, has opened the circuit and is sending canned responses or failiure, for each invokation.
 Effectively re-routing all traffic away from the area that has failed.
 
-What I have created is a constant stream of data that is piplined to the front-end application. 
+What I have created is a constant stream of data that is pipelined to the front-end application. 
 The fun part is that part of the stream is routed through a trouble-maker.
 The trouble maker can be in a state where all invocations throw an exception. 
-In addition to being alway blowing up, the trouble maker can also have variable latency.
+In addition to being always blowing up, the trouble maker can also have variable latency.
 Meaning invocation time of the trouble maker's method can vary.
 
 This is all done to allow simulation of a shoddy third party service. 

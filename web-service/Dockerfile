@@ -24,7 +24,7 @@ WORKDIR /app
 
 COPY --from=packager /app/build/libs /app
 
-ENTRYPOINT ["java", "-jar", "hystrix-sample-1.0.0.jar"]
+ENTRYPOINT ["java", "-jar", "hystrix-sample-1.0.4.jar"]
 
 
 
