@@ -1,6 +1,6 @@
 {
   "name": "circuit-breaker-dashboard",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": true,
   "description": "Project used to demonstrate the Spring Boot Hystrix Dashboard",
   "scripts": {
