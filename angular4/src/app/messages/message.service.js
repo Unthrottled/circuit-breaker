@@ -13,20 +13,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var session_service_1 = require("../session/session.service");
 var Observable_1 = require("rxjs/Observable");
-var host_service_1 = require("../session/host.service");
 require("rxjs/add/operator/mergeMap");
 var message_1 = require("./message");
 var MessageService = (function () {
-    function MessageService(sessionService, hostService) {
+    function MessageService(sessionService) {
         this.sessionService = sessionService;
-        this.hostService = hostService;
     }
     MessageService.prototype.fetchMessages = function () {
-        var _this = this;
         return this.sessionService.fetchSessionId()
             .flatMap(function (sessionId) {
             return Observable_1.Observable.create(function (observer) {
-                var eventSource = new EventSource(_this.hostService.fetchUrl() + 'hystrix/' + sessionId + '/message.stream');
+                var eventSource = new EventSource('./hystrix/' + sessionId + '/message.stream');
                 eventSource.onmessage = function (x) {
                     observer.next(new message_1.Message(x.data));
                 };
@@ -40,7 +37,7 @@ var MessageService = (function () {
 }());
 MessageService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [session_service_1.SessionService, host_service_1.HostService])
+    __metadata("design:paramtypes", [session_service_1.SessionService])
 ], MessageService);
 exports.MessageService = MessageService;
 //# sourceMappingURL=message.service.js.map

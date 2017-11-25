@@ -17,7 +17,6 @@ var message_component_1 = require("./messages/message.component");
 var switch_component_1 = require("./switch/switch.component");
 var throttle_component_1 = require("./sliders/throttle.component");
 var latency_component_1 = require("./sliders/latency.component");
-var host_service_1 = require("./session/host.service");
 var session_service_1 = require("./session/session.service");
 var message_service_1 = require("./messages/message.service");
 var window_1 = require("./util/window");
@@ -49,7 +48,7 @@ AppModule = __decorate([
             dialog_component_1.DialogComponent
         ],
         bootstrap: [app_component_1.AppComponent],
-        providers: [host_service_1.HostService, session_service_1.SessionService, message_service_1.MessageService, window_1.WindowRef]
+        providers: [session_service_1.SessionService, message_service_1.MessageService, window_1.WindowRef]
     })
 ], AppModule);
 exports.AppModule = AppModule;
