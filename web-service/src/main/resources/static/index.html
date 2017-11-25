@@ -17,7 +17,7 @@
 <a href="https://acari.io" target="_blank">
     <img src="/assets/reach_blue.8abaa09b4dfa6163be14d994cba35077.png">
 </a>
-<script type="text/javascript" src="polyfills.ca391048a952c920d5d0.js"></script><script type="text/javascript" src="vendor.ca391048a952c920d5d0.js"></script><script type="text/javascript" src="app.ca391048a952c920d5d0.js"></script></body>
+<script type="text/javascript" src="polyfills.806040ea32b078a895ab.js"></script><script type="text/javascript" src="vendor.806040ea32b078a895ab.js"></script><script type="text/javascript" src="app.806040ea32b078a895ab.js"></script></body>
 <script>
     /**
      * Queue up the monitor to start once the page has finished loading.
@@ -28,7 +28,7 @@
         // commands
     var hystrixMonitor = new HystrixCommandMonitor('dependencies', {includeDetailIcon: false});
     var hostname = document.location.hostname;
-    var stream = "http://" + hostname + ":" + document.location.port + "/hystrix.stream";
+    var stream = "https://" + hostname + ":" + document.location.port + "/hystrix.stream";
 
     var commandStream = stream;
     var poolStream = stream;
