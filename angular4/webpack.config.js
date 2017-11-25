@@ -6,17 +6,18 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 var htmlLoader = require('raw-loader');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var proxy = require('http-proxy-middleware');
-var http = require('http');
-var keepAliveAgent = new http.Agent({ keepAlive: true });
+var https = require('https');
+var keepAliveAgent = new https.Agent({ keepAlive: true });
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const extractSass = new ExtractTextPlugin({
     filename: "[name].[contenthash].css"
 });
 
 var proxyPeel = proxy('/hystrix', {
-    target: 'http://web-service:3344',
+    target: 'https://web-service:3344',
     changeOrigin: true,               // needed for virtual hosted sites
     ws: true,
+    secure: false,
     agent: keepAliveAgent
 });
 
@@ -156,6 +157,7 @@ module.exports = {
             // ./dist directory is being served
             host: 'localhost',
             port: 3000,
+            https: true,
             server: {baseDir: ['dist']},
             middleware: [proxyPeel]
         })
