@@ -14,21 +14,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
-var host_service_1 = require("./host.service");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/share");
 require("rxjs/add/operator/publishReplay");
 var ReplaySubject_1 = require("rxjs/ReplaySubject");
 var SessionService = (function () {
-    function SessionService(http, hostService) {
+    function SessionService(http) {
         this.http = http;
-        this.hostService = hostService;
         this.sessionIdo = new ReplaySubject_1.ReplaySubject(1);
     }
     SessionService.prototype.fetchSessionId = function () {
         var _this = this;
         if (!this.sessionIdo.observers.length) {
-            this.http.get(this.hostService.fetchUrl() + 'hystrix/get/stream-id')
+            this.http.get('./hystrix/get/stream-id')
                 .map(function (response) { return response.json(); })
                 .subscribe(function (sessionId) { return _this.sessionIdo.next(sessionId); });
         }
@@ -38,7 +36,7 @@ var SessionService = (function () {
 }());
 SessionService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http, host_service_1.HostService])
+    __metadata("design:paramtypes", [http_1.Http])
 ], SessionService);
 exports.SessionService = SessionService;
 //# sourceMappingURL=session.service.js.map

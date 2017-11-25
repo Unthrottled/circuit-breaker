@@ -16,23 +16,20 @@ var core_1 = require("@angular/core");
 require("./switch.component.htm");
 var http_1 = require("@angular/http");
 var session_service_1 = require("../session/session.service");
-var host_service_1 = require("../session/host.service");
 var SwitchComponent = (function () {
-    function SwitchComponent(sessionService, http, hostService, zone) {
+    function SwitchComponent(sessionService, http, zone) {
         this.sessionService = sessionService;
         this.http = http;
-        this.hostService = hostService;
         this.zone = zone;
         this.liveness = true;
     }
     SwitchComponent.prototype.ngOnInit = function () {
         var httpo = this.http;
-        var hosto = this.hostService;
         var self = this;
         var zono = self.zone;
         this.sessionService.fetchSessionId()
             .subscribe(function (sessionId) {
-            httpo.get(hosto.fetchUrl() + 'hystrix/get/' + sessionId + '/liveness')
+            httpo.get('./hystrix/get/' + sessionId + '/liveness')
                 .subscribe(function (response) {
                 zono.run(function () { return self.liveness = response.json().serviceAlive; });
             });
@@ -40,12 +37,11 @@ var SwitchComponent = (function () {
     };
     SwitchComponent.prototype.change = function (value) {
         var httpo = this.http;
-        var hosto = this.hostService;
         var self = this;
         var zono = self.zone;
         this.sessionService.fetchSessionId()
             .subscribe(function (sessionId) {
-            httpo.post(hosto.fetchUrl() + 'hystrix/post/' + sessionId + '/liveness', { serviceAlive: value, sessionId: sessionId })
+            httpo.post('./hystrix/post/' + sessionId + '/liveness', { serviceAlive: value, sessionId: sessionId })
                 .subscribe(function (response) {
                 zono.run(function () { return self.liveness = response.json().serviceAlive; });
             });
@@ -59,7 +55,7 @@ SwitchComponent = __decorate([
         template: require('./switch.component.htm'),
         styleUrls: []
     }),
-    __metadata("design:paramtypes", [session_service_1.SessionService, http_1.Http, host_service_1.HostService, core_1.NgZone])
+    __metadata("design:paramtypes", [session_service_1.SessionService, http_1.Http, core_1.NgZone])
 ], SwitchComponent);
 exports.SwitchComponent = SwitchComponent;
 //# sourceMappingURL=switch.component.js.map

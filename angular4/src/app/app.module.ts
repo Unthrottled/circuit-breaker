@@ -10,7 +10,6 @@ import {MessageComponent} from './messages/message.component';
 import {SwitchComponent} from './switch/switch.component';
 import {ThrottleComponent} from './sliders/throttle.component';
 import {LatencyCompontent} from './sliders/latency.component';
-import {HostService} from './session/host.service';
 import {SessionService} from './session/session.service';
 import {MessageService} from './messages/message.service';
 import {WindowRef} from './util/window';
@@ -37,7 +36,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         DialogComponent
     ],
     bootstrap: [AppComponent],
-    providers: [HostService, SessionService, MessageService, WindowRef]
+    providers: [SessionService, MessageService, WindowRef]
 })
 export class AppModule {
 

@@ -6,7 +6,6 @@ import './slider.component.htm';
 import {Http} from '@angular/http';
 import {SliderImpl} from './slider.implementation';
 import {SessionService} from '../session/session.service';
-import {HostService} from '../session/host.service';
 
 
 @Component({
@@ -16,8 +15,8 @@ import {HostService} from '../session/host.service';
 })
 export class LatencyCompontent extends SliderImpl {
 
-    constructor(private sessionService2: SessionService, private http2: Http, private hostService2: HostService, private ngZone: NgZone) {
-        super(sessionService2, http2, hostService2, ngZone,
+    constructor(sessionService: SessionService, http: Http, ngZone: NgZone) {
+        super(sessionService, http, ngZone,
             () => '/latency',
             (changedValue: Number, sessionId: String) => {
                 return {millisecondsDelay: changedValue, sessionId: sessionId};

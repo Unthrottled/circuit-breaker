@@ -3,7 +3,6 @@
  */
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
-import {HostService} from './host.service';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/share';
@@ -14,12 +13,12 @@ import {ReplaySubject} from 'rxjs/ReplaySubject';
 export class SessionService {
     private sessionIdo = new ReplaySubject(1);
 
-    constructor(private http: Http, private hostService: HostService) {
+    constructor(private http: Http) {
     }
 
     fetchSessionId(): Observable<String> {
         if (!this.sessionIdo.observers.length) {
-            this.http.get(this.hostService.fetchUrl() + 'hystrix/get/stream-id')
+            this.http.get('./hystrix/get/stream-id')
                 .map(response => response.json())
                 .subscribe(sessionId => this.sessionIdo.next(sessionId));
         }
