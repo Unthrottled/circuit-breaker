@@ -4,19 +4,13 @@ services:
     build:
       dockerfile: Dockerfile-dev
       context: ./angular4
-    image: alexsimons/hystrix-web-content:1.0.5
+    image: alexsimons/hystrix-web-content:1.1.0
     ports:
       - "3000:3000"
     volumes:
       - ./angular4:/app
   web-service:
     build: ./web-service
-    image: alexsimons/hystrix-web-service:1.0.5
+    image: alexsimons/hystrix-web-service:1.1.0
     ports:
-      - "8989:8989"
-
-#Use this compose file to run both the vertx web server and
-#Take advantage having a browersync server to watch and automagically
-#compile and update your files. Note: sometimes when it detects a change,
-#the typescript files are not recompiled into the respective js mappings (eg run "npm run compile" which
-#runs the node task compile specified in the package.json (: )
+      - "3344:3344"
