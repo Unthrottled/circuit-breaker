@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var animations_1 = require("@angular/animations");
-var DialogComponent = (function () {
+var DialogComponent = /** @class */ (function () {
     function DialogComponent() {
         this.closable = true;
         this.visibleChange = new core_1.EventEmitter();
@@ -21,37 +21,37 @@ var DialogComponent = (function () {
         this.visible = false;
         this.visibleChange.emit(this.visible);
     };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], DialogComponent.prototype, "closable", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], DialogComponent.prototype, "visible", void 0);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], DialogComponent.prototype, "visibleChange", void 0);
+    DialogComponent = __decorate([
+        core_1.Component({
+            selector: 'app-dialog',
+            template: require('./dialog.component.htm'),
+            animations: [
+                animations_1.trigger('dialog', [
+                    animations_1.transition('void => *', [
+                        animations_1.style({ transform: 'scale3d(.3, .3, .3)' }),
+                        animations_1.animate(100)
+                    ]),
+                    animations_1.transition('* => void', [
+                        animations_1.animate(100, animations_1.style({ transform: 'scale3d(.0, .0, .0)' }))
+                    ])
+                ])
+            ]
+        }),
+        __metadata("design:paramtypes", [])
+    ], DialogComponent);
     return DialogComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object)
-], DialogComponent.prototype, "closable", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Boolean)
-], DialogComponent.prototype, "visible", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", core_1.EventEmitter)
-], DialogComponent.prototype, "visibleChange", void 0);
-DialogComponent = __decorate([
-    core_1.Component({
-        selector: 'app-dialog',
-        template: require('./dialog.component.htm'),
-        animations: [
-            animations_1.trigger('dialog', [
-                animations_1.transition('void => *', [
-                    animations_1.style({ transform: 'scale3d(.3, .3, .3)' }),
-                    animations_1.animate(100)
-                ]),
-                animations_1.transition('* => void', [
-                    animations_1.animate(100, animations_1.style({ transform: 'scale3d(.0, .0, .0)' }))
-                ])
-            ])
-        ]
-    }),
-    __metadata("design:paramtypes", [])
-], DialogComponent);
 exports.DialogComponent = DialogComponent;
 //# sourceMappingURL=dialog.component.js.map

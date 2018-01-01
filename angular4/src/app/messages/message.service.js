@@ -15,7 +15,7 @@ var session_service_1 = require("../session/session.service");
 var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/mergeMap");
 var message_1 = require("./message");
-var MessageService = (function () {
+var MessageService = /** @class */ (function () {
     function MessageService(sessionService) {
         this.sessionService = sessionService;
     }
@@ -33,11 +33,11 @@ var MessageService = (function () {
             });
         });
     };
+    MessageService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [session_service_1.SessionService])
+    ], MessageService);
     return MessageService;
 }());
-MessageService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [session_service_1.SessionService])
-], MessageService);
 exports.MessageService = MessageService;
 //# sourceMappingURL=message.service.js.map

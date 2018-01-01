@@ -27,22 +27,22 @@ require("./slider.component.htm");
 var session_service_1 = require("../session/session.service");
 var http_1 = require("@angular/http");
 var slider_implementation_1 = require("./slider.implementation");
-var ThrottleComponent = (function (_super) {
+var ThrottleComponent = /** @class */ (function (_super) {
     __extends(ThrottleComponent, _super);
     function ThrottleComponent(sessionService, http, zone) {
         return _super.call(this, sessionService, http, zone, function () { return '/throttle'; }, function (changedValue, sessionId) {
             return { requestsPerSecond: changedValue, sessionId: sessionId };
         }, function (jsonResponse) { return jsonResponse.requestsPerSecond; }, 20) || this;
     }
+    ThrottleComponent = __decorate([
+        core_1.Component({
+            selector: 'throttle',
+            template: require('./slider.component.htm'),
+            styleUrls: []
+        }),
+        __metadata("design:paramtypes", [session_service_1.SessionService, http_1.Http, core_1.NgZone])
+    ], ThrottleComponent);
     return ThrottleComponent;
 }(slider_implementation_1.SliderImpl));
-ThrottleComponent = __decorate([
-    core_1.Component({
-        selector: 'throttle',
-        template: require('./slider.component.htm'),
-        styleUrls: []
-    }),
-    __metadata("design:paramtypes", [session_service_1.SessionService, http_1.Http, core_1.NgZone])
-], ThrottleComponent);
 exports.ThrottleComponent = ThrottleComponent;
 //# sourceMappingURL=throttle.component.js.map

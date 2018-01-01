@@ -27,22 +27,22 @@ require("./slider.component.htm");
 var http_1 = require("@angular/http");
 var slider_implementation_1 = require("./slider.implementation");
 var session_service_1 = require("../session/session.service");
-var LatencyCompontent = (function (_super) {
+var LatencyCompontent = /** @class */ (function (_super) {
     __extends(LatencyCompontent, _super);
     function LatencyCompontent(sessionService, http, ngZone) {
         return _super.call(this, sessionService, http, ngZone, function () { return '/latency'; }, function (changedValue, sessionId) {
             return { millisecondsDelay: changedValue, sessionId: sessionId };
         }, function (jsonResponse) { return jsonResponse.millisecondsDelay; }, 300) || this;
     }
+    LatencyCompontent = __decorate([
+        core_1.Component({
+            selector: 'latency',
+            template: require('./slider.component.htm'),
+            styleUrls: []
+        }),
+        __metadata("design:paramtypes", [session_service_1.SessionService, http_1.Http, core_1.NgZone])
+    ], LatencyCompontent);
     return LatencyCompontent;
 }(slider_implementation_1.SliderImpl));
-LatencyCompontent = __decorate([
-    core_1.Component({
-        selector: 'latency',
-        template: require('./slider.component.htm'),
-        styleUrls: []
-    }),
-    __metadata("design:paramtypes", [session_service_1.SessionService, http_1.Http, core_1.NgZone])
-], LatencyCompontent);
 exports.LatencyCompontent = LatencyCompontent;
 //# sourceMappingURL=latency.component.js.map

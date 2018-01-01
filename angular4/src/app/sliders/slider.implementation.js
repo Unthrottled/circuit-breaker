@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 require("./slider.component.htm");
-var SliderImpl = (function () {
+var SliderImpl = /** @class */ (function () {
     function SliderImpl(sessionService, http, zone, urlSupplier, parametersOperator, responseOperator, rangeMax) {
         this.sessionService = sessionService;
         this.http = http;

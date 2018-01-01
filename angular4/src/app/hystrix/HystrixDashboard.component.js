@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var HystrixDashboardComponent = (function () {
+var HystrixDashboardComponent = /** @class */ (function () {
     function HystrixDashboardComponent() {
         this._dashboardHelp = false;
     }
@@ -21,13 +21,13 @@ var HystrixDashboardComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    HystrixDashboardComponent = __decorate([
+        core_1.Component({
+            selector: 'hystrix-dashboard',
+            template: require('./HystrixDashboard.htm')
+        })
+    ], HystrixDashboardComponent);
     return HystrixDashboardComponent;
 }());
-HystrixDashboardComponent = __decorate([
-    core_1.Component({
-        selector: 'hystrix-dashboard',
-        template: require('./HystrixDashboard.htm')
-    })
-], HystrixDashboardComponent);
 exports.HystrixDashboardComponent = HystrixDashboardComponent;
 //# sourceMappingURL=HystrixDashboard.component.js.map

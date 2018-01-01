@@ -11,6 +11,7 @@ export class AppComponent {
     private _backpressureHelp: boolean = false;
     private _latencyHelp: boolean = false;
     private _powerHelp: boolean = false;
+    versionNumber: string = "v.1.1.0";
 
     constructor(private sessionService: SessionService){
 
@@ -20,7 +21,7 @@ export class AppComponent {
         return require('./assets/images/hystrix-title.png');
     }
 
-    get sessionId() : Observable<string> {
+    get sessionId() : Observable<String> {
         return this.sessionService.fetchSessionId();
     }
 
