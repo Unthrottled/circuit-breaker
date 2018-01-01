@@ -1,7 +1,10 @@
 .project-version-number {
-  float: right;
   font-weight: 400;
-  font-size: 1.25em;
+  position: fixed;
+  right: 1em;
+  top: 1em;
+  z-index: 99999;
+  font-size: 1em;
   opacity: 0.25;
   color: grey;
   -moz-transition: opacity 300ms;
