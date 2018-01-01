@@ -1,0 +1,21 @@
+.project-version-number {
+  float: right;
+  font-weight: 400;
+  font-size: 1.25em;
+  opacity: 0.25;
+  color: grey;
+  -moz-transition: opacity 300ms;
+  -o-transition: opacity 300ms;
+  -webkit-transition: opacity 300ms;
+  transition: opacity 300ms;
+  cursor: pointer;
+}
+
+.project-version-number:hover {
+  -webkit-animation-name: glitch;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  animation-name: glitch;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
