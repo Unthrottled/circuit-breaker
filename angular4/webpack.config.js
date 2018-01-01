@@ -7,11 +7,8 @@ var htmlLoader = require('raw-loader');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var proxy = require('http-proxy-middleware');
 var https = require('https');
-var keepAliveAgent = new https.Agent({ keepAlive: true });
+var keepAliveAgent = new https.Agent({keepAlive: true});
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
-const extractSass = new ExtractTextPlugin({
-    filename: "[name].[contenthash].css"
-});
 
 var proxyPeel = proxy('/hystrix', {
     target: 'https://web-service:3344',
@@ -23,6 +20,7 @@ var proxyPeel = proxy('/hystrix', {
 
 module.exports = {
     entry: {
+        'stylez': './src/app/assets/css/sassy.sass',
         'app': './src/main.ts',
         'vendor': './src/vendor.ts',
         'polyfills': './src/polyfills.ts'
@@ -82,14 +80,17 @@ module.exports = {
                 test: /\.css$/,
                 exclude: [/build/, /dist/, /gradle/],
                 use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: 'css-loader?modules&importLoaders=1&localIdentName=[local]'
+                    use: [{
+                        loader: "css-loader"
+                    }],
+                    // use style-loader in development
+                    fallback: "style-loader"
                 })
             },
             {
                 test: /\.s[ac]ss$/,
                 exclude: [/build/, /dist/, /gradle/],
-                use: extractSass.extract({
+                use: ExtractTextPlugin.extract({
                     use: [{
                         loader: "css-loader"
                     }, {
@@ -118,16 +119,17 @@ module.exports = {
                 keep_fnames: true
             }
         }),
-
         new webpack.ContextReplacementPlugin(
             // The (\\|\/) piece accounts for path separators in *nix and Windows
             /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
             path.resolve(__dirname, 'src'), // location of your src
             {} // a map of your routes
         ),
+
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
+            d3: 'd3',
             'window.jQuery': 'jquery',
             Popper: ['popper.js', 'default'],
             // In case you imported plugins individually, you must also require them here:
@@ -135,6 +137,7 @@ module.exports = {
             Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
             Tether: 'tether'
         }),
+
         new webpack.optimize.CommonsChunkPlugin({
             name: ['app', 'vendor', 'polyfills']
         }),
@@ -150,7 +153,8 @@ module.exports = {
             exclude: ['shared.js']
         }),
         new ExtractTextPlugin({
-            filename: 'styles.[contenthash].css'
+            filename: 'style.[contenthash].css',
+            allChunks: true
         }),
         new BrowserSyncPlugin({
             // browse to http://localhost:3000/ during development,
