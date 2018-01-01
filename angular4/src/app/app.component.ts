@@ -11,7 +11,7 @@ export class AppComponent {
     private _backpressureHelp: boolean = false;
     private _latencyHelp: boolean = false;
     private _powerHelp: boolean = false;
-    versionNumber: string = "v.1.1.0";
+    versionNumber: string = "v1.1.1";
 
     constructor(private sessionService: SessionService){
 
