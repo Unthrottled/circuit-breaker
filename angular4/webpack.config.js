@@ -3,9 +3,9 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
+var htmlLoader = require('raw-loader');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var proxy = require('http-proxy-middleware');
-var htmlLoader = require('raw-loader');
 var https = require('https');
 var keepAliveAgent = new https.Agent({keepAlive: true});
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
@@ -17,7 +17,6 @@ var proxyPeel = proxy('/hystrix', {
     secure: false,
     agent: keepAliveAgent
 });
-
 
 module.exports = {
     entry: {
@@ -109,17 +108,6 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     plugins: [
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            d3: 'd3',
-            'window.jQuery': 'jquery',
-            Popper: ['popper.js', 'default'],
-            // In case you imported plugins individually, you must also require them here:
-            Util: "exports-loader?Util!bootstrap/js/dist/util",
-            Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
-            Tether: 'tether'
-        }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
@@ -131,13 +119,24 @@ module.exports = {
                 keep_fnames: true
             }
         }),
-
         new webpack.ContextReplacementPlugin(
             // The (\\|\/) piece accounts for path separators in *nix and Windows
             /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
             path.resolve(__dirname, 'src'), // location of your src
             {} // a map of your routes
         ),
+
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            d3: 'd3',
+            'window.jQuery': 'jquery',
+            Popper: ['popper.js', 'default'],
+            // In case you imported plugins individually, you must also require them here:
+            Util: "exports-loader?Util!bootstrap/js/dist/util",
+            Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
+            Tether: 'tether'
+        }),
 
         new webpack.optimize.CommonsChunkPlugin({
             name: ['app', 'vendor', 'polyfills']
