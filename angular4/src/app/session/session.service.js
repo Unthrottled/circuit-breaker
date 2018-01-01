@@ -18,7 +18,7 @@ require("rxjs/add/operator/map");
 require("rxjs/add/operator/share");
 require("rxjs/add/operator/publishReplay");
 var ReplaySubject_1 = require("rxjs/ReplaySubject");
-var SessionService = (function () {
+var SessionService = /** @class */ (function () {
     function SessionService(http) {
         this.http = http;
         this.sessionIdo = new ReplaySubject_1.ReplaySubject(1);
@@ -32,11 +32,11 @@ var SessionService = (function () {
         }
         return this.sessionIdo;
     };
+    SessionService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], SessionService);
     return SessionService;
 }());
-SessionService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], SessionService);
 exports.SessionService = SessionService;
 //# sourceMappingURL=session.service.js.map

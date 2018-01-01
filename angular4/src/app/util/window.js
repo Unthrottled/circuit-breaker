@@ -14,7 +14,7 @@ function _window() {
     // return the global native browser window object
     return window;
 }
-var WindowRef = (function () {
+var WindowRef = /** @class */ (function () {
     function WindowRef() {
     }
     Object.defineProperty(WindowRef.prototype, "nativeWindow", {
@@ -24,10 +24,10 @@ var WindowRef = (function () {
         enumerable: true,
         configurable: true
     });
+    WindowRef = __decorate([
+        core_1.Injectable()
+    ], WindowRef);
     return WindowRef;
 }());
-WindowRef = __decorate([
-    core_1.Injectable()
-], WindowRef);
 exports.WindowRef = WindowRef;
 //# sourceMappingURL=window.js.map

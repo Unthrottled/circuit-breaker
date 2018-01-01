@@ -16,7 +16,7 @@ var core_1 = require("@angular/core");
 require("./switch.component.htm");
 var http_1 = require("@angular/http");
 var session_service_1 = require("../session/session.service");
-var SwitchComponent = (function () {
+var SwitchComponent = /** @class */ (function () {
     function SwitchComponent(sessionService, http, zone) {
         this.sessionService = sessionService;
         this.http = http;
@@ -47,15 +47,15 @@ var SwitchComponent = (function () {
             });
         });
     };
+    SwitchComponent = __decorate([
+        core_1.Component({
+            selector: 'dead-mans-switch',
+            template: require('./switch.component.htm'),
+            styleUrls: []
+        }),
+        __metadata("design:paramtypes", [session_service_1.SessionService, http_1.Http, core_1.NgZone])
+    ], SwitchComponent);
     return SwitchComponent;
 }());
-SwitchComponent = __decorate([
-    core_1.Component({
-        selector: 'dead-mans-switch',
-        template: require('./switch.component.htm'),
-        styleUrls: []
-    }),
-    __metadata("design:paramtypes", [session_service_1.SessionService, http_1.Http, core_1.NgZone])
-], SwitchComponent);
 exports.SwitchComponent = SwitchComponent;
 //# sourceMappingURL=switch.component.js.map

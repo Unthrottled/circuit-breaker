@@ -1,7 +1,7 @@
+"use strict";
 /**
  * Created by alex on 6/6/17.
  */
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var message_service_1 = require("./message.service");
 var Observable_1 = require("rxjs/Observable");
-var MessageComponent = (function () {
+var MessageComponent = /** @class */ (function () {
     function MessageComponent(messageService, zone) {
         this.messageService = messageService;
         this.zone = zone;
@@ -43,14 +43,14 @@ var MessageComponent = (function () {
             });
         });
     };
+    MessageComponent = __decorate([
+        core_1.Component({
+            selector: 'message-ticker',
+            template: require('./MessageComponent.htm')
+        }),
+        __metadata("design:paramtypes", [message_service_1.MessageService, core_1.NgZone])
+    ], MessageComponent);
     return MessageComponent;
 }());
-MessageComponent = __decorate([
-    core_1.Component({
-        selector: 'message-ticker',
-        template: require('./MessageComponent.htm')
-    }),
-    __metadata("design:paramtypes", [message_service_1.MessageService, core_1.NgZone])
-], MessageComponent);
 exports.MessageComponent = MessageComponent;
 //# sourceMappingURL=message.component.js.map

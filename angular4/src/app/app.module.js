@@ -23,33 +23,33 @@ var window_1 = require("./util/window");
 var HystrixDashboard_component_1 = require("./hystrix/HystrixDashboard.component");
 var dialog_component_1 = require("./util/dialog.component");
 var animations_1 = require("@angular/platform-browser/animations");
-var AppModule = (function () {
+var AppModule = /** @class */ (function () {
     function AppModule() {
     }
+    AppModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
+                http_1.HttpModule,
+                ng2_nouislider_1.NouisliderModule,
+                angular2_ui_switch_1.UiSwitchModule,
+                animations_1.BrowserAnimationsModule
+            ],
+            declarations: [
+                app_component_1.AppComponent,
+                message_component_1.MessageComponent,
+                switch_component_1.SwitchComponent,
+                throttle_component_1.ThrottleComponent,
+                latency_component_1.LatencyCompontent,
+                HystrixDashboard_component_1.HystrixDashboardComponent,
+                dialog_component_1.DialogComponent
+            ],
+            bootstrap: [app_component_1.AppComponent],
+            providers: [session_service_1.SessionService, message_service_1.MessageService, window_1.WindowRef]
+        })
+    ], AppModule);
     return AppModule;
 }());
-AppModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            platform_browser_1.BrowserModule,
-            forms_1.FormsModule,
-            http_1.HttpModule,
-            ng2_nouislider_1.NouisliderModule,
-            angular2_ui_switch_1.UiSwitchModule,
-            animations_1.BrowserAnimationsModule
-        ],
-        declarations: [
-            app_component_1.AppComponent,
-            message_component_1.MessageComponent,
-            switch_component_1.SwitchComponent,
-            throttle_component_1.ThrottleComponent,
-            latency_component_1.LatencyCompontent,
-            HystrixDashboard_component_1.HystrixDashboardComponent,
-            dialog_component_1.DialogComponent
-        ],
-        bootstrap: [app_component_1.AppComponent],
-        providers: [session_service_1.SessionService, message_service_1.MessageService, window_1.WindowRef]
-    })
-], AppModule);
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map

@@ -21,7 +21,7 @@ export class AppComponent {
         return require('./assets/images/hystrix-title.png');
     }
 
-    get sessionId() : Observable<string> {
+    get sessionId() : Observable<String> {
         return this.sessionService.fetchSessionId();
     }
 

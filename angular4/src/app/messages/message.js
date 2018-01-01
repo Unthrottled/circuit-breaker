@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Created by alex on 6/13/17.
  */
-var Message = (function () {
+var Message = /** @class */ (function () {
     function Message(msg) {
         this.msg = msg;
         this.success = false;

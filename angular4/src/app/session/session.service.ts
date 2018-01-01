@@ -11,7 +11,7 @@ import {ReplaySubject} from 'rxjs/ReplaySubject';
 
 @Injectable()
 export class SessionService {
-    private sessionIdo = new ReplaySubject(1);
+    private sessionIdo = new ReplaySubject<String>(1);
 
     constructor(private http: Http) {
     }

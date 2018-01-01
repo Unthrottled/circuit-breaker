@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 require("./app.component.htm");
 var session_service_1 = require("./session/session.service");
-var AppComponent = (function () {
+var AppComponent = /** @class */ (function () {
     function AppComponent(sessionService) {
         this.sessionService = sessionService;
         this._backpressureHelp = false;
@@ -64,14 +64,14 @@ var AppComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    AppComponent = __decorate([
+        core_1.Component({
+            selector: 'angular-application',
+            template: require('./app.component.htm')
+        }),
+        __metadata("design:paramtypes", [session_service_1.SessionService])
+    ], AppComponent);
     return AppComponent;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'angular-application',
-        template: require('./app.component.htm')
-    }),
-    __metadata("design:paramtypes", [session_service_1.SessionService])
-], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map
