@@ -1,7 +1,5 @@
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {AppModule} from './app/app.module';
-//CSS FILES
-import './styles';
 //JS FILES
 import './app/assets/js/3rdparty-libs/hystrixCommand/hystrixCommand.js';
 import './app/assets/js/3rdparty-libs/hystrixThreadPool/hystrixThreadPool.js';

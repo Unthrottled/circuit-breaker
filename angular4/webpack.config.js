@@ -10,9 +10,8 @@ var https = require('https');
 var keepAliveAgent = new https.Agent({keepAlive: true});
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 
-
-var proxyPeel = proxy('/api', {
-    target: 'https://web-service:8080',
+var proxyPeel = proxy('/hystrix', {
+    target: 'https://web-service:3344',
     changeOrigin: true,               // needed for virtual hosted sites
     ws: true,
     secure: false,
@@ -22,7 +21,7 @@ var proxyPeel = proxy('/api', {
 
 module.exports = {
     entry: {
-        'stylez': './src/app/css/sassy.sass',
+        'stylez': './src/app/assets/css/sassy.sass',
         'app': './src/main.ts',
         'vendor': './src/vendor.ts',
         'polyfills': './src/polyfills.ts'
@@ -67,7 +66,7 @@ module.exports = {
             {
                 test: /\.(html)$/,
                 exclude: [/index\.html/],
-                loader: "file-loader?name=[name].[hash:6].[ext]"
+                loader: "file-loader?name=templates/[name].[ext]"
             },
             {
                 test: /\.(htm)$/,
@@ -82,8 +81,11 @@ module.exports = {
                 test: /\.css$/,
                 exclude: [/build/, /dist/, /gradle/],
                 use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: 'css-loader?modules&importLoaders=1&localIdentName=[local]'
+                    use: [{
+                        loader: "css-loader"
+                    }],
+                    // use style-loader in development
+                    fallback: "style-loader"
                 })
             },
             {
