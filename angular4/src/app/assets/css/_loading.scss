@@ -7,7 +7,7 @@
 .sk-cube-grid .sk-cube {
   width: 33%;
   height: 33%;
-  background-color: $welcome-background-color;
+  background-color: grey;
   opacity: 0.75;
   float: left;
   -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
@@ -50,7 +50,7 @@
       transform: scale3D(0, 0, 1);
     }
   20%, 60% {
-    background-color: $welcome-highlight-color
+    background-color: grey
   }
 }
 
@@ -63,6 +63,6 @@
       transform: scale3D(0, 0, 1);
     }
   20%, 60% {
-    background-color: $welcome-highlight-color
+    background-color: grey
   }
 }
