@@ -3,26 +3,26 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
-var htmlLoader = require('raw-loader');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var proxy = require('http-proxy-middleware');
+var htmlLoader = require('raw-loader');
 var https = require('https');
-var keepAliveAgent = new https.Agent({ keepAlive: true });
+var keepAliveAgent = new https.Agent({keepAlive: true});
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
-const extractSass = new ExtractTextPlugin({
-    filename: "[name].[contenthash].css"
-});
 
-var proxyPeel = proxy('/hystrix', {
-    target: 'https://web-service:3344',
+
+var proxyPeel = proxy('/api', {
+    target: 'https://web-service:8080',
     changeOrigin: true,               // needed for virtual hosted sites
     ws: true,
     secure: false,
     agent: keepAliveAgent
 });
 
+
 module.exports = {
     entry: {
+        'stylez': './src/app/css/sassy.sass',
         'app': './src/main.ts',
         'vendor': './src/vendor.ts',
         'polyfills': './src/polyfills.ts'
@@ -67,7 +67,7 @@ module.exports = {
             {
                 test: /\.(html)$/,
                 exclude: [/index\.html/],
-                loader: "file-loader?name=templates/[name].[ext]"
+                loader: "file-loader?name=[name].[hash:6].[ext]"
             },
             {
                 test: /\.(htm)$/,
@@ -89,7 +89,7 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/,
                 exclude: [/build/, /dist/, /gradle/],
-                use: extractSass.extract({
+                use: ExtractTextPlugin.extract({
                     use: [{
                         loader: "css-loader"
                     }, {
@@ -107,6 +107,17 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            d3: 'd3',
+            'window.jQuery': 'jquery',
+            Popper: ['popper.js', 'default'],
+            // In case you imported plugins individually, you must also require them here:
+            Util: "exports-loader?Util!bootstrap/js/dist/util",
+            Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
+            Tether: 'tether'
+        }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
@@ -125,16 +136,7 @@ module.exports = {
             path.resolve(__dirname, 'src'), // location of your src
             {} // a map of your routes
         ),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery',
-            Popper: ['popper.js', 'default'],
-            // In case you imported plugins individually, you must also require them here:
-            Util: "exports-loader?Util!bootstrap/js/dist/util",
-            Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
-            Tether: 'tether'
-        }),
+
         new webpack.optimize.CommonsChunkPlugin({
             name: ['app', 'vendor', 'polyfills']
         }),
@@ -150,7 +152,8 @@ module.exports = {
             exclude: ['shared.js']
         }),
         new ExtractTextPlugin({
-            filename: 'styles.[contenthash].css'
+            filename: 'style.[contenthash].css',
+            allChunks: true
         }),
         new BrowserSyncPlugin({
             // browse to http://localhost:3000/ during development,
