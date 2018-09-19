@@ -4,6 +4,6 @@ services:
     build: ./web-service
     ports:
       - 443:3344
-    image: alexsimons/hystrix-web-service:1.1.1
+    image: alexsimons/hystrix-web-service:1.1.2
 
 #Use this compose file to run both the spring boot web server

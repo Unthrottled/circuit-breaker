@@ -18,7 +18,7 @@ var AppComponent = /** @class */ (function () {
         this._backpressureHelp = false;
         this._latencyHelp = false;
         this._powerHelp = false;
-        this.versionNumber = "v1.1.1";
+        this.versionNumber = "v1.1.2";
     }
     Object.defineProperty(AppComponent.prototype, "titleRef", {
         get: function () {
